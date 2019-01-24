@@ -1,0 +1,166 @@
+POD_Site_Name,Address,Borough,Zip,Longitude,Latitude,POD_ID,Operations_Status,Wait_Time,Latest_Update_Date,Latest_Update_Time,Opening_Date,Opening_Time
+K001 - P.S. 1 Bergen,309 47th Street,Brooklyn,11220,-74.01229,40.64903,465,Open to Public,5,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K016 - P.S. 16 Leonard Dunkly,157 Wilson Street,Brooklyn,11211,-73.96148,40.70602,478,Open to Public,5,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K043 - I.S. 98 Bay Academy,1401 Emmons Avenue,Brooklyn,11235,-73.95404,40.58312,988,Open to Public,5,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K055 - I.S. 55,2021 Bergen Street,Brooklyn,11233,-73.91327,40.6741,606,Open to Public,5,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K071 - I.S. 71 Juan Morel Campos,215 Heyward Street,Brooklyn,11206,-73.95315,40.70362,3005,Open to Public,5,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K088 - I.S. 88 Peter Rouget,544 7th Avenue,Brooklyn,11215,-73.98764,40.66002,491,Open to Public,5,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K094 - P.S. 94 Henry Longfellow,5010 6th Avenue,Brooklyn,11220,-74.00825,40.64365,494,,,,,,
+K097 - P.S. 97 Highlawn,1855 Stillwell Avenue,Brooklyn,11223,-73.98614,40.60143,996,,,,,,
+K126 - J.H.S 126 John Ericsson,424 Leonard Street,Brooklyn,11222,-73.94863,40.71981,881,,,,,,
+K131 - P.S. 131,4305 Fort Hamilton Parkway,Brooklyn,11219,-73.99348,40.64115,404,,,,,,
+K135 - P.S. 135 Sheldon A Brookner,684 Linden Boulevard,Brooklyn,11203,-73.93312,40.65363,421,Open to Public,10,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K138 - P.S. 138,760 Prospect Place,Brooklyn,11216,-73.95144,40.67437,617,Open to Public,10,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K142 - P.S. 146,610 Henry Street,Brooklyn,11231,-74.00138,40.68006,1004,Open to Public,10,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K175 - Teacher's Prep High School,226 Bristol Street,Brooklyn,11212,-73.91171,40.66587,1310,Open to Public,10,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K179 - P.S. 179 Kensington,202 Avenue C,Brooklyn,11218,-73.97764,40.64046,1012,Open to Public,10,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K181 - P.S. 181,1023 New York Avenue,Brooklyn,11203,-73.94637,40.64821,561,Open to Public,10,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K186 - P.S. 186 Dr. Irving A Gladstone,7601 19th Avenue,Brooklyn,11214,-73.99468,40.61148,568,Open to Public,20,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K196 - P.S. 196,207 Bushwick Avenue,Brooklyn,11206,-73.94,40.70872,571,Open to Public,20,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K205 - P.S. 205 Clarion,6701 20th Avenue,Brooklyn,11204,-73.98715,40.61526,474,Open to Public,20,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K217 - P.S. 217 Colonel David Marcus,1100 Newkirk Avenue,Brooklyn,11230,-73.96656,40.63397,479,Open to Public,20,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K219 - P.S. 219 Kennedy-King,1060 Clarkson Avenue,Brooklyn,11212,-73.92292,40.65928,1035,Open to Public,20,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K222 - P.S. 222 Katherine Snyder,3301 Quentin Road,Brooklyn,11234,-73.93887,40.61331,916,Open to Public,20,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+K233 - P.S. 233 Langston Hughes,9301 Avenue B,Brooklyn,11236,-73.91402,40.65102,1039,Closed to Public,20,1/10/2019,3:54 PM,,
+K234 - J.H.S. 234 Arthur W. Cunningham,1875 East 17th Street,Brooklyn,11229,-73.95548,40.60421,1040,Closed to Public,20,1/10/2019,3:54 PM,,
+K256 - P.S. 256 Benjamin Banneker,114 Kosciuszko Street,Brooklyn,11216,-73.95043,40.69072,508,Closed to Public,20,1/10/2019,3:54 PM,,
+K258 - I.S. 258 David Ruggles,141 Macon Street,Brooklyn,11216,-73.94545,40.68156,510,Closed to Public,20,1/10/2019,3:54 PM,,
+K288 - P.S. 288 Shirley Tanyhill,2950 West 25th Street,Brooklyn,11224,-73.99194,40.5744,1060,Closed to Public,30,1/10/2019,3:54 PM,,
+K296 - I.S. 296 Halsey School,125 Covert Street,Brooklyn,11214,-73.91028,40.68838,926,Closed to Public,30,1/10/2019,3:54 PM,,
+K302 - J.H.S. 302 Rafael Cordero,350 Linwood Street,Brooklyn,11208,-73.88343,40.6771,3010,Closed to Public,30,1/10/2019,3:54 PM,,
+K306 - P.S. 306 Ethan Allen,970 Vermont Street,Brooklyn,11207,-73.88655,40.65599,1062,Closed to Public,30,1/10/2019,3:54 PM,,
+K313 - Adams Street Campus,283 Adams Street,Brooklyn,11201,-73.98884,40.69492,3011,Closed to Public,30,1/10/2019,3:54 PM,,
+K314 - P.S. 314,330 59th Street,Brooklyn,11220,-74.019,40.64211,463,Closed to Public,30,1/10/2019,3:54 PM,,
+K324 - I.S. 324,800 Gates Avenue,Brooklyn,11221,-73.93228,40.68831,515,,,,,,
+K345 - P.S. 345 Robert Boldon,111 Berriman Street,Brooklyn,11208,-73.88034,40.67612,872,,,,,,
+K395 - P.S. 109,1001 East 45th Street,Brooklyn,11203,-73.93358,40.63645,528,,,,,,
+K400 - Lafayette High School,2630 Benson Avenue,Brooklyn,11219,-73.98577,40.59428,930,,,,,,
+K410 - Abraham Lincoln High School,2800 Ocean Parkway,Brooklyn,11235,-73.96731,40.58167,931,,,,,,
+K420 - Franklin K. Lane High School,999 Jamaica Avenue,Brooklyn,11208,-73.87019,40.6907,886,,,,,,
+K446 - New Utrecht High School,1601 80th Street,Brooklyn,11214,-74.0034,40.61325,934,,,,,,
+K460 - John Jay High School,237 7th Avenue,Brooklyn,11215,-73.97929,40.66962,579,,,,,,
+K465 - Erasmus High School,911 Flatbush Avenue,Brooklyn,11226,-73.95855,40.64977,580,,,,,,
+K470 - George Wingate Educational Campus,600 Kingston Avenue,Brooklyn,11203,-73.94246,40.65889,581,Closed to Public,40,1/10/2019,3:54 PM,,
+K480 - Bushwick Educational Campus,400 Irving Avenue,Brooklyn,11237,-73.91079,40.69696,935,Closed to Public,40,1/10/2019,3:54 PM,,
+K486 - I.S. 187 Christa McAuliffe School,1171 65th Street,Brooklyn,11219,-74.00449,40.62778,584,Closed to Public,40,1/10/2019,3:54 PM,,
+K490 - Fort Hamilton High School,8301 Shore Road,Brooklyn,11209,-74.04005,40.62781,936,Closed to Public,40,1/10/2019,3:54 PM,,
+K495 - Sheepshead Bay High School,3000 Avenue X,Brooklyn,11235,-73.9377,40.59412,1069,Closed to Public,40,1/10/2019,3:54 PM,,
+K500 - Canarsie High School,1600 Rockaway Parkway,Brooklyn,11236,-73.8985,40.64169,937,Closed to Public,40,1/10/2019,3:54 PM,,
+K515 - South Shore Educational Campus,6565 Flatlands Avenue,Brooklyn,11236,-73.91673,40.63328,938,Closed to Public,40,1/10/2019,3:54 PM,,
+K525 - Edward R. Murrow High School,1600 Avenue L,Brooklyn,11230,-73.95928,40.62052,939,Closed to Public,40,1/10/2019,3:54 PM,,
+K580 - George Westinghouse Vocational HS,105 Johnson Street,Brooklyn,11201,-73.98602,40.69492,534,Closed to Public,40,1/10/2019,3:54 PM,,
+K600 - Clara Barton High School,901 Classon Avenue,Brooklyn,11225,-73.96196,40.66956,587,Closed to Public,40,1/10/2019,3:54 PM,,
+M025 - Marta Valle Secondary School,145 Stanton Street,Manhattan,10002,-73.98565,40.72057,342,Closed to Public,40,1/10/2019,3:54 PM,,
+M028 - P.S. 28 Wright Brothers,475 West 155th Street,Manhattan,10032,-73.94214,40.83122,267,Closed to Public,50,1/10/2019,3:54 PM,,
+M033 - P.S. 33 Chelsea Prep,281 9th Avenue,Manhattan,10001,-73.99965,40.74881,1107,Closed to Public,50,1/10/2019,3:54 PM,,
+M040 - P.S. 040 Augustus Saint-Gaudens,319 East 19th Street,Manhattan,10003,-73.98203,40.73515,1109,Closed to Public,50,1/10/2019,3:54 PM,,
+M041 - P.S. 041 Greenwich Village,116 West 11th Street,Manhattan,10011,-73.99903,40.73569,1322,Closed to Public,50,1/10/2019,3:54 PM,,
+M044 - J.H.S. M044 William J. O'Shea,100 West 77th Street,Manhattan,10024,-73.97686,40.78082,263,Closed to Public,50,1/10/2019,3:54 PM,,
+M052 - I.S. 52 Inwood,650 Academy Street,Manhattan,10034,-73.92483,40.86605,1311,Closed to Public,50,1/10/2019,3:54 PM,,
+M064 - Tompkins Square Middle School,600 East 6th Street,Manhattan,10009,-73.98138,40.72437,1122,Closed to Public,50,1/10/2019,3:54 PM,,
+M083 - P.S. 83,219 East 109th Street,Manhattan,10029,-73.94255,40.79319,1129,Closed to Public,50,1/10/2019,3:54 PM,,
+M088 - Wadleigh Campus/I.S. 88,215 West 114 Street,Manhattan,10026,-73.95414,40.8022,353,Closed to Public,50,1/10/2019,3:54 PM,,
+M089 - P.S. 89,201 Warren Street,Manhattan,10282,-74.01355,40.71665,1131,Closed to Public,50,1/10/2019,3:54 PM,,
+M090 - I.S. 90 Mirabel Sisters School,21 Jumel Place,Manhattan,10032,-73.93616,40.8393,355,Closed to Public,50,1/10/2019,3:54 PM,,
+M092 - P.S. 92 Mary McLeod Bethune,222 West 134th Street,Manhattan,10030,-73.94512,40.81501,356,Closed to Public,50,1/10/2019,3:54 PM,,
+M111 - P.S. 111 Adolph S Ochs,440 West 53rd Street,Manhattan,10019,-73.98882,40.76587,377,Closed to Public,50,1/10/2019,3:54 PM,,
+M118 - I.S. 118,154 West 93rd Street,Manhattan,10025,-73.97084,40.79172,1414,Closed to Public,50,1/10/2019,3:54 PM,,
+M134 - PS 134 Henrietta Szold,293 East Broadway,Manhattan,10002,-73.98372,40.71456,393,,,,,,
+M142 - P.S. 142 Amalia Castro,100 Attorney Street,Manhattan,10002,-73.98445,40.71838,1149,,,,,,
+M143 - J.H.S. 143 Eleanor Roosevelt,511 West 182nd Street,Manhattan,10033,-73.93095,40.8489,396,,,,,,
+M153 - P.S. 153 Adam Clayton Powell,1750 Amsterdam Avenue,Manhattan,10031,-73.94684,40.82629,391,,,,,,
+M165 - P.S. 165,234 West 109th Street,Manhattan,10025,-73.96539,40.80281,864,Closed to Public,50,1/10/2019,3:54 PM,,
+M167 - I.S. 167 Robert Wagner,220 East 76th Street,Manhattan,10021,-73.95807,40.77204,410,Closed to Public,50,1/10/2019,3:54 PM,,
+M183 - P.S. 183 Robert L. Stevenson,419 East 66th Street,Manhattan,10021,-73.95815,40.76373,420,Closed to Public,50,1/10/2019,3:54 PM,,
+M195 - Terrance Tolbert Educational Complex,625 West 133rd Street,Manhattan,10027,-73.95744,40.8194,1162,Closed to Public,50,1/10/2019,3:54 PM,,
+M198 - P.S. 77 Lower Lab School,1700 3rd Avenue,Manhattan,10128,-73.94961,40.78482,1164,Closed to Public,50,1/10/2019,3:54 PM,,
+M199 - P.S. 199 Jessie Isador Straus,270 West 70th Street,Manhattan,10023,-73.98445,40.77805,427,Closed to Public,60,1/10/2019,3:54 PM,,
+M465 - George Washington High School,549 Audubon Avenue,Manhattan,10040,-73.92705,40.85595,435,Closed to Public,60,1/10/2019,3:54 PM,,
+M470 - Louis D. Brandeis High School,145 West 84th Street,Manhattan,10024,-73.97461,40.7858,436,Closed to Public,60,1/10/2019,3:54 PM,,
+M535 - Park West High School,525 West 50th Street,Manhattan,10019,-73.99269,40.76506,865,Mobilizing,60,1/10/2019,3:54 PM,,
+Q005 - I.S. 5 Walter Crowley,50-40 Jacobus Street,Queens,11373,-73.88743,40.73771,107,Mobilizing,60,1/10/2019,3:54 PM,,
+Q012 - P.S. 12 James B Colgate,42-00 72nd Street,Queens,11377,-73.8928,40.74263,109,Mobilizing,60,1/10/2019,3:54 PM,,
+Q013 - P.S. 13 Clement C Moore,55-01 94th Street,Queens,11373,-73.86851,40.73761,110,Mobilizing,75,1/10/2019,3:54 PM,,
+Q017 - P.S. 17 Henry David Thoreau,28-37 29th Street,Queens,11102,-73.92243,40.76898,54,Mobilizing,75,1/10/2019,3:54 PM,,
+Q020 - PS 20 John Bowne,142-30 Barclay Avenue,Queens,11355,-73.82483,40.75868,56,Mobilizing,75,1/10/2019,3:54 PM,,
+Q022 - P.S. 22 Thomas Jefferson,153-55 Sanford Ave,Queens,11355,-73.81162,40.76128,58,Mobilizing,75,1/10/2019,3:54 PM,,
+Q025 - I.S. 25 Adrien Block,34-65 192nd Street,Queens,11358,-73.79008,40.76513,60,Mobilizing,75,1/10/2019,3:54 PM,,
+Q036 - P.S. 36 Saint Albans,187-01 Foch Boulevard,Queens,11412,-73.76391,40.69082,1197,,,,,,
+Q053 - M.S. 53 Brian Piccolo,10-45 Nameoke Street,Queens,11691,-73.7491,40.60361,1206,,,,,,
+Q060 - P.S. 60 Woodhaven,91-02 88th Avenue,Queens,11421,-73.85264,40.69217,73,,,,,,
+Q061 - I.S. 61 Leonardo DaVinci,98-50 50th Avenue,Queens,11368,-73.86331,40.74266,74,,,,,,
+Q062 - P.S. 62 Chester Park,97-25 108th Street,Queens,11419,-73.8362,40.68866,75,,,,,,
+Q067 - J.H.S. 67 Louis Pasteur,51-60 Marathon Parkway,Queens,11362,-73.73369,40.7627,128,Mobilizing,75,1/10/2019,3:54 PM,,
+Q069 - P.S. 69 Jackson Heights,77-02 37th Avenue,Queens,11372,-73.88882,40.74926,76,Mobilizing,75,1/10/2019,3:54 PM,,
+Q070 - P.S. 70,30-45 42nd Street,Queens,11103,-73.91423,40.7621,77,Mobilizing,75,1/10/2019,3:54 PM,,
+Q073 - I.S. 73 Frank Sansiveiri,70-02 54th Avenue,Queens,11378,-73.89362,40.72921,78,Mobilizing,75,1/10/2019,3:54 PM,,
+Q109 - I.S. 109 Jean Nuzzi,213-10 92nd Avenue,Queens,11428,-73.747,40.72071,139,Mobilizing,90,1/10/2019,3:54 PM,,
+Q117 - P.S. 117 J. Keld / Briarwood School,85-15 143rd Street,Queens,11435,-73.81338,40.70946,143,Mobilizing,90,1/10/2019,3:54 PM,,
+Q121 - P.S. 121,126-10 109th Avenue,Queens,11420,-73.81583,40.68404,167,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q125 - I.S. 125 Thomas J. McCann Woodside,46-02 47th Avenue,Queens,11377,-73.91895,40.74112,168,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q138 - P.S. 138 The Sunrise School,251-11 Weller Avenue,Queens,11422,-73.73518,40.65972,671,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q139 - P.S. 139 Rego Park,93-06 63rd Drive,Queens,11374,-73.86358,40.72813,170,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q145 - I.S. 145 Joseph Pulitzer,33-34 80th Street,Queens,11372,-73.88711,40.75465,173,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q185 - J.H.S. 185 Edward Bleeker,147-26 25th Drive,Queens,11354,-73.81935,40.77525,220,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q210 - I.S. 210 Elizabeth Blackwell,93-11 101st Avenue,Queens,11416,-73.84747,40.68385,104,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q214 - P.S. 214 Cadwallader Colden,31-15 140th Street,Queens,11354,-73.82862,40.77038,1257,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q226 - I.S. 226 Virgil I. Grissom ,121-10 Rockaway Boulevard,Queens,11420,-73.81694,40.67576,673,,,,,,
+Q227 - I.S. 227 Louis Armstrong,32-02 Junction Boulevard,Queens,11369,-73.87447,40.7584,233,,,,,,
+Q237 - I.S. 237 Rachel Carson Intermediate School,46-21 Colden Street,Queens,11355,-73.82207,40.74954,244,,,,,,
+Q238 - I.S. 238 Susan B. Anthony,88-15 182nd Street,Queens,11423,-73.78047,40.71309,245,,,,,,
+Q260 - P.S. 307 Pioneer Academy,40-20 100th Street,Queens,11368,-73.86516,40.74883,3029,,,,,,
+Q400 - August Martin High School,156-10 Baisley Boulevard,Queens,11434,-73.78334,40.67563,843,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q405 - Bayside High School,32-42 Corporal Kennedy Street,Queens,11361,-73.78018,40.77153,899,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q410 - Beach Channel Educational Campus,100-00 Beach Channel Drive,Queens,11694,-73.82262,40.58606,844,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q415 - Benjamin N. Cardozo High School,57-00 223rd Street,Queens,11364,-73.75599,40.75233,887,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q420 - Springfield Gardens Educational Campus,143-10 Springfield Boulevard,Queens,11413,-73.75684,40.66823,676,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q425 - John Bowne High School,63-25 Main Street,Queens,11367,-73.82494,40.73813,888,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q430 - Francis Lewis High School,58-20 Utopia Parkway,Queens,11365,-73.79283,40.74072,889,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q435 - Martin Van Buren High School,230-17 Hillside Avenue,Queens,11427,-73.73875,40.73306,892,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q440 - Forest Hills High School,67-01 110th Street,Queens,11375,-73.84564,40.72939,893,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q480 - John Adams High School,101-01 Rockaway Boulevard,Queens,11417,-73.83835,40.6798,898,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q485 - Grover Cleveland High School,21-27 Himrod Street,Queens,11385,-73.90881,40.71103,259,Open to Public,90,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q505 - Hillcrest High School,160-05 Highland Avenue,Queens,11432,-73.80166,40.70944,900,Open to Public,100,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+Q610 - Aviation High School,45-30 36th Street,Queens,11101,-73.92908,40.7435,260,,,,,,
+Q686 - Queens Metropolitan H.S.,91-30 Metropolitan Avenue,Queens,11375,-73.85708,40.71142,3030,,,,,,
+Q849 - I.S. 77,976 Seneca Avenue,Queens,11385,-73.90214,40.69951,91,,,,,,
+R002 - I.S. 2 George Egbert ,333 Midland Avenue,Staten Island,10306,-74.10073,40.57672,649,,,,,,
+R024 - I.S. 24 Myra Barnes,225 Cleveland Avenue,Staten Island,10308,-74.14632,40.54527,17,,,,,,
+R027 - I.S. 27 Anning S. Prall,11 Clove Lake Place,Staten Island,10310,-74.117,40.62816,18,,,,,,
+R051 - I.S. 51 Edwin Markham,20 Houston Street,Staten Island,10302,-74.14497,40.62259,32,,,,,,
+R058 - P.S. 58 Space Shuttle Columbia School,77 Marsh Avenue,Staten Island,10314,-74.1625,40.58208,36,Open to Public,25,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+R061 - I.S. 61 William A. Morris,445 Castleton Avenue,Staten Island,10301,-74.09783,40.634,38,Open to Public,25,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+R080 - P.S. 80 Michael J. Petrides School,715 Ocean Terrace,Staten Island,10301,-74.1019,40.60836,1447,Open to Public,25,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+R445 - Port Richmond H.S.,85 St Joseph's Avenue,Staten Island,10302,-74.14182,40.63457,3032,Open to Public,25,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+R455 - Tottenville High School,100 Luten Avenue,Staten Island,10312,-74.19203,40.52808,44,Open to Public,25,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+R605 - Staten Island Technical High School,485 Clawson Street,Staten Island,10306,-74.11537,40.56787,3033,Open to Public,25,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+X025 - P.S. 25,811 East 149th Street,Bronx,10455,-73.90606,40.81261,207,Open to Public,25,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+X026 - P.S. 396,1930 Andrews Avenue,Bronx,10453,-73.9132,40.85469,208,Open to Public,25,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+X079 - P.S. 79 Creston,125 East 181st Street,Bronx,10453,-73.90345,40.85487,852,Open to Public,25,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+X080 - J.H.S. 80 Mosholu Parkway,149 East Mosholu Parkway North,Bronx,10467,-73.88153,40.87629,364,Open to Public,25,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+X102 - P.S. 102 Joseph O Loretan,1827 Archer Street,Bronx,10460,-73.86603,40.83762,428,Open to Public,25,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+X103 - P.S. 103 Hector Fontanez,4125 Carpenter Avenue,Bronx,10466,-73.86146,40.89215,432,Open to Public,25,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+X113 - I.S. 113,3710 Barnes Avenue,Bronx,10467,-73.8609,40.88087,507,Open to Public,25,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+X116 - I.S. 116 Rafael Hernandez,977 Fox Street,Bronx,10459,-73.8939,40.82244,511,Open to Public,30,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+X127 - I.S. 127 Castle Hill,1560 Purdy Street,Bronx,10462,-73.85352,40.83792,625,Open to Public,30,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+X141 - M.S. / H.S. 141,660 West 237th Street,Bronx,10463,-73.91348,40.88833,1367,Open to Public,30,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+X144 - J.H.S. 144 Michelangelo,2545 Gunther Avenue,Bronx,10469,-73.83607,40.86373,651,Open to Public,30,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+X147 - I.S. 313 / I.S. 339 ,1600 Webster Avenue,Bronx,10457,-73.90475,40.84087,633,Open to Public,30,1/10/2019,3:54 PM,1/12/2019,12:00 PM
+X151 - I.S. 151 Henry Lou Gehrig,250 East 156th Street,Bronx,10451,-73.92163,40.82315,652,Closed to Public,30,1/10/2019,3:54 PM,,
+X166 - J.H.S. 166 Roberto Clemente,250 East 164th Street,Bronx,10456,-73.91767,40.82869,281,Closed to Public,30,1/10/2019,3:54 PM,,
+X167 - P.S. 214,1970 West Farms Road,Bronx,10460,-73.88046,40.8393,3037,Closed to Public,30,1/10/2019,3:54 PM,,
+X192 - I.S. 192 Piagentini-Jones,650 Hollywood Avenue,Bronx,10465,-73.81841,40.82652,653,Closed to Public,30,1/10/2019,3:54 PM,,
+X235 - P.S. 218 Rafael Hernandez Dual Language,1220 Gerard Avenue,Bronx,10452,-73.92003,40.83584,292,Closed to Public,30,1/10/2019,3:54 PM,,
+X306 - P.S. 306,40 West Tremont Avenue,Bronx,10453,-73.91118,40.85182,2084,Closed to Public,30,1/10/2019,3:54 PM,,
+X362 - I.S. / H.S. 362 ,921 East 228th Street,Bronx,10466,-73.85269,40.88783,3038,Closed to Public,30,1/10/2019,3:54 PM,,
+X400 - Morris High School,1110 Boston Road,Bronx,10456,-73.90447,40.82764,298,,,,,,
+X405 - Herbert Lehman High School,3000 East Tremont Avenue,Bronx,10461,-73.83854,40.8407,654,,,,,,
+X410 - William H Taft H.S.,240 East 172nd Street,Bronx,10457,-73.91091,40.84042,299,,,,,,
+X430 - Walton Educational School,2780 Reservoir Avenue,Bronx,10468,-73.89831,40.87029,303,,,,,,
+X435 - Theodore Roosevelt Educational Campus,500 East Fordham Road,Bronx,10458,-73.88827,40.86004,315,Closed to Public,30,1/10/2019,3:54 PM,,
+X450 - Adlai E. Stevenson High School,1980 Lafayette Avenue,Bronx,10473,-73.85617,40.82228,655,Closed to Public,30,1/10/2019,3:54 PM,,
+X455 - Harry S. Truman High School,750 Baychester Avenue,Bronx,10475,-73.83391,40.87416,318,Closed to Public,30,1/10/2019,3:54 PM,,
+X470 - South Bronx Educational Campus,701 Saint Ann's Avenue,Bronx,10455,-73.91103,40.81824,656,Closed to Public,30,1/10/2019,3:54 PM,,
+X475 - The Kennedy Campus,99 Terrace View Avenue,Bronx,10463,-73.9121,40.87723,657,Closed to Public,30,1/10/2019,3:54 PM,,
+X660 - Grace H. Dodge Vocational High School,2474 Crotona Avenue,Bronx,10458,-73.88271,40.85569,344,Closed to Public,30,1/10/2019,3:54 PM,,
+X839 - Bronx H.S. for the Visual Arts,2040 Antin Place,Bronx,10462,-73.86503,40.8514,1299,Closed to Public,30,1/10/2019,3:54 PM,,
