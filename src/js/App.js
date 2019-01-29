@@ -8,6 +8,7 @@ import decorations from './decorations'
 
 import FinderApp from 'nyc-lib/nyc/ol/FinderApp'
 import CsvPoint from 'nyc-lib/nyc/ol/format/CsvPoint'
+import GeoJson from 'ol/format/GeoJSON'
 
 class App extends FinderApp {
   /**
@@ -23,21 +24,19 @@ class App extends FinderApp {
         message: content.message('splash')
       },
       facilityUrl: pods.PODS_URL,
-      facilityFormat: new CsvPoint({
-        id: 'POD_ID',
-        x: 'Longitude',
-        y: 'Latitude',
-        defaultDataProjection: 'EPSG:4326'
+      facilityFormat: new GeoJson({
+        defaultDataProjection: 'EPSG:2263',
+        defaultFeatureProjection: 'EPSG:3857'
       }),
       facilityTabTitle: 'PODs',
       decorations: [decorations],
       filterChoiceOptions: [{
         title: 'Status',
         choices: [
-          {name: 'Operations_Status', values: ['Open to Public'], label: 'Open to Public', checked: true},
-          {name: 'Operations_Status', values: ['Mobilizing'], label: 'Mobilizing', checked: true},
-          {name: 'Operations_Status', values: ['Closed to Public'], label: 'Closed to Public', checked: true},
-          {name: 'Operations_Status', values: [''], label: 'Unkown', checked: true},
+          {name: 'Ops_status', values: ['Open to Public'], label: 'Open to Public', checked: true},
+          {name: 'Ops_status', values: ['Mobilizing'], label: 'Mobilizing', checked: true},
+          {name: 'Ops_status', values: ['Closed to Public'], label: 'Closed to Public', checked: true},
+          {name: 'Ops_status', values: [''], label: 'Unkown', checked: true},
         ]
       }],
       geoclientUrl: pods.GEOCLIENT_URL,
