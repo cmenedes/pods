@@ -25,8 +25,8 @@ class App extends FinderApp {
       },
       facilityUrl: pods.PODS_URL,
       facilityFormat: new GeoJson({
-        defaultDataProjection: 'EPSG:2263',
-        defaultFeatureProjection: 'EPSG:3857'
+        dataProjection: 'EPSG:2263',
+        featureProjection: 'EPSG:3857'
       }),
       facilityTabTitle: 'PODs',
       decorations: [decorations],
