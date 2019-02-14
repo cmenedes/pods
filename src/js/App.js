@@ -15,7 +15,7 @@ class App extends FinderApp {
    * @desc Create an instance of App
    * @public
    * @constructor
-   * @param {module:nyc-lib/nyc/Content~Content} content The hurricane content
+   * @param {module:nyc-lib/nyc/Content~Content} content The POD content
    */
   constructor(content) {
     super({
@@ -36,7 +36,7 @@ class App extends FinderApp {
           {name: 'Ops_status', values: ['Open to Public'], label: 'Open to Public', checked: true},
           {name: 'Ops_status', values: ['Mobilizing'], label: 'Mobilizing', checked: true},
           {name: 'Ops_status', values: ['Closed to Public'], label: 'Closed to Public', checked: true},
-          {name: 'Ops_status', values: [''], label: 'Unkown', checked: true},
+          {name: 'Ops_status', values: [''], label: 'Unknown', checked: true},
         ]
       }],
       geoclientUrl: pods.GEOCLIENT_URL,

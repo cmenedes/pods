@@ -46,3 +46,11 @@
     right: 500px;
   }
 }
+
+body *, .btn {
+  color: #005C7A;
+}
+
+.tabs .btns button.btn.active:focus{
+  color: black;
+}

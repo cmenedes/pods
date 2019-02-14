@@ -1,7 +1,7 @@
 {  
-  "short_name": "NYC DOHMH POD Finder",  
-  "name": "NYC DOHMH POD Finder",  
-  "description": "NYC DOHMH POD Finder",  
+  "short_name": "Points of Dispensing (POD) Finder",  
+  "name": "Points of Dispensing (POD) Finder",  
+  "description": "Points of Dispensing (POD) Finder",  
   "start_url": "index.html",  
   "icons": [  
     {  
@@ -54,7 +54,7 @@
       "sizes": "512x512",  
       "type": "image/png"  
     }
-  ],  
+  ], 
   "background_color": "#085095",
   "theme_color": "#D8D8D8", 
   "display": "standalone"  
