@@ -8,6 +8,7 @@ import nyc from 'nyc-lib/nyc'
 const decorations = {
   extendFeature() {
     this.setId(this.get('DOECode'))
+    this.active = this.content.message('active')
   },
   getName() {
     return this.get('PODSiteName')
@@ -18,14 +19,23 @@ const decorations = {
   getCityStateZip() {
     return `${this.get('Borough')}, NY ${this.get('ZIP')}`
   },
+  getActive() {
+    return this.active
+  },
+  getStatus() {
+    return this.get('Ops_status')
+  },
   detailsHtml() {
-    const open = new Date(this.get('OpeningTime'))
-    const update = new Date(this.get('LatestDate'))
-    return $('<ul></ul>')
-      .append(`<li><b>Status:</b> ${this.get('Ops_status')}</li>`)
-      .append(`<li><b>Opens:</b> ${open.toLocaleDateString()} ${open.toLocaleTimeString()}`) 
-      .append(`<li><b>Wait time:</b> ${this.get('wait_time')} minutes</li>`)
-      .append(`<li><b>Last update:</b> ${update.toLocaleDateString()} ${update.toLocaleTimeString()}`) 
+    if (this.getActive() === 'true'){
+      const open = new Date(this.get('OpeningTime'))
+      const update = new Date(this.get('LatestDate'))
+      return $('<ul></ul>')
+        .append(`<li><b>Status:</b> ${this.get('Ops_status')}</li>`)
+        .append(`<li><b>Opens:</b> ${open.toLocaleDateString()} ${open.toLocaleTimeString()}`) 
+        .append(`<li><b>Wait time:</b> ${this.get('wait_time')} minutes</li>`)
+        .append(`<li><b>Last update:</b> ${update.toLocaleDateString()} ${update.toLocaleTimeString()}`) 
+    }
+
   }
 }
 

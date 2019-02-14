@@ -9,6 +9,8 @@ import decorations from './decorations'
 import FinderApp from 'nyc-lib/nyc/ol/FinderApp'
 import CsvPoint from 'nyc-lib/nyc/ol/format/CsvPoint'
 import GeoJson from 'ol/format/GeoJSON'
+import facilityStyle from './facility-style'
+
 
 class App extends FinderApp {
   /**
@@ -29,7 +31,8 @@ class App extends FinderApp {
         featureProjection: 'EPSG:3857'
       }),
       facilityTabTitle: 'PODs',
-      decorations: [decorations],
+      facilityStyle: facilityStyle.pointStyle,
+      decorations: [{content: content}, decorations],
       filterChoiceOptions: [{
         title: 'Status',
         choices: [
