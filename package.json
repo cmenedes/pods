@@ -45,17 +45,17 @@
   "jest": {
     "verbose": true,
     "automock": false,
-    "collectCoverage": true,
-    "coverageDirectory": "./coverage/",
     "testMatch": [
       "**/__tests__/**/*.test.js"
-    ],
-    "collectCoverageFrom": [
-      "src/js/*.js"
     ],
     "setupFiles": [
       "./__tests__/jest-setup.js"
     ],
-    "transformIgnorePatterns": []
+    "transformIgnorePatterns": [],
+    "collectCoverage": true,
+    "coverageDirectory": "./coverage/",
+    "collectCoverageFrom": [
+      "src/js/**/*.js"
+    ]
   }
 }
