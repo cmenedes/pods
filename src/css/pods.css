@@ -40,10 +40,10 @@
 
 @keyframes alert {
   0% {
-    right: -100px;
+    right: -100%;
   }
   100% {
-    right: 500px;
+    right: 100%;
   }
 }
 
@@ -53,4 +53,32 @@ body *, .btn {
 
 .tabs .btns button.btn.active:focus{
   color: black;
+}
+
+.ada-content {
+  padding: 10px 5px 10px 5px; 
+  text-align: center;
+  font-size: 18px;
+  margin-top: -5px;
+  background-color: var(--color-medium);
+}
+
+@media only screen and (min-width: 750px) {
+  .fnd #banner * {
+    font-size: 24px !important;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  #marquee {
+    width: 100%;
+  } 
+}
+
+.fnd #banner * {
+  font-size: 3vw;
+}
+
+#back-to-map.btn:hover:before {
+  background-color: var(--color-light);
 }

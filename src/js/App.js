@@ -51,6 +51,9 @@ class App extends FinderApp {
       $('body').addClass('alert')
       $('#marquee div>div>div').html(marquee)
     }
+    let facilities = $('.fnd #facilities')
+    facilities.prepend($('<div class="ada-content">All NYC Points of Dispensing<br>Sites are ADA Accessible.</div>'))
+    
   }
 }
 
