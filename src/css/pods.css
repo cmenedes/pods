@@ -11,9 +11,9 @@
 
 #marquee {
   display: none;
-  border-top: 1px solid #fefbda;
-  border-bottom: 1px solid #fefbda;
-  background-color: #e75624;
+  border-top: 1px solid #F2DEDE;
+  border-bottom: 1px solid #F2DEDE;
+  background-color: #F2DEDE;
   display: table;
   position: fixed;
   top: 36px;
@@ -35,7 +35,7 @@
   white-space: nowrap;
   padding: 3px;
   animation: alert 15s linear infinite;
-  color: yellow;
+  color: #A94442;
 }
 
 @keyframes alert {
@@ -59,8 +59,6 @@ body *, .btn {
   padding: 10px 5px 10px 5px; 
   text-align: center;
   font-size: 18px;
-  margin-top: -5px;
-  background-color: var(--color-medium);
 }
 
 @media only screen and (min-width: 750px) {
@@ -81,4 +79,20 @@ body *, .btn {
 
 #back-to-map.btn:hover:before {
   background-color: var(--color-light);
+}
+
+.fnd #facilities {
+  background-color: var(--color-medium);
+}
+
+.lst-it:nth-child(odd), .lst-it:nth-child(odd) .dtl .clps .content {
+  background-color: var(--color-light);
+}
+
+button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
+  width: 24px;
+}
+
+.fnd .btn.dir {
+  background-image: var(--directions-icon-medium) !important;
 }
