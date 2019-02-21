@@ -10,7 +10,6 @@ const facilityStyle = {
 
   pointStyle: (feature, resolution) => {
     const zoom = nycOl.TILE_GRID.getZForResolution(resolution)
-
     const active = feature.getActive()
     const status = feature.getStatus()
 
@@ -19,7 +18,7 @@ const facilityStyle = {
       img = 'img/inactive-icon.svg'
     else if(active === 'true' && status === 'Open to Public')
       img = 'img/open-icon.svg'
-    else //this should check if status is 'Closed to Public' but not all fields have that value at the moment
+    else 
       img = 'img/close-icon.svg'
 
       let size = 12

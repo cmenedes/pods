@@ -9,6 +9,7 @@ const decorations = {
   extendFeature() {
     this.setId(this.get('DOECode'))
     this.active = this.content.message('active')
+
   },
   getName() {
     return this.get('PODSiteName')
@@ -25,18 +26,24 @@ const decorations = {
   getStatus() {
     return this.get('Ops_status')
   },
+  getLatestDate() {
+    let date = new Date(this.get('LatestDate'))
+    return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}` 
+  },
+  getWaitTime() {
+    return this.get('wait_time')
+  },
   detailsHtml() {
     if (this.getActive() === 'true') {
-      const open = new Date(this.get('OpeningTime'))
-      const update = new Date(this.get('LatestDate'))
-
-      const status = `<li><b>Status:</b> ${this.get('Ops_status')}</li>`
-      const waitTime = `<li><b>Wait time:</b> ${this.get('wait_time')} minutes</li>`
-      const latestUpdate = `<li><b>Last update:</b> ${update.toLocaleDateString()} ${update.toLocaleTimeString()}`
-
-      let ul = $('<ul></ul>').append((`<li><b>Status:</b> ${this.get('Ops_status')}</li>`))
+      const status = `<li><b>Status:</b> ${this.getStatus()}</li>`
+      
+      let ul = $('<ul></ul>').append(status)
 
       if (this.getStatus() === 'Open to Public') {
+        const update = this.getLatestDate()
+        const waitTime = `<li><b>Wait time:</b> ${this.getWaitTime()} minutes</li>`
+        const latestUpdate = `<li><b>Last update:</b> ${update}`
+        
         ul.append(waitTime)
           .append(latestUpdate)
       }
