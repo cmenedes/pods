@@ -11,15 +11,21 @@
 
 .fnd #banner {
   background-image: url(../img/nyc.svg);
-  background-size: 49px 24px;
-  padding-left: 58px;
+  background-position: 1px 4px;
+  background-size: 77px 26px;
+}
+
+.fnd #home:focus svg {
+  transform: scale(.51,.41);
+  margin-top: -14px;
+  margin-left: -37.5px;
 }
 
 #marquee {
   display: none;
   border-top: 1px solid #F2DEDE;
   border-bottom: 1px solid #F2DEDE;
-  background-color: #F2DEDE;
+  background-color: #E75624;
   display: table;
   position: fixed;
   top: 36px;
@@ -41,7 +47,7 @@
   white-space: nowrap;
   padding: 3px;
   animation: alert 15s linear infinite;
-  color: #A94442;
+  color: #FCED04;
 }
 
 @keyframes alert {
@@ -67,16 +73,21 @@ body *, .btn {
   font-size: 18px;
 }
 
-@media only screen and (min-width: 750px) {
+@media only screen and (min-width: 675px) {
   .fnd #banner * {
     font-size: 24px !important;
   }
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 750px), (max-height: 350px) {
   #marquee {
     width: 100%;
   } 
+}
+@media only screen and (max-width: 285px){
+  .fnd #banner>div {
+    margin-right: 115px;
+  }
 }
 
 .fnd #banner * {
@@ -99,3 +110,8 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
   width: 24px;
 }
 
+@media only screen and (max-width: 285px){
+  #back-to-map {
+      width: 90px;
+  }
+}
