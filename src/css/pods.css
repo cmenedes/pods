@@ -9,6 +9,11 @@
 @import "ol.popup.css";
 @import "ol.finderapp.css";
 
+.fnd #banner {
+  background-image: url(../img/nyc.svg);
+  background-size: 49px 24px;
+}
+
 #marquee {
   display: none;
   border-top: 1px solid #F2DEDE;
