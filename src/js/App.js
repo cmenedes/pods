@@ -46,8 +46,9 @@ class App extends FinderApp {
       directionsUrl: pods.DIRECTIONS_URL
     })
     this.content = content
+    const active = content.message('active')
     const marquee = content.message('marquee')
-    if (marquee) {
+    if (active == 'true') {
       $('body').addClass('alert')
       $('#marquee div>div>div').html(marquee)
     }
