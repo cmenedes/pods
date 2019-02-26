@@ -12,6 +12,7 @@
 .fnd #banner {
   background-image: url(../img/nyc.svg);
   background-size: 49px 24px;
+  padding-left: 58px;
 }
 
 #marquee {
