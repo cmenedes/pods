@@ -1,3 +1,7 @@
+@import "nyc-ol-lib.css";
+@import "ol.finderapp.css";
+@import "nyc-ol-lib.css";
+@import "ol.finderapp.css";
 @import "nyc-lib.css";
 
 @import "ol.featuretip.css";
@@ -52,7 +56,25 @@
 
 @keyframes alert {
   0% {
-    right: -100%;
+    right: -200%;
+  }
+  100% {
+    right: 100%;
+  }
+}
+
+@keyframes alert-large {
+  0% {
+    right: -125%;
+  }
+  100% {
+    right: 100%;
+  }
+}
+
+@keyframes alert-small {
+  0% {
+    right: -250%;
   }
   100% {
     right: 100%;
@@ -83,7 +105,33 @@ body *, .btn {
   #marquee {
     width: 100%;
   } 
+  .alert #marquee div>div>div {
+    animation: alert-large 15s linear infinite;
+  }
 }
+
+@media only screen and (max-width: 550px), (max-height: 350px) {
+  #marquee {
+    width: 100%;
+  } 
+  .alert #marquee div>div>div {
+    animation: alert 15s linear infinite;
+  }
+}
+
+
+@media only screen and (max-width: 350px), (max-height: 350px) {
+  #marquee {
+    width: 100%;
+  } 
+  .alert #marquee div>div>div {
+    animation: alert-small 15s linear infinite;
+  }
+}
+
+
+
+
 @media only screen and (max-width: 285px){
   .fnd #banner>div {
     margin-right: 115px;
@@ -112,6 +160,12 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 
 @media only screen and (max-width: 285px){
   #back-to-map {
-      width: 90px;
+      width: 90px !important;
+  }
+}
+
+@media only screen and (max-width: 360px){
+  #back-to-map {
+      width: 120px;
   }
 }
