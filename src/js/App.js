@@ -10,6 +10,7 @@ import FinderApp from 'nyc-lib/nyc/ol/FinderApp'
 import CsvPoint from 'nyc-lib/nyc/ol/format/CsvPoint'
 import GeoJson from 'ol/format/GeoJSON'
 import facilityStyle from './facility-style'
+import Basemap from 'nyc-lib/nyc/ol/Basemap'
 
 
 class App extends FinderApp {
@@ -54,6 +55,14 @@ class App extends FinderApp {
     }
     let facilities = $('.fnd #facilities')
     facilities.prepend($('<div class="ada-content">All NYC Points of Dispensing<br>Sites are ADA Accessible.</div>'))
+    
+    let home = $('<div class="home-btn" aria-label="Reset the zoom" class="button"><div class="btn-sq rad-all btn-home"></div></div>')
+    home.insertAfter($('.geoloc'))
+
+    $('.home-btn').on('click', () => {
+      this.map.getView().setZoom(10)
+      this.map.getView().setCenter(Basemap.CENTER)
+    })
     
   }
 }

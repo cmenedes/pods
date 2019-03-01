@@ -15,14 +15,14 @@
 
 .fnd #banner {
   background-image: url(../img/nyc.svg);
-  background-position: 1px 4px;
-  background-size: 77px 26px;
+  background-size: 49px 24px;
+  padding: 4px 0 0 57px;
 }
 
 .fnd #home:focus svg {
-  transform: scale(.51,.41);
-  margin-top: -14px;
-  margin-left: -37.5px;
+  transform: scale(0.32,0.33);
+  margin-top: -11px;
+  margin-left: -48.5px;
 }
 
 #marquee {
@@ -95,7 +95,7 @@ body *, .btn {
   font-size: 18px;
 }
 
-@media only screen and (min-width: 675px) {
+@media only screen and (min-width: 605px) {
   .fnd #banner * {
     font-size: 24px !important;
   }
@@ -168,4 +168,19 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
   #back-to-map {
       width: 120px;
   }
+}
+
+.home-btn {
+	position: absolute;
+	left: 2px;
+	top: 2px;
+  right: 0;
+  display: none;
+}
+.btn-home {
+	position: absolute;
+  left: 0;
+  top: 112px;
+	background-image: var(--home-icon, none);
+  background-size: 30px;
 }
