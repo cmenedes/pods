@@ -9,10 +9,15 @@ const decorations = {
   extendFeature() {
     this.setId(this.get('DOECode'))
     this.active = this.content.message('active')
-
   },
   getName() {
     return this.get('PODSiteName')
+  },
+  getTip() {
+    let div = $('<div></div>')
+    div.append(`<b>${this.getName()}</b><br>${this.getAddress1()}<br>${this.getCityStateZip()}`)
+    div.append(this.detailsHtml())
+    return div
   },
   getAddress1() {
     return this.get('Address')

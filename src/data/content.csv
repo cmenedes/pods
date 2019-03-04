@@ -2,4 +2,4 @@ key,value
 title,Points of Dispensing (POD) Finder
 marquee,DOHMH controlled content - any message you like goes here - updated via an uploaded CSV file.
 splash,DOHMH controlled content - any message you like goes here - updated via an uploaded CSV file.
-active,false
+active,true

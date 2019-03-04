@@ -184,3 +184,15 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 	background-image: var(--home-icon, none);
   background-size: 30px;
 }
+
+div.f-tip ul {
+  list-style-type: none;
+}
+div.f-tip div {
+  text-align: left;
+  margin-left: 6px;
+}
+
+div.f-tip li {
+  margin-left: -40px;
+}

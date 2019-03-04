@@ -5,6 +5,7 @@
 import $ from 'jquery'
 import pods from './pods'
 import decorations from './decorations'
+import MapMgr from 'nyc-lib/nyc/ol/MapMgr'
 
 import FinderApp from 'nyc-lib/nyc/ol/FinderApp'
 import CsvPoint from 'nyc-lib/nyc/ol/format/CsvPoint'
@@ -49,22 +50,32 @@ class App extends FinderApp {
     this.content = content
     const active = content.message('active')
     const marquee = content.message('marquee')
+
+    this.addMarquee(active, marquee)
+    this.addDescription()
+    this.setHomeZoom()
+    
+  }
+
+  addMarquee(active, marquee) {
     if (active == 'true') {
       $('body').addClass('alert')
       $('#marquee div>div>div').html(marquee)
     }
+  }
+  addDescription(){
     let facilities = $('.fnd #facilities')
     facilities.prepend($('<div class="ada-content">All NYC Points of Dispensing<br>Sites are ADA Accessible.</div>'))
-    
+  }
+  setHomeZoom(){
     let home = $('<div class="home-btn" aria-label="Reset the zoom" class="button"><div class="btn-sq rad-all btn-home"></div></div>')
     home.insertAfter($('.geoloc'))
-
     $('.home-btn').on('click', () => {
       this.map.getView().setZoom(10)
       this.map.getView().setCenter(Basemap.CENTER)
     })
-    
   }
+
 }
 
 export default App
