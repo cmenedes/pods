@@ -44,8 +44,12 @@ const decorations = {
     return this.get('Ops_status')
   },
   getLatestDate() {
-    let date = new Date(this.get('LatestDate'))
-    return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}` 
+    let date = this.get('LatestDate')
+
+    if(date){
+      let date_convert = new Date(date)
+      return `${date_convert.toLocaleDateString()} ${date_convert.toLocaleTimeString()}` 
+    }
   },
   getWaitTime() {
     return this.get('wait_time')
@@ -59,7 +63,7 @@ const decorations = {
       if (this.getStatus() === 'Open to Public') {
         const update = this.getLatestDate()
         const waitTime = `<li><b>Wait time:</b> ${this.getWaitTime() || '0'} minutes</li>`
-        const latestUpdate = `<li><b>Last update:</b> ${update}`
+        const latestUpdate = `<li><b>Last update:</b> ${update || 'N/A'}`
         
         ul.append(waitTime)
           .append(latestUpdate)
