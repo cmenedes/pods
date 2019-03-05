@@ -50,18 +50,6 @@ const decorations = {
   getWaitTime() {
     return this.get('wait_time')
   },
-  detailsCollapsible() {
-    const details = this.detailsHtml()
-    if (details) {
-      const collapsible = new Collapsible({
-        target: $('<div class="dtl"></div>'),
-        title: this.detailButtonText || 'Details',
-        content: details
-      })
-      collapsible.on('change', this.app.expandDetail, this.app)
-      return collapsible.getContainer()
-    }
-  },
   detailsHtml() {
     if (this.getActive() === 'true') {
       const status = `<li><b>Status:</b> ${this.getStatus()}</li>`
