@@ -6,8 +6,8 @@ Content.loadCsv({
   url: pods.CONTENT_URL,
 }).then(content => {
   let url = pods.PODS_URL
-  if (content.message('active') === true) {
-    url += endcodeURIComponent(pod.ACTIVE_POD_WHERE_CLAUSE)
+  if (content.message('active') === 'true') {
+    url += encodeURIComponent(pods.ACTIVE_POD_WHERE_CLAUSE)
   }
   new App(content, url)
 })
