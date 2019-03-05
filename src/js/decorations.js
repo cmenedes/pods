@@ -4,6 +4,7 @@
 
 import pods from './pods'
 import nyc from 'nyc-lib/nyc'
+import Collapsible from 'nyc-lib/nyc/Collapsible'
 
 const decorations = {
   extendFeature() {
@@ -13,11 +14,22 @@ const decorations = {
   getName() {
     return this.get('PODSiteName')
   },
+  html() {
+    return $('<div class="facility"></div>')
+      .addClass(this.cssClass())
+      .append(this.distanceHtml())
+      .append(this.nameHtml())
+      .append(this.distanceHtml(true))
+      .append(this.addressHtml())
+      .append(this.detailsHtml())
+      .append(this.mapButton())
+      .append(this.directionsButton())
+  },  
   getTip() {
-    let div = $('<div></div>')
-    div.append(`<b>${this.getName()}</b><br>${this.getAddress1()}<br>${this.getCityStateZip()}`)
-    div.append(this.detailsHtml())
-    return div
+    return $('<div></div>')
+      .append(this.nameHtml())
+      .append(this.addressHtml())
+      .append(this.detailsHtml())
   },
   getAddress1() {
     return this.get('Address')
@@ -38,6 +50,18 @@ const decorations = {
   getWaitTime() {
     return this.get('wait_time')
   },
+  detailsCollapsible() {
+    const details = this.detailsHtml()
+    if (details) {
+      const collapsible = new Collapsible({
+        target: $('<div class="dtl"></div>'),
+        title: this.detailButtonText || 'Details',
+        content: details
+      })
+      collapsible.on('change', this.app.expandDetail, this.app)
+      return collapsible.getContainer()
+    }
+  },
   detailsHtml() {
     if (this.getActive() === 'true') {
       const status = `<li><b>Status:</b> ${this.getStatus()}</li>`
@@ -46,7 +70,7 @@ const decorations = {
 
       if (this.getStatus() === 'Open to Public') {
         const update = this.getLatestDate()
-        const waitTime = `<li><b>Wait time:</b> ${this.getWaitTime()} minutes</li>`
+        const waitTime = `<li><b>Wait time:</b> ${this.getWaitTime() || '0'} minutes</li>`
         const latestUpdate = `<li><b>Last update:</b> ${update}`
         
         ul.append(waitTime)

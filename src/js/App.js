@@ -20,14 +20,15 @@ class App extends FinderApp {
    * @public
    * @constructor
    * @param {module:nyc-lib/nyc/Content~Content} content The POD content
+   * @param {string} url The POD data URL
    */
-  constructor(content) {
+  constructor(content, url) {
     super({
       title: content.message('title'),
       splashOptions: {
         message: content.message('splash')
       },
-      facilityUrl: pods.PODS_URL,
+      facilityUrl: url,
       facilityFormat: new GeoJson({
         dataProjection: 'EPSG:2263',
         featureProjection: 'EPSG:3857'
