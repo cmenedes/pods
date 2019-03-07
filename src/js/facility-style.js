@@ -15,19 +15,21 @@ const facilityStyle = {
 
     let img
 
-    if(active === 'false')
+    if(active === 'false'){
       img = 'img/inactive-icon.svg'
+    }
     else if(active === 'true'){
-      if(status === 'Open to Public')
+      if(status === 'Open to Public'){
         img = 'img/open-icon.svg'
-      else if(status === 'Mobilizing')
+      }
+      else if(status === 'Opening Soon'){
         img = 'img/open-soon-icon.svg'
-      else if(status === 'Closed to Public' || status === 'Demobilizing' || status === 'Demobilized')
+      }
+      else if(status === 'Closed to Public'){
         img = 'img/close-icon.svg'
+      }
 
     }
-    
-    
     
       let size = 12
       if (zoom > 17) size = 40

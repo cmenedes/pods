@@ -4,7 +4,6 @@
 
 import pods from './pods'
 import nyc from 'nyc-lib/nyc'
-import Collapsible from 'nyc-lib/nyc/Collapsible'
 
 const decorations = {
   extendFeature() {
@@ -43,6 +42,9 @@ const decorations = {
   getStatus() {
     return this.get('Ops_status')
   },
+  setStatus(status) {
+    this.set('Ops_status', status)
+  },
   getLatestDate() {
     let date = this.get('LatestDate')
 
@@ -51,23 +53,47 @@ const decorations = {
       return `${date_convert.toLocaleDateString()} ${date_convert.toLocaleTimeString()}` 
     }
   },
+  getOpeningTime() {
+    let time = this.get('OpeningTime')
+
+    if(time){
+      let time_convert = new Date(time)
+      return `${time_convert.toLocaleDateString()} ${time_convert.toLocaleTimeString()}` 
+    }
+  },
   getWaitTime() {
     return this.get('wait_time')
   },
   detailsHtml() {
     if (this.getActive() === 'true') {
-      const status = `<li><b>Status:</b> ${this.getStatus()}</li>`
       
-      let ul = $('<ul></ul>').append(status)
+      let ul = $('<ul></ul>')
 
       if (this.getStatus() === 'Open to Public') {
-        const update = this.getLatestDate()
-        const waitTime = `<li><b>Wait time:</b> ${this.getWaitTime() || '0'} minutes</li>`
-        const latestUpdate = `<li><b>Last update:</b> ${update || 'N/A'}`
-        
+        this.setStatus('Open to Public')
+        const wait = this.getWaitTime() ? this.getWaitTime() + ' minutes' : 'N/A'
+        const waitTime = `<li><b>Wait time:</b> ${wait} </li>`
+
         ul.append(waitTime)
-          .append(latestUpdate)
       }
+      else if(this.getStatus() === 'Mobilizing' || this.getStatus() === 'Opening Soon'){
+        this.setStatus('Opening Soon')
+        const openingTime = `<li><b>Opening at:</b> ${this.getOpeningTime() || 'N/A'} </li>`
+        
+        ul.append(openingTime)
+      }
+      else if(this.getStatus() === 'Closed to Public' || this.getStatus() === 'Demobilizing' || this.getStatus() === 'Demobilized'){
+        this.setStatus('Closed to Public')
+      }
+    
+      const status = `<li><b>Status:</b> ${this.getStatus()}</li>`
+
+      const update = this.getLatestDate()
+      const latestUpdate = `<li><b>Last Updated:</b> ${update || 'N/A'}`
+      ul.append(latestUpdate)
+
+      ul.prepend(status)
+
       return ul
     }
   }

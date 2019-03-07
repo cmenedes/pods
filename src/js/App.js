@@ -40,9 +40,8 @@ class App extends FinderApp {
         title: 'Status',
         choices: [
           {name: 'Ops_status', values: ['Open to Public'], label: 'Open to Public', checked: true},
-          {name: 'Ops_status', values: ['Mobilizing'], label: 'Mobilizing', checked: true},
-          {name: 'Ops_status', values: ['Closed to Public'], label: 'Closed to Public', checked: true},
-          {name: 'Ops_status', values: [''], label: 'Unknown', checked: true},
+          {name: 'Ops_status', values: ['Opening Soon'], label: 'Opening Soon', checked: true},
+          {name: 'Ops_status', values: ['Closed to Public'], label: 'Closed to Public', checked: true}
         ]
       }],
       geoclientUrl: pods.GEOCLIENT_URL,
@@ -55,7 +54,7 @@ class App extends FinderApp {
     this.addMarquee(active, marquee)
     this.addDescription()
     this.setHomeZoom()
-    
+    this.adjustFilters(active)
   }
 
   addMarquee(active, marquee) {
@@ -75,6 +74,11 @@ class App extends FinderApp {
       this.map.getView().setZoom(10)
       this.map.getView().setCenter(Basemap.CENTER)
     })
+  }
+  adjustFilters(active){
+    if(active == 'false'){
+      $('.btn-2').parent().remove()
+    }
   }
 
 }
