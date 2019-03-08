@@ -13,6 +13,8 @@ import GeoJson from 'ol/format/GeoJSON'
 import facilityStyle from './facility-style'
 import Basemap from 'nyc-lib/nyc/ol/Basemap'
 
+import {boundingExtent} from 'ol/extent'
+import {buffer as extentBuffer} from 'ol/extent'
 
 class App extends FinderApp {
   /**
@@ -55,6 +57,8 @@ class App extends FinderApp {
     this.addDescription()
     this.setHomeZoom()
     this.adjustFilters(active)
+
+
   }
 
   addMarquee(active, marquee) {
@@ -65,7 +69,7 @@ class App extends FinderApp {
   }
   addDescription(){
     let facilities = $('.fnd #facilities')
-    facilities.prepend($('<div class="ada-content">All NYC Points of Dispensing<br>Sites are ADA Accessible.</div>'))
+    facilities.prepend($('<div class="ada-content">All NYC Points of Dispensing<br>sites are wheelchair accessible</div>'))
   }
   setHomeZoom(){
     let home = $('<div class="home-btn" aria-label="Reset the zoom" class="button"><div class="btn-sq rad-all btn-home"></div></div>')
@@ -79,6 +83,18 @@ class App extends FinderApp {
     if(active == 'false'){
       $('.btn-2').parent().remove()
     }
+  }
+  
+  located(location) {
+    super.located(location)
+    const feature = this.source.getClosestFeatureToCoordinate(location.coordinate)
+    let extent = boundingExtent([feature.getGeometry().getCoordinates(), location.coordinate])
+ 
+    while(this.source.getFeaturesInExtent(this.view.calculateExtent(this.map.getSize())).length < 3){
+      extent = extentBuffer(extent, 100)
+      this.view.fit(extent, {size: this.map.getSize(), duration: 0})
+    }
+  
   }
 
 }
