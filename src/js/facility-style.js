@@ -28,9 +28,9 @@ const facilityStyle = {
       else if(status === 'Closed to Public'){
         img = 'img/close-icon.svg'
       }
-
     }
     
+
       let size = 12
       if (zoom > 17) size = 40
       else if (zoom > 15) size = 32

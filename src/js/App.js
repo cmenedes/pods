@@ -13,8 +13,10 @@ import GeoJson from 'ol/format/GeoJSON'
 import facilityStyle from './facility-style'
 import Basemap from 'nyc-lib/nyc/ol/Basemap'
 
-import {boundingExtent} from 'ol/extent'
-import {buffer as extentBuffer} from 'ol/extent'
+import {extend as extentExtend} from 'ol/extent'
+import Directions from 'nyc-lib/nyc/Directions'
+import Point from 'ol/geom/Point'
+
 
 class App extends FinderApp {
   /**
@@ -87,14 +89,33 @@ class App extends FinderApp {
   
   located(location) {
     super.located(location)
-    const feature = this.source.getClosestFeatureToCoordinate(location.coordinate)
-    let extent = boundingExtent([feature.getGeometry().getCoordinates(), location.coordinate])
- 
-    while(this.source.getFeaturesInExtent(this.view.calculateExtent(this.map.getSize())).length < 3){
-      extent = extentBuffer(extent, 100)
-      this.view.fit(extent, {size: this.map.getSize(), duration: 0})
+    let extent = new Point(location.coordinate).getExtent()
+    const features = this.source.sort(location.coordinate)
+    for(let i = 0; i < 3; i++){
+      extent = extentExtend(extent, features[i].getGeometry().getExtent())
     }
-  
+    this.view.fit(extent, {size: this.map.getSize(), duration: 500})
+  }
+
+  directionsTo(feature) {
+    this.directions = this.directions || new Directions({
+      url: this.directionsUrl,
+      toggle: '#tabs',
+    })
+    const to = feature.getFullAddress()
+    const name = feature.getName()
+    const from = this.getFromAddr()
+    this.directions.directions({
+      mode: 'WALKING',
+      from: from,
+      to: to,
+      facility: name,
+      origin: this.location,
+      destination: {
+        name: feature.getName(),
+        coordinate: feature.getGeometry().getCoordinates()
+      }
+    })
   }
 
 }
