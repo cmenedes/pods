@@ -14,8 +14,17 @@ import facilityStyle from './facility-style'
 import Basemap from 'nyc-lib/nyc/ol/Basemap'
 
 import {extend as extentExtend} from 'ol/extent'
+import {buffer as extentBuffer} from 'ol/extent'
+
 import Directions from 'nyc-lib/nyc/Directions'
 import Point from 'ol/geom/Point'
+import { timingSafeEqual } from 'crypto';
+
+import Style from 'ol/style/Style'
+import Circle from 'ol/style/Circle'
+import Fill from 'ol/style/Fill'
+import Stroke from 'ol/style/Stroke'
+
 
 
 class App extends FinderApp {
@@ -59,9 +68,19 @@ class App extends FinderApp {
     this.addDescription()
     this.setHomeZoom()
     this.adjustFilters(active)
-
+    // $('.lst-it').hover(this.hoverFacility)
 
   }
+
+  // handleHover(event) {
+  //   const target = $(event.currentTarget)
+  //   const feature = target.data('feature')
+  //   if (target.hasClass('map')) {
+  //     feature.app.zoomTo(feature)
+  //   } else {
+  //     feature.app.directionsTo(feature)
+  //   }
+  // }
 
   addMarquee(active, marquee) {
     if (active == 'true') {
@@ -89,12 +108,7 @@ class App extends FinderApp {
   
   located(location) {
     super.located(location)
-    let extent = new Point(location.coordinate).getExtent()
-    const features = this.source.sort(location.coordinate)
-    for(let i = 0; i < 3; i++){
-      extent = extentExtend(extent, features[i].getGeometry().getExtent())
-    }
-    this.view.fit(extent, {size: this.map.getSize(), duration: 500})
+    this.zoomToExtent(location.coordinate, 3)
   }
 
   directionsTo(feature) {
@@ -116,6 +130,27 @@ class App extends FinderApp {
         coordinate: feature.getGeometry().getCoordinates()
       }
     })
+  }
+
+  zoomToExtent(coord, limit){
+    let extent = new Point(coord).getExtent()
+    const features = this.source.nearest(coord, limit)
+
+    features.forEach(f => {
+      extent = extentExtend(extent, f.getGeometry().getExtent())
+    })
+      
+    this.view.fit(extent, {size: this.map.getSize(), duration: 500})
+  }
+
+  zoomTo(feature) {
+    const popup = this.popup
+    popup.hide()
+    this.map.once('moveend', () => {
+      popup.showFeature(feature)
+    })
+
+    this.zoomToExtent(feature.getGeometry().getCoordinates(), 4)
   }
 
 }

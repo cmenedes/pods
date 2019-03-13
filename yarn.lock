@@ -4461,9 +4461,8 @@ nyc-build-helper@^0.0.27:
     webpack "4.19.1"
     zip-dir "^1.0.2"
 
-nyc-lib@^1.2.38:
-  version "1.2.38"
-  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.2.38.tgz#bdf9c65bc356228f1ea56743f1bc7c63572a91cf"
+nyc-lib@../nyc-lib/dist:
+  version "1.2.39"
   dependencies:
     babel-polyfill "^6.26.0"
     eslint-config-openlayers "^11.0.0"
