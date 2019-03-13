@@ -23,6 +23,9 @@ const decorations = {
       .append(this.detailsHtml())
       .append(this.mapButton())
       .append(this.directionsButton())
+      .data('feature', this)
+      // .mouseover(this.handleOver)
+      // .mouseout(this.handleOut)
   },  
   getTip() {
     return $('<div></div>')

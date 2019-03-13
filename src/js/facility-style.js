@@ -3,8 +3,11 @@
  */
 
 import Style from 'ol/style/Style'
-import Icon from 'ol/style/Icon'
 import nycOl from 'nyc-lib/nyc/ol' 
+import Circle from 'ol/style/Circle'
+import Fill from 'ol/style/Fill'
+import Stroke from 'ol/style/Stroke'
+
 
 const facilityStyle = {
 
@@ -13,39 +16,43 @@ const facilityStyle = {
     const active = feature.getActive()
     const status = feature.getStatus()
 
-    let img
+    let fillColor
 
     if(active === 'false'){
-      img = 'img/inactive-icon.svg'
+      fillColor = '#0080A9'
     }
     else if(active === 'true'){
       if(status === 'Open to Public'){
-        img = 'img/open-icon.svg'
+        fillColor = '#19DB17'
       }
       else if(status === 'Opening Soon'){
-        img = 'img/open-soon-icon.svg'
+        fillColor = '#F3E318'
       }
       else if(status === 'Closed to Public'){
-        img = 'img/close-icon.svg'
+        fillColor = '#999999'
       }
     }
     
 
-      let size = 12
-      if (zoom > 17) size = 40
-      else if (zoom > 15) size = 32
-      else if (zoom > 13) size = 24
-      else if (zoom > 11) size = 16
+      
+      let radius = 6
+      if (zoom > 17) radius = 20
+      else if (zoom > 15) radius = 16
+      else if (zoom > 13) radius = 12
+      else if (zoom > 11) radius = 8
 
-      const style = [new Style({
-        image: new Icon({
-          src: img,
-          scale: size / 33,
-          imgSize: [33, 33]
+      return [new Style({
+        image: new Circle({
+          fill: new Fill({
+            color: fillColor
+          }),
+          radius: radius,
+          stroke: new Stroke({
+            width: 1,
+            color: '#1A1A1A'
+          })
         })
       })]
-    
-    return style
   }
 }
 
