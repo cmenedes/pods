@@ -48,6 +48,7 @@ class App extends FinderApp {
       }),
       facilityTabTitle: 'PODs',
       facilityStyle: facilityStyle.pointStyle,
+      facilitySearch: {displayField: 'search_label', nameField: 'PODSiteName'},
       decorations: [{content: content}, decorations],
       filterChoiceOptions: [{
         title: 'Status',
@@ -58,7 +59,8 @@ class App extends FinderApp {
         ]
       }],
       geoclientUrl: pods.GEOCLIENT_URL,
-      directionsUrl: pods.DIRECTIONS_URL
+      directionsUrl: pods.DIRECTIONS_URL,
+      highlightStyle: facilityStyle.highlightStyle
     })
     this.content = content
     const active = content.message('active')
@@ -66,21 +68,11 @@ class App extends FinderApp {
 
     this.addMarquee(active, marquee)
     this.addDescription()
+    this.addLegend()
     this.setHomeZoom()
     this.adjustFilters(active)
-    // $('.lst-it').hover(this.hoverFacility)
 
   }
-
-  // handleHover(event) {
-  //   const target = $(event.currentTarget)
-  //   const feature = target.data('feature')
-  //   if (target.hasClass('map')) {
-  //     feature.app.zoomTo(feature)
-  //   } else {
-  //     feature.app.directionsTo(feature)
-  //   }
-  // }
 
   addMarquee(active, marquee) {
     if (active == 'true') {
@@ -88,9 +80,14 @@ class App extends FinderApp {
       $('#marquee div>div>div').html(marquee)
     }
   }
-  addDescription(){
+  addDescription() {
     let facilities = $('.fnd #facilities')
     facilities.prepend($('<div class="ada-content">All NYC Points of Dispensing<br>sites are wheelchair accessible</div>'))
+  }
+  addLegend() {
+    let ada = $('.ada-content')
+    $('.legend').css('display', 'block')
+    ada.append($('.legend'))
   }
   setHomeZoom(){
     let home = $('<div class="home-btn" aria-label="Reset the zoom" class="button"><div class="btn-sq rad-all btn-home"></div></div>')

@@ -9,6 +9,12 @@ const decorations = {
   extendFeature() {
     this.setId(this.get('DOECode'))
     this.active = this.content.message('active')
+
+    this.set(
+      'search_label',
+      `<b><span class="srch-lbl-lg">${this.getName()}</span></b><br>
+      <span class="srch-lbl-sm">${this.getAddress1()}</span>`
+    )
   },
   getName() {
     return this.get('PODSiteName')
@@ -24,8 +30,8 @@ const decorations = {
       .append(this.mapButton())
       .append(this.directionsButton())
       .data('feature', this)
-      // .mouseover(this.handleOver)
-      // .mouseout(this.handleOut)
+      .mouseover($.proxy(this.handleOver, this))
+      .mouseout($.proxy(this.handleOut, this))
   },  
   getTip() {
     return $('<div></div>')

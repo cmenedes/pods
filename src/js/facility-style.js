@@ -33,8 +33,6 @@ const facilityStyle = {
       }
     }
     
-
-      
       let radius = 6
       if (zoom > 17) radius = 20
       else if (zoom > 15) radius = 16
@@ -52,8 +50,28 @@ const facilityStyle = {
             color: '#1A1A1A'
           })
         })
-      })]
-  }
+      }),
+    ]
+  },
+  highlightStyle: (feature, resolution) => {
+    const zoom = nycOl.TILE_GRID.getZForResolution(resolution)
+
+    let radius = 6
+    if (zoom > 17) radius = 20
+    else if (zoom > 15) radius = 16
+    else if (zoom > 13) radius = 12
+    else if (zoom > 11) radius = 8
+
+    return new Style({
+      image: new Circle({
+        radius: radius,
+        stroke: new Stroke({
+          color: '#4AFCFE',
+          width: radius / 4
+        })
+      })
+    })
+  },
 }
 
 export default facilityStyle
