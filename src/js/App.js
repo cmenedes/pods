@@ -68,7 +68,7 @@ class App extends FinderApp {
 
     this.addMarquee(active, marquee)
     this.addDescription()
-    this.addLegend()
+    this.addLegend(active)
     this.setHomeZoom()
     this.adjustFilters(active)
 
@@ -84,10 +84,12 @@ class App extends FinderApp {
     let facilities = $('.fnd #facilities')
     facilities.prepend($('<div class="ada-content">All NYC Points of Dispensing<br>sites are wheelchair accessible</div>'))
   }
-  addLegend() {
+  addLegend(active) {
     let ada = $('.ada-content')
-    $('.legend').css('display', 'block')
-    ada.append($('.legend'))
+    if(active == 'true'){
+      $('.legend').css('display', 'block')
+      ada.append($('.legend'))
+    }
   }
   setHomeZoom(){
     let home = $('<div class="home-btn" aria-label="Reset the zoom" class="button"><div class="btn-sq rad-all btn-home"></div></div>')

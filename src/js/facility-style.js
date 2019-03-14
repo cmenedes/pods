@@ -67,7 +67,7 @@ const facilityStyle = {
         radius: radius,
         stroke: new Stroke({
           color: '#4AFCFE',
-          width: radius / 4
+          width: radius / 3
         })
       })
     })

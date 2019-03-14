@@ -234,20 +234,30 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 }
 .leg-sw.inactive {
   background-color: #0080A9;
+  
+}
 
+.leg-sq .inactive {
+  display: none;
 }
 
 .leg-it {
 	height: 22px;
 	margin-top: 5px;
-	width: 124px;
-	display: inline-block;
+	width: auto;
+  display: inline-block;
+  text-align: left;
+}
+
+.leg-it>span {
+  margin-left: -5px;
+  margin-right: 5px;
 }
 
 .leg-sw {
 	float: left;
-	width: 22px;
-	height: 22px;
+	width: 18px;
+	height: 18px;
 	margin: 0px 10px 5px 3px;
   background-color: var(--color-dark);
 	border: 1px solid #1A1A1A;
@@ -257,6 +267,13 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 .leg {
   border: 1px solid #1A1A1A;
   margin: auto;
-  width: 80%;
+  width: 345px;
   padding: 5px 0px;
+  background-color: var(--color-light-translucent);
+}
+
+@media screen and (max-width: 375px) {
+  .leg {
+    width: 90%;
+  }
 }
