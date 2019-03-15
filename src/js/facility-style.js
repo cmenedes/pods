@@ -7,6 +7,8 @@ import nycOl from 'nyc-lib/nyc/ol'
 import Circle from 'ol/style/Circle'
 import Fill from 'ol/style/Fill'
 import Stroke from 'ol/style/Stroke'
+import Text from 'ol/style/Text'
+
 
 
 const facilityStyle = {
@@ -15,6 +17,7 @@ const facilityStyle = {
     const zoom = nycOl.TILE_GRID.getZForResolution(resolution)
     const active = feature.getActive()
     const status = feature.getStatus()
+    const siteName = feature.getName()
 
     let fillColor
 
@@ -39,7 +42,7 @@ const facilityStyle = {
       else if (zoom > 13) radius = 12
       else if (zoom > 11) radius = 8
 
-      return [new Style({
+      let style = [new Style({
         image: new Circle({
           fill: new Fill({
             color: fillColor
@@ -52,6 +55,13 @@ const facilityStyle = {
         })
       }),
     ]
+
+    if (zoom > 13) {
+      facilityStyle.textStyle(radius,siteName,style)
+    }
+
+    return style
+
   },
   highlightStyle: (feature, resolution) => {
     const zoom = nycOl.TILE_GRID.getZForResolution(resolution)
@@ -72,6 +82,47 @@ const facilityStyle = {
       })
     })
   },
+
+  textStyle: (size, siteName, style) => {
+    const fontSize = 28
+    siteName = facilityStyle.stringDivider(siteName, 16, '\n')
+
+    style.push(
+      new Style({
+        text: new Text({
+          fill: new Fill({color: '#000'}),
+          font: `bold ${fontSize}px sans-serif`,
+          text: `${siteName}`,
+          offsetX: 10 + size,
+          offsetY: size,
+          textAlign: 'left',
+          scale: size / 28,
+          stroke: new Stroke({color: 'white', width: size / 2}),
+          textBaseline: 'top',
+        })
+      })
+    )
+  },
+
+  stringDivider: (str, width, spaceReplacer) => {
+    if (str.length > width) {
+      let p = width
+      while (p > 0 && (str[p] != ' ' && str[p] != '-')) {
+        p--
+      }
+      if (p > 0) {
+        let left;
+        if (str.substring(p, p + 1) == '-') {
+          left = str.substring(0, p + 1)
+        } else {
+          left = str.substring(0, p);
+        }
+        let right = str.substring(p + 1)
+        return left + spaceReplacer + facilityStyle.stringDivider(right, width, spaceReplacer)
+      }
+    }
+    return str;
+  }
 }
 
 export default facilityStyle
