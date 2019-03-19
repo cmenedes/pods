@@ -277,3 +277,25 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
     width: 90%;
   }
 }
+
+label:before {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #1A1A1A;
+  margin: 0 7px -4px -4px;
+  content: ' ';
+  border-radius: 50%;
+
+}
+label[for=chc-chc-0]::before {
+  background-color: #19DB17;
+}
+
+label[for=chc-chc-1]::before {
+  background-color: #F3E318;
+}
+
+label[for=chc-chc-2]::before {
+  background-color: #999999;
+}
