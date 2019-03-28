@@ -35,7 +35,7 @@ const decorations = {
       .mouseout($.proxy(this.handleOut, this))
   },
   prepButton() {
-    return $('<a class="btn prep" target="_blank"></a>')
+    return $('<a class="btn rad-all prep" target="_blank"></a>')
       .html('Prepare For Your Visit')
       .attr('href', 'https://www1.nyc.gov/site/doh/health/emergency-preparedness/emergency-medication-distribution.page')
   },
