@@ -66,7 +66,7 @@ class App extends FinderApp {
     this.adjustFilters(active)
 
     this.map.getBaseLayers().labels.base.setZIndex(0)
-    // this.layer.setZIndex(1)
+    this.layer.setZIndex(1)
 
   }
 
