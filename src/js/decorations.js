@@ -29,10 +29,16 @@ const decorations = {
       .append(this.detailsHtml())
       .append(this.mapButton())
       .append(this.directionsButton())
+      .append(this.prepButton())
       .data('feature', this)
       .mouseover($.proxy(this.handleOver, this))
       .mouseout($.proxy(this.handleOut, this))
-  },  
+  },
+  prepButton() {
+    return $('<a class="btn prep" target="_blank"></a>')
+      .html('Prepare For Your Visit')
+      .attr('href', 'https://www1.nyc.gov/site/doh/health/emergency-preparedness/emergency-medication-distribution.page')
+  },
   getTip() {
     return $('<div></div>')
       .append(this.nameHtml())

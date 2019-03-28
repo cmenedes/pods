@@ -299,3 +299,10 @@ label[for=chc-chc-1]::before {
 label[for=chc-chc-2]::before {
   background-color: #999999;
 }
+
+
+.fnd .facility .btn.prep {
+  display: block;
+  width: auto;
+  margin-top: 3px;
+}
