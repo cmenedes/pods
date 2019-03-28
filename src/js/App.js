@@ -72,6 +72,9 @@ class App extends FinderApp {
     this.setHomeZoom()
     this.adjustFilters(active)
 
+    this.map.getBaseLayers().labels.base.setZIndex(0)
+    this.layer.setZIndex(1)
+
   }
 
   addMarquee(active, marquee) {

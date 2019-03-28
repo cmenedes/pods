@@ -19,30 +19,24 @@ const facilityStyle = {
     const status = feature.getStatus()
     const siteName = feature.getName()
 
-    let fillColor
+    let fillColor = '#0080A9'
 
-    if(active === 'false'){
-      fillColor = '#0080A9'
-    }
-    else if(active === 'true'){
-      if(status === 'Open to Public'){
+    if (active === 'true') {
+      if(status === 'Open to Public') {
         fillColor = '#19DB17'
       }
-      else if(status === 'Opening Soon'){
+      else if (status === 'Opening Soon') {
         fillColor = '#F3E318'
       }
-      else if(status === 'Closed to Public'){
+      else if (status === 'Closed to Public') {
         fillColor = '#999999'
       }
     }
     
-      let radius = 6
-      if (zoom > 17) radius = 20
-      else if (zoom > 15) radius = 16
-      else if (zoom > 13) radius = 12
-      else if (zoom > 11) radius = 8
+    const radius = facilityStyle.calcRadius(zoom)
 
-      let style = [new Style({
+    const style = [
+      new Style({
         image: new Circle({
           fill: new Fill({
             color: fillColor
@@ -53,52 +47,49 @@ const facilityStyle = {
             color: '#1A1A1A'
           })
         })
-      }),
+      })
     ]
 
     if (zoom > 13) {
-      facilityStyle.textStyle(radius,siteName,style)
+      facilityStyle.textStyle(radius, siteName, style)
     }
 
     return style
-
   },
-  highlightStyle: (feature, resolution) => {
-    const zoom = nycOl.TILE_GRID.getZForResolution(resolution)
-
+  calcRadius: (zoom) => {
     let radius = 6
     if (zoom > 17) radius = 20
     else if (zoom > 15) radius = 16
     else if (zoom > 13) radius = 12
     else if (zoom > 11) radius = 8
-
+    return radius
+  },
+  highlightStyle: (feature, resolution) => {
+    const zoom = nycOl.TILE_GRID.getZForResolution(resolution)
+    const radius = facilityStyle.calcRadius(zoom)
     return new Style({
       image: new Circle({
-        radius: radius,
+        radius: radius * 1.5,
         stroke: new Stroke({
-          color: '#4AFCFE',
-          width: radius / 3
+          color: 'rgb(254,252,213)',
+          width: radius
         })
       })
     })
   },
 
   textStyle: (size, siteName, style) => {
-    const fontSize = 28
-    siteName = facilityStyle.stringDivider(siteName, 16, '\n')
-
+    const fontSize = size
+    siteName = facilityStyle.stringDivider(siteName, 24, '\n')
     style.push(
       new Style({
         text: new Text({
           fill: new Fill({color: '#000'}),
           font: `bold ${fontSize}px sans-serif`,
-          text: `${siteName}`,
-          offsetX: 10 + size,
-          offsetY: size,
+          text: siteName,
+          offsetX: 1.5 * fontSize,
           textAlign: 'left',
-          scale: size / 28,
-          stroke: new Stroke({color: 'white', width: size / 2}),
-          textBaseline: 'top',
+          stroke: new Stroke({color: 'white', width: fontSize / 2})
         })
       })
     )
