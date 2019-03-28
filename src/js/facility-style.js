@@ -71,7 +71,7 @@ const facilityStyle = {
       image: new Circle({
         radius: radius * 1.5,
         stroke: new Stroke({
-          color: 'rgb(254,252,213)',
+          color: 'rgb(0,128,169,.5)',
           width: radius
         })
       })
@@ -89,7 +89,8 @@ const facilityStyle = {
           text: siteName,
           offsetX: 1.5 * fontSize,
           textAlign: 'left',
-          stroke: new Stroke({color: 'white', width: fontSize / 2})
+          stroke: new Stroke({color: 'rgb(254,252,213)', width: fontSize / 2}),
+          zIndex: 1
         })
       })
     )

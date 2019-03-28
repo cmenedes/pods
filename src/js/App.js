@@ -5,25 +5,18 @@
 import $ from 'jquery'
 import pods from './pods'
 import decorations from './decorations'
-import MapMgr from 'nyc-lib/nyc/ol/MapMgr'
 
 import FinderApp from 'nyc-lib/nyc/ol/FinderApp'
-import CsvPoint from 'nyc-lib/nyc/ol/format/CsvPoint'
 import GeoJson from 'ol/format/GeoJSON'
 import facilityStyle from './facility-style'
 import Basemap from 'nyc-lib/nyc/ol/Basemap'
 
 import {extend as extentExtend} from 'ol/extent'
-import {buffer as extentBuffer} from 'ol/extent'
 
 import Directions from 'nyc-lib/nyc/Directions'
 import Point from 'ol/geom/Point'
-import { timingSafeEqual } from 'crypto';
 
-import Style from 'ol/style/Style'
-import Circle from 'ol/style/Circle'
-import Fill from 'ol/style/Fill'
-import Stroke from 'ol/style/Stroke'
+import Layer from 'ol/layer/Vector'
 
 
 
@@ -73,7 +66,7 @@ class App extends FinderApp {
     this.adjustFilters(active)
 
     this.map.getBaseLayers().labels.base.setZIndex(0)
-    this.layer.setZIndex(1)
+    // this.layer.setZIndex(1)
 
   }
 
