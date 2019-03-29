@@ -44,6 +44,7 @@ const decorations = {
       .append(this.nameHtml())
       .append(this.addressHtml())
       .append(this.detailsHtml())
+      .append('<i class="dir-tip">Click on site for directions</i>')
   },
   getAddress1() {
     return this.get('Address')

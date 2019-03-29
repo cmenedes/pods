@@ -29,6 +29,29 @@ class App extends FinderApp {
    * @param {string} url The POD data URL
    */
   constructor(content, url) {
+    let filters = [{
+      title: 'Borough',
+      choices: [
+        { name: 'Borough', values: ['Brooklyn'], label: 'Brooklyn', checked: true },
+        { name: 'Borough', values: ['Bronx'], label: 'Bronx', checked: true },
+        { name: 'Borough', values: ['Queens'], label: 'Queens', checked: true },
+        { name: 'Borough', values: ['Staten Island'], label: 'Staten Island', checked: true },
+        { name: 'Borough', values: ['Manhattan'], label: 'Manhattan', checked: true }
+      ]
+    }]
+    if(content.message("active") === 'true'){
+      filters.unshift({
+        title: 'Status',
+        choices: [
+          { name: 'Ops_status', values: ['Open to Public'], label: 'Open to Public', checked: true },
+          { name: 'Ops_status', values: ['Opening Soon'], label: 'Opening Soon', checked: true },
+          { name: 'Ops_status', values: ['Closed to Public'], label: 'Closed to Public', checked: true }
+        ]
+      })
+  
+    }
+
+    
     super({
       title: content.message('title'),
       splashOptions: {
@@ -41,16 +64,9 @@ class App extends FinderApp {
       }),
       facilityTabTitle: 'PODs',
       facilityStyle: facilityStyle.pointStyle,
-      facilitySearch: {displayField: 'search_label', nameField: 'PODSiteName'},
-      decorations: [{content: content}, decorations],
-      filterChoiceOptions: [{
-        title: 'Status',
-        choices: [
-          {name: 'Ops_status', values: ['Open to Public'], label: 'Open to Public', checked: true},
-          {name: 'Ops_status', values: ['Opening Soon'], label: 'Opening Soon', checked: true},
-          {name: 'Ops_status', values: ['Closed to Public'], label: 'Closed to Public', checked: true}
-        ]
-      }],
+      facilitySearch: { displayField: 'search_label', nameField: 'PODSiteName' },
+      decorations: [{ content: content }, decorations],
+      filterChoiceOptions: filters,
       geoclientUrl: pods.GEOCLIENT_URL,
       directionsUrl: pods.DIRECTIONS_URL,
       highlightStyle: facilityStyle.highlightStyle
@@ -63,8 +79,6 @@ class App extends FinderApp {
     this.addDescription()
     this.addLegend(active)
     this.setHomeZoom()
-    this.adjustFilters(active)
-
     this.map.getBaseLayers().labels.base.setZIndex(0)
     this.layer.setZIndex(1)
 
@@ -94,11 +108,6 @@ class App extends FinderApp {
       this.map.getView().setZoom(10)
       this.map.getView().setCenter(Basemap.CENTER)
     })
-  }
-  adjustFilters(active){
-    if(active == 'false'){
-      $('.btn-2').parent().remove()
-    }
   }
   
   located(location) {
