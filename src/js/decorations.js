@@ -22,7 +22,7 @@ const decorations = {
   html() {
     return $('<div class="facility"></div>')
       .addClass(this.getId())
-      .addClass(this.cssClass())
+      .addClass(this.get('Ops_status').replace(/ /g, '-').toLowerCase())
       .append(this.distanceHtml())
       .append(this.nameHtml())
       .append(this.distanceHtml(true))
