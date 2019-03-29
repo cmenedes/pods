@@ -324,6 +324,6 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 .lst-it.active {
   background-color: var(--color-dark);
 }
-.lst-it.active div, .lst-it.active h3 {
+.lst-it.active div, .lst-it.active h3, .lst-it.active ul * {
   color: #fff;
 }
