@@ -82,6 +82,22 @@ class App extends FinderApp {
     this.map.getBaseLayers().labels.base.setZIndex(0)
     this.layer.setZIndex(1)
 
+    this.map.addLayer(
+      new Layer({
+        source: this.source,
+        style: facilityStyle.textStyle,
+        declutter: true,
+        zIndex: 2
+      })
+    )
+
+    const map = this.map
+    map.on('pointermove', event => {
+      $('.lst-it').removeClass('active')
+      map.forEachFeatureAtPixel(event.pixel, (feature, layer) => {
+        $(`.${feature.getId()}`).parent().addClass('active')  
+      })
+    })
   }
 
   addMarquee(active, marquee) {

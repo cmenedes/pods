@@ -35,26 +35,18 @@ const facilityStyle = {
     
     const radius = facilityStyle.calcRadius(zoom)
 
-    const style = [
-      new Style({
-        image: new Circle({
-          fill: new Fill({
-            color: fillColor
-          }),
-          radius: radius,
-          stroke: new Stroke({
-            width: 1,
-            color: '#1A1A1A'
-          })
+    return new Style({
+      image: new Circle({
+        fill: new Fill({
+          color: fillColor
+        }),
+        radius: radius,
+        stroke: new Stroke({
+          width: 1,
+          color: '#1A1A1A'
         })
       })
-    ]
-
-    if (zoom > 13) {
-      facilityStyle.textStyle(radius, siteName, style)
-    }
-
-    return style
+    })
   },
   calcRadius: (zoom) => {
     let radius = 6
@@ -78,22 +70,22 @@ const facilityStyle = {
     })
   },
 
-  textStyle: (size, siteName, style) => {
-    const fontSize = size
-    siteName = facilityStyle.stringDivider(siteName, 24, '\n')
-    style.push(
-      new Style({
+  textStyle: (feature, resolution) => {
+    const zoom = nycOl.TILE_GRID.getZForResolution(resolution)
+    if ((zoom > 13 && feature.getId() !== 'K313') || zoom > 16) {
+      const fontSize = facilityStyle.calcRadius(zoom)
+      const siteName = facilityStyle.stringDivider(feature.getName(), 24, '\n')
+      return new Style({
         text: new Text({
           fill: new Fill({color: '#000'}),
           font: `bold ${fontSize}px sans-serif`,
           text: siteName,
           offsetX: 1.5 * fontSize,
           textAlign: 'left',
-          stroke: new Stroke({color: 'rgb(254,252,213)', width: fontSize / 2}),
-          zIndex: 1
+          stroke: new Stroke({color: 'rgb(254,252,213)', width: fontSize / 2})
         })
       })
-    )
+    }
   },
 
   stringDivider: (str, width, spaceReplacer) => {
