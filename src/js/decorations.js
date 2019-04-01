@@ -22,7 +22,7 @@ const decorations = {
   html() {
     return $('<div class="facility"></div>')
       .addClass(this.getId())
-      .addClass(this.get('Ops_status').replace(/ /g, '-').toLowerCase())
+      .addClass(this.active === 'true' ? this.getStatus().replace(/ /g, '-').toLowerCase() : '')
       .append(this.distanceHtml())
       .append(this.nameHtml())
       .append(this.distanceHtml(true))
@@ -57,10 +57,20 @@ const decorations = {
     return this.active
   },
   getStatus() {
-    return this.get('Ops_status')
-  },
-  setStatus(status) {
-    this.set('Ops_status', status)
+    const status = this.get('Ops_status')
+    switch(status) {
+      case 'Mobilizing':
+        return 'Opening Soon'
+      case 'Open to Public':
+        return 'Open to Public'
+      case 'Demobilizing':
+        return 'Closed to Public'
+      case 'Demobilized':
+        return 'Closed to Public'
+      case 'Closed to Public':
+        return 'Closed to Public'
+    }
+    return 'Inactive'
   },
   getLatestDate() {
     let date = this.get('LatestDate')
@@ -87,20 +97,14 @@ const decorations = {
       let ul = $('<ul></ul>')
 
       if (this.getStatus() === 'Open to Public') {
-        this.setStatus('Open to Public')
         const wait = this.getWaitTime() ? this.getWaitTime() + ' minutes' : 'N/A'
         const waitTime = `<li><b>Wait time:</b> ${wait} </li>`
 
         ul.append(waitTime)
       }
-      else if(this.getStatus() === 'Mobilizing' || this.getStatus() === 'Opening Soon'){
-        this.setStatus('Opening Soon')
+      else if(this.getStatus() === 'Opening Soon'){
         const openingTime = `<li><b>Opening at:</b> ${this.getOpeningTime() || 'N/A'} </li>`
-        
         ul.append(openingTime)
-      }
-      else if(this.getStatus() === 'Closed to Public' || this.getStatus() === 'Demobilizing' || this.getStatus() === 'Demobilized'){
-        this.setStatus('Closed to Public')
       }
     
       const status = `<li><b>Status:</b> ${this.getStatus()}</li>`

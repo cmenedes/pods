@@ -63,7 +63,7 @@ const facilityStyle = {
       image: new Circle({
         radius: radius * 1.5,
         stroke: new Stroke({
-          color: 'rgb(0,128,169,.5)',
+          color: '#58A7FA',
           width: radius
         })
       })

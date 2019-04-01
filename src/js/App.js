@@ -44,8 +44,8 @@ class App extends FinderApp {
         title: 'Status',
         choices: [
           { name: 'Ops_status', values: ['Open to Public'], label: 'Open to Public', checked: true },
-          { name: 'Ops_status', values: ['Opening Soon'], label: 'Opening Soon', checked: true },
-          { name: 'Ops_status', values: ['Closed to Public'], label: 'Closed to Public', checked: true }
+          { name: 'Ops_status', values: ['Mobilizing'], label: 'Opening Soon', checked: true },
+          { name: 'Ops_status', values: ['Closed to Public', 'Demobilizing', 'Demobilized'], label: 'Closed to Public', checked: true }
         ]
       })
   
