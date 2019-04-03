@@ -129,12 +129,16 @@ class App extends FinderApp {
   located(location) {
     super.located(location)
     this.zoomToExtent(location.coordinate, 3)
+    /* TODO: when user clicks on site from search, focus to h2.info.screen-reader-only */
+    $('h2.info.screen-reader-only').focus() 
+
+
   }
 
   directionsTo(feature) {
     this.directions = this.directions || new Directions({
       url: this.directionsUrl,
-      toggle: '#tabs',
+      toggle: '#tabs'
     })
     const to = feature.getFullAddress()
     const name = feature.getName()
@@ -150,6 +154,12 @@ class App extends FinderApp {
         coordinate: feature.getGeometry().getCoordinates()
       }
     })
+    /* TODO: when user wants directions, because walking is now default, swap transit and walk aria-selected/pressed */
+    $('#walk.btn-sq.rad-all').attr('aria-selected', 'true' )
+    $('#walk.btn-sq.rad-all').attr('aria-pressed', 'true' )
+    $('#transit.btn-sq.rad-all').attr('aria-pressed', 'false' )
+    $('#transit.btn-sq.rad-all').attr('aria-selected', 'false' )
+
   }
 
   zoomToExtent(coord, limit){
