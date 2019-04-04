@@ -48,7 +48,7 @@ const decorations = {
       .append('<i class="dir-tip">Click on site for directions</i>')
   },
   getAddress1() {
-    return this.get('Address')
+    return this.get('addr')
   },
   getCityStateZip() {
     return `${this.get('boro')}, NY ${this.get('zip')}`
