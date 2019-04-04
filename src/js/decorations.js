@@ -89,7 +89,7 @@ const decorations = {
     }
   },
   getPODLink() {
-    return this.get('link')
+    return this.get('lnk')
   },
   getWaitTime() {
     return this.get('wait')

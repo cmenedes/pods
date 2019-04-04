@@ -32,20 +32,20 @@ class App extends FinderApp {
     let filters = [{
       title: 'Borough',
       choices: [
-        { name: 'Borough', values: ['Brooklyn'], label: 'Brooklyn', checked: true },
-        { name: 'Borough', values: ['Bronx'], label: 'Bronx', checked: true },
-        { name: 'Borough', values: ['Queens'], label: 'Queens', checked: true },
-        { name: 'Borough', values: ['Staten Island'], label: 'Staten Island', checked: true },
-        { name: 'Borough', values: ['Manhattan'], label: 'Manhattan', checked: true }
+        { name: 'boro', values: ['Brooklyn'], label: 'Brooklyn', checked: true },
+        { name: 'boro', values: ['Bronx'], label: 'Bronx', checked: true },
+        { name: 'boro', values: ['Queens'], label: 'Queens', checked: true },
+        { name: 'boro', values: ['Staten Island'], label: 'Staten Island', checked: true },
+        { name: 'boro', values: ['Manhattan'], label: 'Manhattan', checked: true }
       ]
     }]
     if(content.message("active") === 'true'){
       filters.unshift({
         title: 'Status',
         choices: [
-          { name: 'Ops_status', values: ['Open to Public'], label: 'Open to Public', checked: true },
-          { name: 'Ops_status', values: ['Mobilizing'], label: 'Opening Soon', checked: true },
-          { name: 'Ops_status', values: ['Closed to Public', 'Demobilizing', 'Demobilized'], label: 'Closed to Public', checked: true }
+          { name: 'status', values: ['Open to Public'], label: 'Open to Public', checked: true },
+          { name: 'status', values: ['Mobilizing'], label: 'Opening Soon', checked: true },
+          { name: 'status', values: ['Closed to Public', 'Demobilizing', 'Demobilized'], label: 'Closed to Public', checked: true }
         ]
       })
   
