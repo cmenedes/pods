@@ -106,8 +106,8 @@ class App extends FinderApp {
     }
   }
   addDescription() {
-    let facilities = $('.fnd #facilities')
-    facilities.prepend($('<div class="ada-content">All NYC Points of Dispensing<br>sites are wheelchair accessible</div>'))
+    let list = $('#facilities .list')
+    $('<div class="ada-content">All NYC Points of Dispensing<br>sites are wheelchair accessible</div>').insertBefore(list)
   }
   addLegend(active) {
     let ada = $('.ada-content')
