@@ -7,7 +7,7 @@ import nyc from 'nyc-lib/nyc'
 
 const decorations = {
   extendFeature() {
-    this.setId(this.get('DOECode'))
+    this.setId(this.get('id'))
     this.active = this.content.message('active')
 
     this.set(
@@ -17,7 +17,7 @@ const decorations = {
     )
   },
   getName() {
-    return this.get('PODSiteName')
+    return this.get('name')
   },
   html() {
     return $('<div class="facility"></div>')
@@ -51,13 +51,13 @@ const decorations = {
     return this.get('Address')
   },
   getCityStateZip() {
-    return `${this.get('Borough')}, NY ${this.get('ZIP')}`
+    return `${this.get('boro')}, NY ${this.get('zip')}`
   },
   getActive() {
     return this.active
   },
   getStatus() {
-    const status = this.get('Ops_status')
+    const status = this.get('status')
     switch(status) {
       case 'Mobilizing':
         return 'Opening Soon'
@@ -73,7 +73,7 @@ const decorations = {
     return 'Inactive'
   },
   getLatestDate() {
-    let date = this.get('LatestDate')
+    let date = this.get('updated')
 
     if(date){
       let date_convert = new Date(date)
@@ -81,7 +81,7 @@ const decorations = {
     }
   },
   getOpeningTime() {
-    let time = this.get('OpeningTime')
+    let time = this.get('opening')
 
     if(time){
       let time_convert = new Date(time)
@@ -89,10 +89,10 @@ const decorations = {
     }
   },
   getPODLink() {
-    return this.get('DOHMHPODLink')
+    return this.get('link')
   },
   getWaitTime() {
-    return this.get('wait_time')
+    return this.get('wait')
   },
   detailsHtml() {
     if (this.getActive() === 'true') {

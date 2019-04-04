@@ -78,7 +78,6 @@ class App extends FinderApp {
     this.addMarquee(active, marquee)
     this.addDescription()
     this.addLegend(active)
-    this.setHomeZoom()
     this.map.getBaseLayers().labels.base.setZIndex(0)
     this.layer.setZIndex(1)
 
@@ -117,22 +116,10 @@ class App extends FinderApp {
       ada.append($('.legend'))
     }
   }
-  setHomeZoom(){
-    let home = $('<div class="home-btn" aria-label="Reset the zoom" class="button"><div class="btn-sq rad-all btn-home"></div></div>')
-    home.insertAfter($('.geoloc'))
-    $('.home-btn').on('click', () => {
-      this.map.getView().setZoom(10)
-      this.map.getView().setCenter(Basemap.CENTER)
-    })
-  }
   
   located(location) {
     super.located(location)
     this.zoomToExtent(location.coordinate, 3)
-    /* TODO: when user clicks on site from search, focus to h2.info.screen-reader-only */
-    $('h2.info.screen-reader-only').focus() 
-
-
   }
 
   directionsTo(feature) {
