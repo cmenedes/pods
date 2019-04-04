@@ -1622,7 +1622,12 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@2, commander@^2.11.0, commander@^2.19.0, commander@~2.19.0:
+commander@2:
+  version "2.20.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.0.tgz#d58bb2b5c1ee8f87b0d340027e9e94e222c5a422"
+  integrity sha512-7j2y+40w61zy6YC2iRNpUe/NwhNyoXrYpHMrSunaMG64nRnaf96zO/KMQR4OyN/UnE5KLyEBnKHd4aG3rskjpQ==
+
+commander@^2.11.0, commander@^2.19.0, commander@~2.19.0:
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
 
@@ -4497,10 +4502,10 @@ nyc-build-helper@^0.0.28:
     webpack "4.19.1"
     zip-dir "^1.0.2"
 
-nyc-lib@^1.2.48:
-  version "1.2.49"
-  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.2.49.tgz#de138c00de31848637cbc439e8163e5d6755cc4d"
-  integrity sha512-8c15U/azKjuCU6g9Idcxpjr5XbV9quNfH1eoYKKB33sV0uleWGLov886/r0k0M07c0uPJqFRhCtXXvwG/Gj0Tg==
+nyc-lib@^1.2.51:
+  version "1.2.51"
+  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.2.51.tgz#bcae65518a9f8e29d07f350d06b6a85adf677b66"
+  integrity sha512-QorNfOW+Dgp1gs5JYohWvJVNxsE3GR1CkRQiPp6KNnXaCR4anxaOHWbA9CGjoLumhrWKcvyz7SjMFhTbspmhvQ==
   dependencies:
     babel-polyfill "^6.26.0"
     eslint-config-openlayers "^11.0.0"
