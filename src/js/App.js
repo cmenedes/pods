@@ -9,7 +9,6 @@ import decorations from './decorations'
 import FinderApp from 'nyc-lib/nyc/ol/FinderApp'
 import GeoJson from 'ol/format/GeoJSON'
 import facilityStyle from './facility-style'
-import Basemap from 'nyc-lib/nyc/ol/Basemap'
 
 import {extend as extentExtend} from 'ol/extent'
 
@@ -160,7 +159,9 @@ class App extends FinderApp {
     this.map.once('moveend', () => {
       popup.showFeature(feature)
     })
-
+    if ($('#tabs .btns h2:first-of-type').css('display') !== 'none') {
+      this.tabs.open('#map')
+    }
     this.zoomToExtent(feature.getGeometry().getCoordinates(), 4)
   }
 
