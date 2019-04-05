@@ -1383,6 +1383,7 @@ caniuse-lite@^1.0.30000844:
 canvas-prebuilt@1.6.11:
   version "1.6.11"
   resolved "https://registry.yarnpkg.com/canvas-prebuilt/-/canvas-prebuilt-1.6.11.tgz#9b37071aa0ddd4f7c2b4a9e279b63fb2dc30db9b"
+  integrity sha512-ayBAayYLgFbGBX+cwtOzM4iEQP4XB5DuBbtjgvAwQ66/FMzSR7DhlCqtDZIq9UBbpFCb1QpyDgUNVclHDdBixg==
   dependencies:
     node-pre-gyp "^0.10.0"
 
@@ -4505,10 +4506,10 @@ nyc-build-helper@^0.0.28:
     webpack "4.19.1"
     zip-dir "^1.0.2"
 
-nyc-lib@^1.2.53:
-  version "1.2.53"
-  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.2.53.tgz#0e0e0c8c55dc540a24fb6b4e28ee15d2593dbc25"
-  integrity sha512-/axooXV6CGS6hu1oKkF3LOuPQv11tIiWwiqsdo6Joha0o+04vWAWD7trGY1A6uINbPS3gAC1u/lEvL7u9cG2yA==
+nyc-lib@^1.2.54:
+  version "1.2.54"
+  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.2.54.tgz#4b0aa63349a31293a3b3f995963548410352b119"
+  integrity sha512-tfVKQsl2jYNyXrJ/EDBJHE+rWUWiRRldLXV1CwKq4Cf8IjNc2xA9/nxY+Tp65WsKd1XOo1lq+C14uBBuYSKYnQ==
   dependencies:
     babel-polyfill "^6.26.0"
     eslint-config-openlayers "^11.0.0"
