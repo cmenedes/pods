@@ -4506,10 +4506,10 @@ nyc-build-helper@^0.0.28:
     webpack "4.19.1"
     zip-dir "^1.0.2"
 
-nyc-lib@^1.2.54:
-  version "1.2.54"
-  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.2.54.tgz#4b0aa63349a31293a3b3f995963548410352b119"
-  integrity sha512-tfVKQsl2jYNyXrJ/EDBJHE+rWUWiRRldLXV1CwKq4Cf8IjNc2xA9/nxY+Tp65WsKd1XOo1lq+C14uBBuYSKYnQ==
+nyc-lib@^1.2.57:
+  version "1.2.57"
+  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.2.57.tgz#236b52e9e87ae7f33499f8a3279e51058f817e1c"
+  integrity sha512-PuK5fTy8G2E8vgSZnXb/ntdmw8Gs7qOpStJcR+QaxGwX5GNwQhu5AG1x0Aq4Bva3TE2SzCsh8Et93q33NLQXVA==
   dependencies:
     babel-polyfill "^6.26.0"
     eslint-config-openlayers "^11.0.0"
