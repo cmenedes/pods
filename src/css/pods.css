@@ -85,6 +85,14 @@ body *, .btn {
   color: #005C7A;
 }
 
+.btn-sq:hover {
+  background-color: #006080;
+}
+
+#mode td .btn-sq.active {
+	background-color: #006080;
+}
+
 .tabs .btns button.btn.active:focus{
   color: black;
 }
