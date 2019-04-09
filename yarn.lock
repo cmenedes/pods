@@ -4506,10 +4506,10 @@ nyc-build-helper@^0.0.28:
     webpack "4.19.1"
     zip-dir "^1.0.2"
 
-nyc-lib@^1.2.58:
-  version "1.2.58"
-  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.2.58.tgz#d4cb2e6ee97d2c91e55c23c4522960558d95fa40"
-  integrity sha512-UNZyVd3PHHuvHt78PFZ/pKCKGBVlTVNUgI/AqmipLDQONNUzjunFC/uWvBF3WlXbiLRHq/O5m3VbLwFwnTgSZw==
+nyc-lib@^1.2.68:
+  version "1.2.68"
+  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.2.68.tgz#6b51d6e3ba32b4651867d9d3a897838bb5c1682d"
+  integrity sha512-8LvkGHFtNH2jlIqC0QgZPwP9/dpWie6OLxsHdv7mPj0oiBdTArYr2vX3IqJ2O9k9QyVNl5DEo1BLUstRQ6kgsQ==
   dependencies:
     babel-polyfill "^6.26.0"
     eslint-config-openlayers "^11.0.0"
@@ -5755,9 +5755,9 @@ spdx-expression-parse@^3.0.0:
     spdx-license-ids "^3.0.0"
 
 spdx-license-ids@^3.0.0:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.3.tgz#81c0ce8f21474756148bbb5f3bfc0f36bf15d76e"
-  integrity sha512-uBIcIl3Ih6Phe3XHK1NqboJLdGfwr1UN3k6wSD1dZpmPsIkb8AGNbZYJ1fOBk834+Gxy8rpfDxrS6XLEMZMY2g==
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.4.tgz#75ecd1a88de8c184ef015eafb51b5b48bfd11bb1"
+  integrity sha512-7j8LYJLeY/Yb6ACbQ7F76qy5jHkp0U6jgBfJsk97bwWlVUnUWsAgpyaCvo17h0/RQGnQ036tVDomiwoI4pDkQA==
 
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
