@@ -39,7 +39,7 @@ class App extends FinderApp {
       ]
     }]
     if(content.message("active") === 'true'){
-      filters.unshift({
+      filters.push({
         title: 'Status',
         choices: [
           { name: 'status', values: ['Open to Public'], label: 'Open to Public', checked: true },

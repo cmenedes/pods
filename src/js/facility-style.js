@@ -72,7 +72,7 @@ const facilityStyle = {
 
   textStyle: (feature, resolution) => {
     const zoom = nycOl.TILE_GRID.getZForResolution(resolution)
-    if ((zoom > 13 && feature.getId() !== 'K313') || zoom > 16) {
+    if ((zoom > 13 && feature.getId() !== 'K313') || zoom > 16 || (zoom > 13 && feature.getActive() === 'true')) {
       const fontSize = facilityStyle.calcRadius(zoom)
       const siteName = facilityStyle.stringDivider(feature.getName(), 24, '\n')
       return new Style({

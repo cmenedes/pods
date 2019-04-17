@@ -286,8 +286,6 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
   }
 }
 
-
-
 .chc-chc.status label:before,
 .facility.open-to-public .name:before,
 .facility.opening-soon .name:before,
@@ -303,17 +301,17 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 .chc-chc.status label:before {
   margin: 0 7px -4px -4px;
 }
-.chc-chc.status label[for=chc-chc-0]::before,
+.chc-chc.status label[for=chc-chc-5]::before,
 .facility.open-to-public .name:before {
   background-color: #19DB17;
 }
 
-.chc-chc.status label[for=chc-chc-1]::before,
+.chc-chc.status label[for=chc-chc-6]::before,
 .facility.opening-soon .name:before   {
   background-color: #F3E318;
 }
 
-.chc-chc.status label[for=chc-chc-2]::before,
+.chc-chc.status label[for=chc-chc-7]::before,
 .facility.closed-to-public .name:before {
   background-color: #999999;
 }
