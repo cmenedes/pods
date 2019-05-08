@@ -93,18 +93,6 @@ const facilityStyle = {
     if (zoom > 13) {
       const fontSize = facilityStyle.calcRadius(zoom)
       const siteName = facilityStyle.stringDivider(feature.getName(), 24, '\n')
-      
-      console.warn({
-        fill: new Fill({color: '#000'}),
-        font: `bold ${fontSize}px sans-serif`,
-        text: siteName,
-        offsetX: offsetX * fontSize,
-        offsetY: offsetY * fontSize,
-        textAlign: textAlign,
-        stroke: new Stroke({color: 'rgb(254,252,213)', width: fontSize / 2})
-      });
-      
-      
       return new Style({
         text: new Text({
           fill: new Fill({color: '#000'}),
