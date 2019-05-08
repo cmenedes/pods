@@ -9,8 +9,6 @@ import Fill from 'ol/style/Fill'
 import Stroke from 'ol/style/Stroke'
 import Text from 'ol/style/Text'
 
-
-
 const facilityStyle = {
 
   pointStyle: (feature, resolution) => {
@@ -72,16 +70,49 @@ const facilityStyle = {
 
   textStyle: (feature, resolution) => {
     const zoom = nycOl.TILE_GRID.getZForResolution(resolution)
-    if ((zoom > 13 && feature.getId() !== 'K313') || zoom > 16 || (zoom > 13 && feature.getActive() === 'true')) {
+    const pos = feature.get('labelpos') || 'E'
+    let offsetX = 0
+    let offsetY = 0
+    let textAlign = 'center'
+    switch (pos) {
+      case 'N': 
+        offsetY = 1.5
+        break
+      case 'S': 
+        offsetY = -1.5
+        break
+      case 'E': 
+        offsetX = 1.5
+        textAlign = 'left'
+        break
+      case 'W': 
+        offsetX = -1.5
+        textAlign = 'right'
+        break
+    }
+    if (zoom > 13) {
       const fontSize = facilityStyle.calcRadius(zoom)
       const siteName = facilityStyle.stringDivider(feature.getName(), 24, '\n')
+      
+      console.warn({
+        fill: new Fill({color: '#000'}),
+        font: `bold ${fontSize}px sans-serif`,
+        text: siteName,
+        offsetX: offsetX * fontSize,
+        offsetY: offsetY * fontSize,
+        textAlign: textAlign,
+        stroke: new Stroke({color: 'rgb(254,252,213)', width: fontSize / 2})
+      });
+      
+      
       return new Style({
         text: new Text({
           fill: new Fill({color: '#000'}),
           font: `bold ${fontSize}px sans-serif`,
           text: siteName,
-          offsetX: 1.5 * fontSize,
-          textAlign: 'left',
+          offsetX: offsetX * fontSize,
+          offsetY: offsetY * fontSize,
+          textAlign: textAlign,
           stroke: new Stroke({color: 'rgb(254,252,213)', width: fontSize / 2})
         })
       })
