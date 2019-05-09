@@ -76,10 +76,10 @@ const facilityStyle = {
     let textAlign = 'center'
     switch (pos) {
       case 'N': 
-        offsetY = 1.5
+        offsetY = -2.5
         break
       case 'S': 
-        offsetY = -1.5
+        offsetY = 2.5
         break
       case 'E': 
         offsetX = 1.5
