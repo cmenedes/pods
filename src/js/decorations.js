@@ -9,7 +9,6 @@ const decorations = {
   extendFeature() {
     this.setId(this.get('id'))
     this.active = this.content.message('active')
-
     this.set(
       'search_label',
       `<b><span class="srch-lbl-lg">${this.getName()}</span></b><br>
@@ -106,7 +105,7 @@ const decorations = {
         ul.append(waitTime)
       }
       else if(this.getStatus() === 'Opening Soon'){
-        const openingTime = `<li><b>Opening at:</b> ${this.getOpeningTime() || 'N/A'} </li>`
+        const openingTime = `<li><b>Estimated Opening Time:</b> ${this.getOpeningTime() || 'N/A'} </li>`
         ul.append(openingTime)
       }
     

@@ -88,7 +88,11 @@ class App extends FinderApp {
         zIndex: 2
       })
     )
+    this.highlightSite()
 
+  }
+
+  highlightSite() {
     const map = this.map
     map.on('pointermove', event => {
       $('.lst-it').removeClass('active')
@@ -106,13 +110,13 @@ class App extends FinderApp {
   }
   addDescription() {
     let list = $('#facilities .list')
-    $('<div class="ada-content">All NYC Points of Dispensing<br>sites are wheelchair accessible</div>').insertBefore(list)
+    $('<div class="description"><div class="desc">All Points of Dispensing sites may not be activated at the time of an incident. Please continue checking this page to see which sites are activated following an event.<br><br>Click on the NYC Health Logo to refresh the map.</div></div>').insertBefore(list)
   }
   addLegend(active) {
-    let ada = $('.ada-content')
+    let desc = $('.description')
     if(active == 'true'){
       $('.legend').css('display', 'block')
-      ada.append($('.legend'))
+      desc.append($('.legend'))
     }
   }
   
