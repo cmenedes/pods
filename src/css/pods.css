@@ -85,7 +85,7 @@ body *, .btn {
   color: #005C7A;
 }
 
-.btn-sq:hover {
+.btn-sq:hover, .btn-rnd:hover {
   background-color: #006080;
 }
 
@@ -97,7 +97,7 @@ body *, .btn {
   color: black;
 }
 
-.description {
+.desc {
   padding: 10px 5px 10px 5px; 
   text-align: center;
   font-size: 18px;
@@ -196,9 +196,12 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 	background-image: var(--home-icon, none);
   background-size: 30px;
 }
+.facility .name {
+  margin-left: 22px;
+}
 
 .facility ul {
-  margin: 5px 0;
+  margin: 5px 10px;
 }
 .facility li {
   margin-left: -10px;
@@ -296,7 +299,7 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
   border: 1px solid #1A1A1A;
   content: ' ';
   border-radius: 50%;
-  margin: 0 3px -4px 0;
+  margin: 0 3px -4px -22px;
 }
 .chc-chc.status label:before {
   margin: 0 7px -4px -4px;
