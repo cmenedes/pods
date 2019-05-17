@@ -196,7 +196,7 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 	background-image: var(--home-icon, none);
   background-size: 30px;
 }
-.facility .name {
+.alert .facility .name {
   margin-left: 22px;
 }
 
