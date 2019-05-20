@@ -8,32 +8,36 @@ import MapMgr from 'nyc-lib/nyc/ol/MapMgr'
 import Content from 'nyc-lib/nyc/Content'
 import Decorate from 'nyc-lib/nyc/ol/format/Decorate'
 import facilityStyle from '../src/js/facility-style'
+import OlFeature from 'ol/Feature'
+import OlGeomPoint from 'ol/geom/Point'
+import OlSourceVector from 'ol/source/Vector'
+import OlLayerVector from 'ol/layer/Vector'
 
-
+const messages = [
+  {
+    title: 'title',
+    marquee: 'marquee',
+    splash: 'splash',
+    active: 'true',
+    pods_url: 'pods_url'
+  }
+]
+const content = new Content(messages)
+ 
 
 describe('constructor', () => {
-  let messages, content, container
+  let container
+  const highlightSite = App.prototype.highlightSite
   beforeEach(() => {
     $.resetMocks()
-    messages = [
-      {
-        title: 'Points of Dispensing (POD) Finder',
-        marquee: 'DOHMH controlled content (if empty the marquee is hidden)',
-        splash: 'DOHMH controlled content - any message you like goes here - updated via an uploaded CSV file.',
-        active: 'true',
-        pods_url: 'https://services3.arcgis.com/A6Zjpzrub8ESZ3c7/arcgis/rest/services/vwLatestDateLocator/FeatureServer/0/query?f=pgeojson&outSR=2263&outFields=ActivePOD%20as%20activepod,DOHMHPODLink%20as%20lnk,DOECode%20as%20id,PODSiteName%20as%20name,Address%20as%20addr,Borough%20as%20boro,ZIP%20as%20zip,Ops_status%20as%20status,OpeningTime%20as%20opening,wait_time%20as%20wait,LatestDate%20as%20updated,%20LabelPos%20as%20labelpos&where=activepod%3D1'
-      }
-    ]
-    content = new Content(messages)
-
     container = $('<div></div>')
     $('body')
       .append(container)
       .append($('<h2 id="marquee"> <div><div><div></div></div></div> </h2>'))
       .append($('<div class="legend" aria-hidden="true" style="display: none;" <div class="leg"><div class="leg-it"><div class="leg-sw closed"></div><span>Closed</span></div><div class="leg-it"><div class="leg-sw open"></div><span>Open</span></div><div class="leg-it"><div class="leg-sw open-soon"></div><span>Opening Soon</span></div></div></div>'))
 
+    App.prototype.highlightSite = jest.fn()
 
-   
   })
 
   afterEach(() => {
@@ -41,10 +45,11 @@ describe('constructor', () => {
     $('.alert').removeClass()
     $('#marquee').remove()
     $('.legend').css('display', 'none')
+    App.prototype.highlightSite = highlightSite
   })
 
   test('constructor', () => {
-    expect.assertions(73)
+    expect.assertions(80)
 
     const app = new App(content, content.message('pods_url'))
 
@@ -72,9 +77,10 @@ describe('constructor', () => {
 
     expect(app.layer.getSource()).toBe(app.source)
     expect(app.layer.getStyle()).toBe(facilityStyle.pointStyle)
+    expect(app.layer.getZIndex()).toBe(1)
 
     expect(app.facilitySearch.displayField).toBe('search_label')
-    expect(app.facilitySearch.nameField).toBe('PODSiteName')
+    expect(app.facilitySearch.nameField).toBe('name')
 
     expect(app.tabs.find('.btn-0').html()).toBe('Map')
     expect(app.tabs.find('.btn-1').html()).toBe('PODs')
@@ -143,42 +149,116 @@ describe('constructor', () => {
 
     expect(app.highlightLayer.getStyle()).toBe(facilityStyle.highlightStyle)
     expect(app.highlightLayer.getSource()).toBe(app.highlightSource)
+  
+
+    let baseLayer = app.map.getBaseLayers().labels.base
+    expect(baseLayer.getZIndex()).toBe(0)
+
+    let textLayer = app.map.getLayers().getArray().slice(-1)[0]
+    expect(textLayer.getZIndex()).toBe(2)
+    expect(textLayer.getStyle()).toBe(facilityStyle.textStyle)
+    expect(textLayer.getSource()).toBe(app.source)
+    expect(textLayer.get('declutter')).toBe(true)
 
 
     expect($('#marquee div>div>div').html()).toBe(content.message('marquee'))    
     expect($('body').hasClass('alert')).toBe(true)
 
-    expect($('.desc').html()).toBe('All Points of Dispensing sites may not be activated at the time of an incident. Please continue checking this page to see which sites are activated following an event.<br><br>Click on the NYC Health Logo to refresh the map.')
-
-
     let legend = $('.legend')
     expect(legend.css('display')).toBe('block')
+    expect($('.desc').children().last().html()).toBe(legend.html())
 
-    /* TODO */
-    //check label layer is added to map
-    //check zIndex set properly on all layers
-    //check highlight site is called
+
+    expect(app.highlightSite).toHaveBeenCalledTimes(1)
 
   })
 
   test('contructor - active is false -> no marquee content', () => {
     expect.assertions(2)
-    messages = [
-      {
-        title: 'Points of Dispensing (POD) Finder',
-        marquee: 'DOHMH controlled content - any message you like goes here - updated via an uploaded CSV file.',
-        splash: 'DOHMH controlled content - any message you like goes here - updated via an uploaded CSV file.',
-        active: 'false',
-        pods_url: 'https://services3.arcgis.com/A6Zjpzrub8ESZ3c7/arcgis/rest/services/vwLatestDateLocator/FeatureServer/0/query?f=pgeojson&outSR=2263&outFields=ActivePOD%20as%20activepod,DOHMHPODLink%20as%20lnk,DOECode%20as%20id,PODSiteName%20as%20name,Address%20as%20addr,Borough%20as%20boro,ZIP%20as%20zip,Ops_status%20as%20status,OpeningTime%20as%20opening,wait_time%20as%20wait,LatestDate%20as%20updated,%20LabelPos%20as%20labelpos&where=activepod%3D1'
-      }
-    ]
-    content = new Content(messages)
     const app = new App(content, content.message('pods_url'))
     expect($('body').hasClass('alert')).toBe(false)
     expect($('#marquee div>div>div').html()).toBe('')
 
-
   })
 
+test('addMarquee', () => {
+  const app = new App(content, content.message('pods_url'))
+  $.resetMocks()
+  app.addMarquee()
+  expect($('#marquee div>div>div').html()).toBe(content.message('marquee'))    
+  expect($('body').hasClass('alert')).toBe(true)
+})
+
+test('addDescription', () => {
+  const app = new App(content, content.message('pods_url'))
+  $.resetMocks()
+  app.addDescription()
+  expect($('#facilities .list').prev()).toBe($('.description'))
+
+})
+  
+})
+
+describe('highlightSite', () => {
+  let feature1Div, feature2Div
+  
+  const feature1 = {
+    getId: jest.fn().mockImplementation(() => {
+      return 'feature1'
+    })
+  }
+  const feature2 = {
+    getId: jest.fn().mockImplementation(() => {
+      return 'feature2'
+    })
+  }
+  const mockMap = {
+    eventHandlers: {},
+    on: (eventName, callback) => {
+      mockMap.eventHandlers[eventName] = callback
+    },
+    trigger: (eventName, event) => {
+      mockMap.eventHandlers[eventName](event)
+    } 
+  }
+
+  beforeEach(() => {
+    feature1.getId.mockClear()
+    feature2.getId.mockClear()
+    feature1Div = $('<div class="lst-it"><div class="feature1"></div></div>')
+    feature2Div = $('<div class="lst-it"><div class="feature2"></div></div>')
+    $('body').append(feature1Div).append(feature2Div)
+    mockMap.eventHandlers = {}
+
+  })
+  afterEach(() => {
+    feature1Div.remove()
+    feature2Div.remove()
+    
+  })
+
+  test('highlightSite', () => {
+    expect.assertions(4)
+    const app = new App(content, content.message('pods_url'))
+    app.map = mockMap
+    app.map.forEachFeatureAtPixel = jest.fn()
+    app.highlightSite()
+    mockMap.trigger('pointermove', {pixel: 'mockPixel'})
+    expect(app.map.forEachFeatureAtPixel).toHaveBeenCalledTimes(1)
+    expect(app.map.forEachFeatureAtPixel.mock.calls[0][0]).toBe('mockPixel')
+    expect(app.map.forEachFeatureAtPixel.mock.calls[0][1]).toBe(app.highlightListItem)
+    expect($('.lst-it').hasClass('active')).toBe(false)
+  })
+
+  test('highlightListItem', () => {
+    expect.assertions(2)
+    const app = new App(content, content.message('pods_url'))
+
+    app.highlightListItem(feature1)
+    expect($('.feature1').parent().hasClass('active')).toBe(true)
+    app.highlightListItem(feature2)
+    expect($('.feature2').parent().hasClass('active')).toBe(true)
+
+  })
   
 })

@@ -50,7 +50,6 @@ class App extends FinderApp {
   
     }
 
-    
     super({
       title: content.message('title'),
       splashOptions: {
@@ -71,12 +70,9 @@ class App extends FinderApp {
       highlightStyle: facilityStyle.highlightStyle
     })
     this.content = content
-    const active = content.message('active')
-    const marquee = content.message('marquee')
-
-    this.addMarquee(active, marquee)
+    this.addMarquee()
     this.addDescription()
-    this.addLegend(active)
+    this.addLegend()
     this.map.getBaseLayers().labels.base.setZIndex(0)
     this.layer.setZIndex(1)
 
@@ -93,26 +89,35 @@ class App extends FinderApp {
   }
 
   highlightSite() {
+    const highlight = this.highlightListItem
     const map = this.map
     map.on('pointermove', event => {
       $('.lst-it').removeClass('active')
-      map.forEachFeatureAtPixel(event.pixel, (feature, layer) => {
-        $(`.${feature.getId()}`).parent().addClass('active')  
-      })
+      map.forEachFeatureAtPixel(event.pixel, highlight)
     })
   }
 
-  addMarquee(active, marquee) {
+  highlightListItem(feature) {
+    $(`.${feature.getId()}`).parent().addClass('active')
+  }
+
+  addMarquee() {
+    const active = this.content.message('active')
+    const marquee = this.content.message('marquee')
     if (active == 'true') {
+      console.warn('active true')
       $('body').addClass('alert')
       $('#marquee div>div>div').html(marquee)
     }
+  
   }
   addDescription() {
     let list = $('#facilities .list')
     $('<div class="description"><div class="desc">All Points of Dispensing sites may not be activated at the time of an incident. Please continue checking this page to see which sites are activated following an event.<br><br>Click on the NYC Health Logo to refresh the map.</div></div>').insertBefore(list)
   }
-  addLegend(active) {
+
+  addLegend() {
+    const active = this.content.message('active')
     let desc = $('.desc')
     if(active == 'true'){
       $('.legend').css('display', 'block')
