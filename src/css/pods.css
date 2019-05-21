@@ -142,8 +142,6 @@ body *, .btn {
 }
 
 
-
-
 @media only screen and (max-width: 285px){
   .fnd #banner>div {
     margin-right: 115px;
@@ -335,4 +333,30 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 
 .alert .facility .addr {
   margin-left: 23px;
+}
+
+@media only screen and (max-width: 400px) {
+	.fnd .splash .dia {
+		width: 340px;
+		left: calc(50% - 180px);
+	}
+}
+
+@media only screen and (max-width: 345px) {
+	.fnd .splash .dia {
+		width: 300px;
+		left: calc(50% - 158px);
+	}
+}
+ 
+@media only screen and (max-height: 400px) {
+	.fnd .splash .dia {
+    top: 20%;
+	}
+}
+
+@media only screen and (max-height: 340px) {
+	.fnd .splash .dia {
+    top: 10%;
+	}
 }
