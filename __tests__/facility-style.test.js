@@ -15,11 +15,12 @@ describe('pointStyle', () => {
     facilityStyle.calcRadius = calcRadius
   })
   test('active is true, facility is closed', () => {
-    expect.assertions(8)
+    expect.assertions(9)
 
     const style = facilityStyle.pointStyle(examplePOD1, 305.748113140705)
 
     expect(examplePOD1.getStatus()).toBe('Closed to Public')
+    expect(examplePOD1.getActive()).toBe('true')
     expect(style.getImage() instanceof OlStyleCircle).toBe(true)
     expect(style.getImage().getFill().getColor()).toBe('#999999')
     expect(style.getImage().getStroke().getColor()).toBe('#1A1A1A')
@@ -31,11 +32,12 @@ describe('pointStyle', () => {
   })
 
   test('active is true, facility is open', () => {
-    expect.assertions(8)
+    expect.assertions(9)
 
     const style = facilityStyle.pointStyle(examplePOD2, 305.748113140705)
 
     expect(examplePOD2.getStatus()).toBe('Open to Public')
+    expect(examplePOD2.getActive()).toBe('true')
     expect(style.getImage() instanceof OlStyleCircle).toBe(true)
     expect(style.getImage().getFill().getColor()).toBe('#19DB17')
     expect(style.getImage().getStroke().getColor()).toBe('#1A1A1A')
@@ -47,11 +49,12 @@ describe('pointStyle', () => {
   })
 
   test('active is true, facility opening soon', () => {
-    expect.assertions(8)
+    expect.assertions(9)
 
     const style = facilityStyle.pointStyle(examplePOD3, 305.748113140705)
 
     expect(examplePOD3.getStatus()).toBe('Opening Soon')
+    expect(examplePOD3.getActive()).toBe('true')
     expect(style.getImage() instanceof OlStyleCircle).toBe(true)
     expect(style.getImage().getFill().getColor()).toBe('#F3E318')
     expect(style.getImage().getStroke().getColor()).toBe('#1A1A1A')
@@ -62,13 +65,30 @@ describe('pointStyle', () => {
     
   })
 
+  test('active is true, status unknown', () => {
+    expect.assertions(9)
+
+    const style = facilityStyle.pointStyle(examplePOD5, 305.748113140705)
+
+    expect(examplePOD5.getStatus()).toBe('Inactive')
+    expect(examplePOD5.getActive()).toBe('true')
+    expect(style.getImage() instanceof OlStyleCircle).toBe(true)
+    expect(style.getImage().getFill().getColor()).toBe('#0080A9')
+    expect(style.getImage().getStroke().getColor()).toBe('#1A1A1A')
+    expect(style.getImage().getStroke().getWidth()).toBe(1)
+    expect(style.getImage().getRadius()).toBe(facilityStyle.calcRadius.mock.results[0].value)
+    expect(facilityStyle.calcRadius).toHaveBeenCalledTimes(1)
+    expect(facilityStyle.calcRadius.mock.calls[0][0]).toBe(9)
+    
+  })
 
   test('active is false', () => {
-    expect.assertions(8)
+    expect.assertions(9)
 
     const style = facilityStyle.pointStyle(examplePOD4, 305.748113140705)
 
     expect(examplePOD4.getStatus()).toBe('Inactive')
+    expect(examplePOD4.getActive()).toBe('false')
     expect(style.getImage() instanceof OlStyleCircle).toBe(true)
     expect(style.getImage().getFill().getColor()).toBe('#0080A9')
     expect(style.getImage().getStroke().getColor()).toBe('#1A1A1A')
@@ -304,18 +324,18 @@ describe('stringDivider', () => {
   test('divides string 2 new lines - doesnt replace first space', () => {
     expect.assertions(1)
 
-    let str = 'siteName siteName siteName'
+    let str = 'siteName siteName-siteName'
     let width = 20 
     let spaceReplacer = '\n'
 
-    expect(facilityStyle.stringDivider(str,width,spaceReplacer)).toBe('siteName siteName\nsiteName')
+    expect(facilityStyle.stringDivider(str,width,spaceReplacer)).toBe('siteName siteName-\nsiteName')
   })
 
   test('divides string 3 new lines - replace all spaces', () => {
     expect.assertions(1)
 
     let str = 'siteName siteName siteName'
-    let width = 10
+    let width = 8
     let spaceReplacer = '\n'
 
     expect(facilityStyle.stringDivider(str,width,spaceReplacer)).toBe('siteName\nsiteName\nsiteName')
@@ -329,6 +349,16 @@ describe('stringDivider', () => {
     let spaceReplacer = '\n'
 
     expect(facilityStyle.stringDivider(str,width,spaceReplacer)).toBe('siteName-\nsiteName-\nsiteName')
+  })
+
+  test('width too small', () => {
+    expect.assertions(1)
+
+    let str = 'siteName-siteName-siteName'
+    let width = 7
+    let spaceReplacer = '\n'
+
+    expect(facilityStyle.stringDivider(str,width,spaceReplacer)).toBe(str)
   })
 
 })
