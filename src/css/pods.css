@@ -336,17 +336,21 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 }
 
 @media only screen and (max-width: 400px) {
-	.fnd .splash .dia {
-		width: 340px;
-		left: calc(50% - 180px);
-	}
+  .fnd .splash .dia {
+      width:340px;
+      left: calc(50% - 180px);
+      height: 350px;
+      top: 50px;
+  }
 }
 
 @media only screen and (max-width: 345px) {
-	.fnd .splash .dia {
-		width: 300px;
-		left: calc(50% - 158px);
-	}
+  .fnd .splash .dia {
+      width:300px;
+      left: calc(50% - 159px);
+      height: 350px;
+      top: 50px;
+  }
 }
  
 @media only screen and (max-height: 400px) {
@@ -356,7 +360,19 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 }
 
 @media only screen and (max-height: 340px) {
-	.fnd .splash .dia {
-    top: 10%;
-	}
+  .fnd .splash .dia {
+      top:10%;
+      height: 100%;
+      overflow-y: auto;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .pop, .pop>.content {
+      left: -10px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      max-width: 320px;
+  }
+
 }
