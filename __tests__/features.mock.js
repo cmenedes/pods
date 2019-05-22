@@ -15,19 +15,17 @@ let content = new Content(messages)
 
 //active, closed
 const examplePOD1 = new OlFeature({
-  PODSiteName: 'POD_Site_Name',
-  Address: 'Address',
-  Borough: 'Borough',
-  Zip: 'Zip',
-  Longitude: 'Longitude',
-  Latitude: 'Latitude',
-  DOECode: 'POD_ID',
+  name: 'POD_Site_Name',
+  addr: 'Address',
+  boro: 'Borough',
+  zip: 'Zip',
+  id: 'POD_ID',
   status: 'Closed to Public',
-  wait_time: 'Wait_Time',
-  LatestDate: '1/10/2019,3:54 PM',
-  Opening_Date: 'Opening_Date',
-  OpeningTime: 'Opening_Time',
-  labelpos: 'N'
+  wait: 'Wait_Time',
+  updated: '1/10/2019,3:54 PM',
+  opening: 'Opening_Time',
+  labelpos: 'N',
+  lnk: 'Link'
 })
 
 $.extend(examplePOD1, decorations, {content: content})
@@ -35,56 +33,50 @@ examplePOD1.extendFeature()
 
 //active, open
 const examplePOD2 = new OlFeature({
-  PODSiteName: 'POD_Site_Name',
-  Address: 'Address',
-  Borough: 'Borough',
-  Zip: 'Zip',
-  Longitude: 'Longitude',
-  Latitude: 'Latitude',
-  DOECode: 'POD_ID',
+  name: 'POD_Site_Name',
+  addr: 'Address',
+  boro: 'Borough',
+  zip: 'Zip',
+  id: 'POD_ID',
   status: 'Open to Public',
-  wait_time: 'Wait_Time',
-  LatestDate: '1/10/2019,3:54 PM',
-  Opening_Date: 'Opening_Date',
-  OpeningTime: 'Opening_Time',
-  labelpos: 'S'
+  wait: 'Wait_Time',
+  updated: '1/10/2019,3:54 PM',
+  opening: 'Opening_Time',
+  labelpos: 'S',
+  lnk: 'Link'
 })
 
 $.extend(examplePOD2, decorations, {content: content})
 examplePOD2.extendFeature()
 
 const examplePOD3 = new OlFeature({
-  PODSiteName: 'POD_Site_Name',
-  Address: 'Address',
-  Borough: 'Borough',
-  Zip: 'Zip',
-  Longitude: 'Longitude',
-  Latitude: 'Latitude',
-  DOECode: 'POD_ID',
+  name: 'POD_Site_Name',
+  addr: 'Address',
+  boro: 'Borough',
+  zip: 'Zip',
+  id: 'POD_ID',
   status: 'Mobilizing',
-  wait_time: 'Wait_Time',
-  LatestDate: '1/10/2019,3:54 PM',
-  Opening_Date: 'Opening_Date',
-  OpeningTime: 'Opening_Time',
-  labelpos: 'E'
+  wait: 'Wait_Time',
+  updated: '1/10/2019,3:54 PM',
+  opening: 'Opening_Time',
+  labelpos: 'E',
+  lnk: 'Link'
 })
 
 $.extend(examplePOD3, decorations, {content: content})
 examplePOD3.extendFeature()
 
 const examplePOD5 = new OlFeature({
-  PODSiteName: 'POD_Site_Name',
-  Address: 'Address',
-  Borough: 'Borough',
-  Zip: 'Zip',
-  Longitude: 'Longitude',
-  Latitude: 'Latitude',
-  DOECode: 'POD_ID',
+  name: 'POD_Site_Name',
+  addr: 'Address',
+  boro: 'Borough',
+  zip: 'Zip',
+  id: 'POD_ID',
   status: 'Ops_status',
-  wait_time: 'Wait_Time',
-  LatestDate: '1/10/2019,3:54 PM',
-  Opening_Date: 'Opening_Date',
-  OpeningTime: 'Opening_Time'
+  wait: 'Wait_Time',
+  updated: '1/10/2019,3:54 PM',
+  opening: 'Opening_Time',
+  lnk: 'Link'
 })
 
 $.extend(examplePOD5, decorations, {content: content})
@@ -103,19 +95,17 @@ messages = [
 content = new Content(messages)
 
 const examplePOD4 = new OlFeature({
-  PODSiteName: 'POD_Site_Name',
-  Address: 'Address',
-  Borough: 'Borough',
-  Zip: 'Zip',
-  Longitude: 'Longitude',
-  Latitude: 'Latitude',
-  DOECode: 'POD_ID',
+  name: 'POD_Site_Name',
+  addr: 'Address',
+  boro: 'Borough',
+  zip: 'Zip',
+  id: 'POD_ID',
   status: 'Ops_status',
-  wait_time: 'Wait_Time',
-  LatestDate: '1/10/2019,3:54 PM',
-  Opening_Date: 'Opening_Date',
-  OpeningTime: 'Opening_Time',
-  labelpos: 'W'
+  wait: 'Wait_Time',
+  updated: '1/10/2019,3:54 PM',
+  opening: 'Opening_Time',
+  labelpos: 'W',
+  lnk: 'Link'
 })
 
 $.extend(examplePOD4, decorations, {content: content})
