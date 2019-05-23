@@ -1,15 +1,42 @@
 import decorations from '../src/js/decorations'
-import OlFeature from 'ol/Feature';
+import OlFeature from 'ol/Feature'
 import {examplePOD1,examplePOD2,examplePOD3,examplePOD4,examplePOD5} from './features.mock'
 import nyc from 'nyc-lib/nyc'
+import MapMgr from 'nyc-lib/nyc/ol/MapMgr'
 
 
 describe('decorations', () => {
-  let container
+  let container, extendedDecorations
   beforeEach(() => {
     $.resetMocks()
     container = $('<div></div>')
     $('body').append(container)
+    extendedDecorations = {
+      nameHtml() {
+        return '<p>A Name</p>'
+      },
+      addressHtml() {
+        return '<p>An Address</p>'
+      },
+      distanceHtml() {
+        return '<p>A Distance</p>'
+      },
+      distanceHtml(screen) {
+        return (screen ? '<p>screen</p>' : '<p>A Distance</p>')
+      },
+      mapButton() {
+        return '<p>Map</p>'
+      },
+      directionsButton() {
+        return '<p>Directions</p>'
+      },
+      cssClass() {
+        return 'css-class'
+      }
+    }
+    $.extend(examplePOD1, extendedDecorations)
+    $.extend(examplePOD4, extendedDecorations)
+
   })
   afterEach(() => {
     container.remove()
@@ -24,6 +51,35 @@ describe('decorations', () => {
     expect(examplePOD1.get('search_label')).toBe(`<b><span class="srch-lbl-lg">${examplePOD1.get('name')}</span></b><br>
       <span class="srch-lbl-sm">${examplePOD1.get('addr')}</span>`)
 
+  })
+
+  test('html - active true', () => {
+    expect.assertions(3)
+    examplePOD1.extendFeature()
+    expect(examplePOD1.html()).toEqual($('<div class="facility POD_ID closed-to-public"><p>A Distance</p><p>A Name</p><p>screen</p><p>An Address</p><ul><li><b>Status: </b>Closed to Public</li><li><b>Last Updated: </b>1/10/2019 3:54:00 PM</li></ul><p>Map</p><p>Directions</p><a class="btn rad-all prep" href="Link" target="_blank">Prepare For Your Visit</a></div>'))
+    expect(examplePOD1.html().data('feature')).toBe(examplePOD1)
+    expect(examplePOD1.getTip()).not.toBeNull()  
+  })
+
+  test('html - active false', () => {
+    expect.assertions(3)
+    examplePOD4.extendFeature()
+    expect(examplePOD4.html()).toEqual($('<div class="facility POD_ID"><p>A Distance</p><p>A Name</p><p>screen</p><p>An Address</p><p>Map</p><p>Directions</p><a class="btn rad-all prep" href="Link" target="_blank">Prepare For Your Visit</a></div>'))
+    expect(examplePOD4.html().data('feature')).toBe(examplePOD4)
+    expect(examplePOD4.getTip()).not.toBeNull()
+  })
+
+  test('prepButton', () => {
+    expect.assertions(2)
+    expect(examplePOD1.prepButton()).toEqual($('<a class="btn rad-all prep" href="Link" target="_blank">Prepare For Your Visit</a>'))
+    expect(examplePOD1.prepButton()).not.toBeNull()
+  })
+
+  test('getTip', () => {
+    expect.assertions(2)
+    examplePOD1.extendFeature()
+    expect(examplePOD1.getTip()).toEqual($('<div><p>A Name</p><p>An Address</p><ul><li><b>Status: </b>Closed to Public</li><li><b>Last Updated: </b>1/10/2019 3:54:00 PM</li></ul><i class="dir-tip">Click on site for directions</i></div>'))
+    expect(examplePOD1.getTip()).not.toBeNull()
   })
 
   test('getAddress1', () => {
@@ -135,25 +191,32 @@ describe('decorations', () => {
     
   })
 
-  // test('detailsHtml - active is true, status is false', () => {
-  //   expect.assertions(2)
-  //   let ul = $('<ul></ul>').append(`<li><b>Status:</b> ${examplePOD1.get('status')}</li>`)
-  //   expect(examplePOD1.detailsHtml()).toEqual(ul)
-  //   expect(examplePOD1.detailsHtml().children().length).toBe(1)
+  test('detailsHtml - active is true, status is open to public', () => {
+    expect.assertions(2)
+    const update = new Date(examplePOD2.get('updated'))
+    let ul = $('<ul></ul>')
+      .append(`<li><b>Status: </b>${examplePOD2.getStatus()}</li>`)
+      .append(`<li><b>Wait time: </b>${examplePOD2.get('wait')} minutes</li>`)
+      .append(`<li><b>Last Updated: </b>${update.toLocaleDateString()} ${update.toLocaleTimeString()}</li>`)
+  
+    expect(examplePOD2.detailsHtml()).toEqual(ul)
+    expect(examplePOD2.detailsHtml().children().length).toBe(3)
     
-  // })
+  })
 
-  // test('detailsHtml - active is true, status is true', () => {
-  //   expect.assertions(2)
-  //   const update = new Date(examplePOD2.get('LatestDate'))
-  //   let ul = 
-  //   $('<ul></ul>')
-  //     .append(`<li><b>Status:</b> ${examplePOD2.get('status')}</li>`)
-  //     .append(`<li><b>Wait time:</b> ${examplePOD2.get('wait')} minutes</li>`)
-  //     .append(`<li><b>Last update:</b> ${update.toLocaleDateString()} ${update.toLocaleTimeString()}`)
-  //   expect(examplePOD2.detailsHtml()).toEqual(ul)
-  //   expect(examplePOD2.detailsHtml().children().length).toBe(3)
+  test('detailsHtml - active is true, status is opening soon', () => {
+    expect.assertions(2)
+    const update = new Date(examplePOD3.get('updated'))
+    const opening = new Date(examplePOD3.get('opening'))
+
+    let ul = $('<ul></ul>')
+      .append(`<li><b>Status: </b>${examplePOD3.getStatus()}</li>`)
+      .append(`<li><b>Estimated Opening Time: </b>${opening.toLocaleDateString()} ${opening.toLocaleTimeString()}</li>`)
+      .append(`<li><b>Last Updated: </b>${update.toLocaleDateString()} ${update.toLocaleTimeString()}</li>`)
+  
+    expect(examplePOD3.detailsHtml()).toEqual(ul)
+    expect(examplePOD3.detailsHtml().children().length).toBe(3)
     
-  // })
+  })
 
 });

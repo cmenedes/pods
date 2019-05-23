@@ -100,19 +100,19 @@ const decorations = {
 
       if (this.getStatus() === 'Open to Public') {
         const wait = this.getWaitTime() ? this.getWaitTime() + ' minutes' : 'N/A'
-        const waitTime = `<li><b>Wait time:</b> ${wait} </li>`
+        const waitTime = `<li><b>Wait time: </b>${wait}</li>`
 
         ul.append(waitTime)
       }
       else if(this.getStatus() === 'Opening Soon'){
-        const openingTime = `<li><b>Estimated Opening Time:</b> ${this.getOpeningTime() || 'N/A'} </li>`
+        const openingTime = `<li><b>Estimated Opening Time: </b>${this.getOpeningTime()||'N/A'}</li>`
         ul.append(openingTime)
       }
     
-      const status = `<li><b>Status:</b> ${this.getStatus()}</li>`
+      const status = `<li><b>Status: </b>${this.getStatus()}</li>`
 
       const update = this.getLatestDate()
-      const latestUpdate = `<li><b>Last Updated:</b> ${update || 'N/A'}`
+      const latestUpdate = `<li><b>Last Updated: </b>${update||'N/A'}</li>`
       ul.append(latestUpdate)
 
       ul.prepend(status)

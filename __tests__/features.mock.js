@@ -58,7 +58,7 @@ const examplePOD3 = new OlFeature({
   status: 'Mobilizing',
   wait: 'Wait_Time',
   updated: '1/10/2019,3:54 PM',
-  opening: 'Opening_Time',
+  opening: '1/10/2019,3:55 PM',
   labelpos: 'E',
   lnk: 'Link'
 })
