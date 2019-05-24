@@ -102,7 +102,7 @@ const examplePOD4 = new OlFeature({
   id: 'POD_ID',
   status: 'Ops_status',
   wait: 'Wait_Time',
-  updated: '1/10/2019,3:54 PM',
+  updated: 'Latest_Update',
   opening: 'Opening_Time',
   labelpos: 'W',
   lnk: 'Link'
@@ -111,5 +111,21 @@ const examplePOD4 = new OlFeature({
 $.extend(examplePOD4, decorations, {content: content})
 examplePOD4.extendFeature()
 
+const examplePOD6 = new OlFeature({
+  name: '',
+  addr: '',
+  boro: '',
+  zip: '',
+  id: '',
+  status: '',
+  wait: '',
+  updated: '',
+  opening: '',
+  labelpos: '',
+  lnk: ''
+})
 
-module.exports = {examplePOD1,examplePOD2,examplePOD3,examplePOD4,examplePOD5}
+$.extend(examplePOD6, decorations, {content: content})
+examplePOD6.extendFeature()
+
+module.exports = {examplePOD1,examplePOD2,examplePOD3,examplePOD4,examplePOD5, examplePOD6}
