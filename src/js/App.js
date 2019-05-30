@@ -67,6 +67,7 @@ class App extends FinderApp {
       filterChoiceOptions: filters,
       geoclientUrl: pods.GEOCLIENT_URL,
       directionsUrl: pods.DIRECTIONS_URL,
+      defaultDirectionsMode: 'WALKING',
       highlightStyle: facilityStyle.highlightStyle
     })
 
@@ -135,27 +136,6 @@ class App extends FinderApp {
   located(location) {
     super.located(location)
     this.zoomToExtent(location.coordinate, 3)
-  }
-
-  directionsTo(feature) {
-    this.directions = this.directions || new Directions({
-      url: this.directionsUrl,
-      toggle: '#tabs'
-    })
-    const to = feature.getFullAddress()
-    const name = feature.getName()
-    const from = this.getFromAddr()
-    this.directions.directions({
-      mode: 'WALKING',
-      from: from,
-      to: to,
-      facility: name,
-      origin: this.location,
-      destination: {
-        name: feature.getName(),
-        coordinate: feature.getGeometry().getCoordinates()
-      }
-    })
   }
 
   zoomToExtent(coord, limit){
