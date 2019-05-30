@@ -2166,9 +2166,9 @@ eslint-module-utils@^2.4.0:
     pkg-dir "^2.0.0"
 
 eslint-plugin-import@^2.13.0:
-  version "2.17.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.17.2.tgz#d227d5c6dc67eca71eb590d2bb62fb38d86e9fcb"
-  integrity sha512-m+cSVxM7oLsIpmwNn2WXTJoReOF9f/CtLMo7qOVmKd1KntBy0hEcuNZ3erTmWjx+DxRO0Zcrm5KwAvI9wHcV5g==
+  version "2.17.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.17.3.tgz#00548b4434c18faebaba04b24ae6198f280de189"
+  integrity sha512-qeVf/UwXFJbeyLbxuY8RgqDyEKCkqV7YC+E5S5uOjAp4tOc8zj01JP3ucoBM8JcEqd1qRasJSg6LLlisirfy0Q==
   dependencies:
     array-includes "^3.0.3"
     contains-path "^0.1.0"
@@ -2180,7 +2180,7 @@ eslint-plugin-import@^2.13.0:
     lodash "^4.17.11"
     minimatch "^3.0.4"
     read-pkg-up "^2.0.0"
-    resolve "^1.10.0"
+    resolve "^1.11.0"
 
 eslint-scope@^4.0.0:
   version "4.0.3"
@@ -4520,10 +4520,10 @@ nyc-build-helper@^0.0.28:
     webpack "4.19.1"
     zip-dir "^1.0.2"
 
-nyc-lib@^1.2.72:
-  version "1.2.72"
-  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.2.72.tgz#8653129f3e2aeeafc9f23741d66a74a442ef0792"
-  integrity sha512-xvUXsm4xSlYFLXCGEcFV93bPwtnk8fJl1Koef0+NkXoyTre0MBz5cpDXYY9NTf9+YtWFFewl1arf9JDqkz21RQ==
+nyc-lib@^1.2.76:
+  version "1.2.76"
+  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.2.76.tgz#0f71555506edac96a09007623406d8b08efbc4f5"
+  integrity sha512-qsPwFQNQg4q9r5SOykLLzHcCmFSONcuJOpVmG0aZRnym/BqKsTvoRaJWdNIuf0bPjDoPaGSsgo6HYO9s3PU2WQ==
   dependencies:
     babel-polyfill "^6.26.0"
     eslint-config-openlayers "^11.0.0"
@@ -5453,7 +5453,7 @@ resolve@^1.1.6, resolve@^1.10.0:
   dependencies:
     path-parse "^1.0.6"
 
-resolve@^1.1.7, resolve@^1.5.0:
+resolve@^1.1.7, resolve@^1.11.0, resolve@^1.5.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.11.0.tgz#4014870ba296176b86343d50b60f3b50609ce232"
   integrity sha512-WL2pBDjqT6pGUNSUzMw00o4T7If+z4H2x3Gz893WoUQ5KW8Vr9txp00ykiP16VBaZF5+j/OcXJHZ9+PCvdiDKw==
