@@ -72,18 +72,18 @@ const decorations = {
     return 'Inactive'
   },
   getLatestDate() {
-    let date = this.get('updated')
+    const date = this.get('updated')
 
     if(date){
-      let date_convert = new Date(date)
+      const date_convert = new Date(date)
       return `${date_convert.toLocaleDateString()} ${date_convert.toLocaleTimeString()}` 
     }
   },
   getOpeningTime() {
-    let time = this.get('opening')
+    const time = this.get('opening')
 
     if(time){
-      let time_convert = new Date(time)
+      const time_convert = new Date(time)
       return `${time_convert.toLocaleDateString()} ${time_convert.toLocaleTimeString()}` 
     }
   },

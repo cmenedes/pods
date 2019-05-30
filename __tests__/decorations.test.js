@@ -55,8 +55,13 @@ describe('decorations', () => {
 
   test('html - active true', () => {
     expect.assertions(8)
+
+    let date = new Date(examplePOD1.get('updated'))
+    const time = date.toLocaleTimeString()
+    date = date.toLocaleDateString()
+
     examplePOD1.extendFeature()
-    expect(examplePOD1.html()).toEqual($('<div class="facility POD_ID closed-to-public"><p>A Distance</p><p>A Name</p><p>screen</p><p>An Address</p><ul><li><b>Status: </b>Closed to Public</li><li><b>Last Updated: </b>1/10/2019 3:54:00 PM</li></ul><p>Map</p><p>Directions</p><a class="btn rad-all prep" href="Link" target="_blank">Prepare For Your Visit</a></div>'))
+    expect(examplePOD1.html()).toEqual($(`<div class="facility POD_ID closed-to-public"><p>A Distance</p><p>A Name</p><p>screen</p><p>An Address</p><ul><li><b>Status: </b>Closed to Public</li><li><b>Last Updated: </b>${date} ${time}</li></ul><p>Map</p><p>Directions</p><a class="btn rad-all prep" href="Link" target="_blank">Prepare For Your Visit</a></div>`))
     expect(examplePOD1.html().data('feature')).toBe(examplePOD1)
     expect(examplePOD1.html()).not.toBeNull()  
 
@@ -102,8 +107,13 @@ describe('decorations', () => {
 
   test('getTip', () => {
     expect.assertions(2)
+
+    let date = new Date(examplePOD1.get('updated'))
+    const time = date.toLocaleTimeString()
+    date = date.toLocaleDateString()
+
     examplePOD1.extendFeature()
-    expect(examplePOD1.getTip()).toEqual($('<div><p>A Name</p><p>An Address</p><ul><li><b>Status: </b>Closed to Public</li><li><b>Last Updated: </b>1/10/2019 3:54:00 PM</li></ul><i class="dir-tip">Click on site for directions</i></div>'))
+    expect(examplePOD1.getTip()).toEqual($(`<div><p>A Name</p><p>An Address</p><ul><li><b>Status: </b>Closed to Public</li><li><b>Last Updated: </b>${date} ${time}</li></ul><i class="dir-tip">Click on site for directions</i></div>`))
     expect(examplePOD1.getTip()).not.toBeNull()
   })
 
