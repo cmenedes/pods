@@ -5,9 +5,11 @@ import pods from '../src/js/pods'
 import FinderApp from 'nyc-lib/nyc/ol/FinderApp'
 import App from '../src/js/App';
 import GeoJson from 'ol/format/GeoJSON'
+import Layer from 'ol/layer/Vector'
 
 jest.mock('nyc-lib/nyc/ol/FinderApp')
 jest.mock('ol/format/GeoJSON')
+jest.mock('ol/layer/Vector')
 
 const mockContent = {
   messages: {
@@ -30,6 +32,7 @@ const highlightSite = App.prototype.highlightSite
 beforeEach(() => {
   FinderApp.mockClear()
   GeoJson.mockClear()
+  Layer.mockClear()
   App.prototype.addMarquee = jest.fn()
   App.prototype.addDescription = jest.fn()
   App.prototype.addLegend = jest.fn()
@@ -316,5 +319,36 @@ describe('rearrangeLayers', () => {
     expect(setZ).toHaveBeenCalledTimes(2)
     expect(setZ.mock.calls[0][0]).toBe(0)
     expect(setZ.mock.calls[1][0]).toBe(1)
+  })
+})
+
+describe('addLabels', () => {
+  const mockMap = {
+    addLayer: jest.fn()
+  }
+
+
+  beforeEach(() => {
+
+  })
+
+  test('addLabels', () => {
+    expect.assertions(5)
+
+    mockContent.messages.active = 'true'
+
+    const app = new App(mockContent, 'http://pods-endpoint')
+    app.map = mockMap
+    app.source = 'mock-source'
+
+    app.addLabels = addLabels
+
+    app.addLabels()
+
+    expect(Layer).toHaveBeenCalledTimes(1)
+    expect(Layer.mock.calls[0][0].source).toBe(app.source)
+    expect(Layer.mock.calls[0][0].style).toBe(facilityStyle.textStyle)
+    expect(Layer.mock.calls[0][0].declutter).toBe(true)
+    expect(Layer.mock.calls[0][0].zIndex).toBe(2)
   })
 })
