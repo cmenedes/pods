@@ -20,36 +20,34 @@ const mockContent = {
   }
 }
 
+const addMarquee = App.prototype.addMarquee
+const addDescription = App.prototype.addDescription
+const addLegend = App.prototype.addLegend
+const rearrangeLayers = App.prototype.rearrangeLayers
+const addLabels = App.prototype.addLabels
+const highlightSite = App.prototype.highlightSite
+
 beforeEach(() => {
   FinderApp.mockClear()
   GeoJson.mockClear()
+  App.prototype.addMarquee = jest.fn()
+  App.prototype.addDescription = jest.fn()
+  App.prototype.addLegend = jest.fn()
+  App.prototype.rearrangeLayers = jest.fn()
+  App.prototype.addLabels = jest.fn()
+  App.prototype.highlightSite = jest.fn()
+})
+
+afterEach(() => {
+  App.prototype.addMarquee = addMarquee
+  App.prototype.addDescription = addDescription
+  App.prototype.addLegend = addLegend
+  App.prototype.rearrangeLayers = rearrangeLayers
+  App.prototype.addLabels = addLabels
+  App.prototype.highlightSite = highlightSite
 })
 
 describe('constructor', () => {
-  const addMarquee = App.prototype.addMarquee
-  const addDescription = App.prototype.addDescription
-  const addLegend = App.prototype.addLegend
-  const rearrangeLayers = App.prototype.rearrangeLayers
-  const addLabels = App.prototype.addLabels
-  const highlightSite = App.prototype.highlightSite
-
-  beforeEach(() => {
-    App.prototype.addMarquee = jest.fn()
-    App.prototype.addDescription = jest.fn()
-    App.prototype.addLegend = jest.fn()
-    App.prototype.rearrangeLayers = jest.fn()
-    App.prototype.addLabels = jest.fn()
-    App.prototype.highlightSite = jest.fn()
-  })
-
-  afterEach(() => {
-    App.prototype.addMarquee = addMarquee
-    App.prototype.addDescription = addDescription
-    App.prototype.addLegend = addLegend
-    App.prototype.rearrangeLayers = rearrangeLayers
-    App.prototype.addLabels = addLabels
-    App.prototype.highlightSite = highlightSite
-  })
 
   test('constructor active', () => {
     expect.assertions(62)
@@ -213,33 +211,15 @@ describe('constructor', () => {
 })
 
 describe('addMarquee', () => {
-  const addMarquee = App.prototype.addMarquee
-  const addDescription = App.prototype.addDescription
-  const addLegend = App.prototype.addLegend
-  const rearrangeLayers = App.prototype.rearrangeLayers
-  const addLabels = App.prototype.addLabels
-  const highlightSite = App.prototype.highlightSite
   let marquee
   
   beforeEach(() => {
     marquee = $('<div id="marquee"><div><div><div></div></div></div></div>')
     $('body').append(marquee).removeClass('alert')
-    App.prototype.addMarquee = jest.fn()
-    App.prototype.addDescription = jest.fn()
-    App.prototype.addLegend = jest.fn()
-    App.prototype.rearrangeLayers = jest.fn()
-    App.prototype.addLabels = jest.fn()
-    App.prototype.highlightSite = jest.fn()
   })
 
   afterEach(() => {
     marquee.remove()
-    App.prototype.addMarquee = addMarquee
-    App.prototype.addDescription = addDescription
-    App.prototype.addLegend = addLegend
-    App.prototype.rearrangeLayers = rearrangeLayers
-    App.prototype.addLabels = addLabels
-    App.prototype.highlightSite = highlightSite
   })
 
   test('addMarquee active', () => {
@@ -274,33 +254,15 @@ describe('addMarquee', () => {
 })
 
 describe('addDescription', () => {
-  const addMarquee = App.prototype.addMarquee
-  const addDescription = App.prototype.addDescription
-  const addLegend = App.prototype.addLegend
-  const rearrangeLayers = App.prototype.rearrangeLayers
-  const addLabels = App.prototype.addLabels
-  const highlightSite = App.prototype.highlightSite
   let facilityList
   
   beforeEach(() => {
     facilityList = $('<div id="facilities"><div class="list"></div></div>')
     $('body').append(facilityList)
-    App.prototype.addMarquee = jest.fn()
-    App.prototype.addDescription = jest.fn()
-    App.prototype.addLegend = jest.fn()
-    App.prototype.rearrangeLayers = jest.fn()
-    App.prototype.addLabels = jest.fn()
-    App.prototype.highlightSite = jest.fn()
   })
 
   afterEach(() => {
     facilityList.remove()
-    App.prototype.addMarquee = addMarquee
-    App.prototype.addDescription = addDescription
-    App.prototype.addLegend = addLegend
-    App.prototype.rearrangeLayers = rearrangeLayers
-    App.prototype.addLabels = addLabels
-    App.prototype.highlightSite = highlightSite
   })
 
   test('addDescription', () => {
@@ -318,13 +280,6 @@ describe('addDescription', () => {
 })
 
 describe('rearrangeLayers', () => {
-  const addMarquee = App.prototype.addMarquee
-  const addDescription = App.prototype.addDescription
-  const addLegend = App.prototype.addLegend
-  const rearrangeLayers = App.prototype.rearrangeLayers
-  const addLabels = App.prototype.addLabels
-  const highlightSite = App.prototype.highlightSite
-  
   const setZ = jest.fn()
   const mockMap = {
     getBaseLayers: () => {
@@ -343,23 +298,8 @@ describe('rearrangeLayers', () => {
 
   beforeEach(() => {
     setZ.mockClear()
-    App.prototype.addMarquee = jest.fn()
-    App.prototype.addDescription = jest.fn()
-    App.prototype.addLegend = jest.fn()
-    App.prototype.rearrangeLayers = jest.fn()
-    App.prototype.addLabels = jest.fn()
-    App.prototype.highlightSite = jest.fn()
   })
 
-  afterEach(() => {
-    App.prototype.addMarquee = addMarquee
-    App.prototype.addDescription = addDescription
-    App.prototype.addLegend = addLegend
-    App.prototype.rearrangeLayers = rearrangeLayers
-    App.prototype.addLabels = addLabels
-    App.prototype.highlightSite = highlightSite
-  })
-  
   test('rearrangeLayers', () => {
     expect.assertions(3)
 
