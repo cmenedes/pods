@@ -28,7 +28,8 @@ class App extends FinderApp {
    * @param {string} url The POD data URL
    */
   constructor(content, url) {
-    let filters = [{
+
+    const filters = [{
       title: 'Borough',
       choices: [
         { name: 'boro', values: ['Brooklyn'], label: 'Brooklyn', checked: true },
@@ -38,7 +39,7 @@ class App extends FinderApp {
         { name: 'boro', values: ['Manhattan'], label: 'Manhattan', checked: true }
       ]
     }]
-    if(content.message("active") === 'true'){
+    if (content.message('active') === 'true') {
       filters.push({
         title: 'Status',
         choices: [
@@ -47,7 +48,6 @@ class App extends FinderApp {
           { name: 'status', values: ['Closed to Public', 'Demobilizing', 'Demobilized'], label: 'Closed to Public', checked: true }
         ]
       })
-  
     }
 
     super({
@@ -69,13 +69,23 @@ class App extends FinderApp {
       directionsUrl: pods.DIRECTIONS_URL,
       highlightStyle: facilityStyle.highlightStyle
     })
+
     this.content = content
     this.addMarquee()
     this.addDescription()
     this.addLegend()
+    this.rearrangeLayers()
+    this.addLabels()
+    this.highlightSite()
+
+  }
+
+  rearrangeLayers() {
     this.map.getBaseLayers().labels.base.setZIndex(0)
     this.layer.setZIndex(1)
+  }
 
+  addLabels() {
     this.map.addLayer(
       new Layer({
         source: this.source,
@@ -84,8 +94,6 @@ class App extends FinderApp {
         zIndex: 2
       })
     )
-    this.highlightSite()
-
   }
 
   highlightSite() {

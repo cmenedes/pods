@@ -7,12 +7,14 @@ jest.mock('nyc-lib/nyc/Content')
 
 const mockContent = {
   messages: {
-    pods_url: 'mock-url'
+    pods_url: 'mock-url',
+    active: 'false'
   },
   message: (key) => {
     return mockContent.messages[key]
   }
 }
+
 beforeEach(() => {
   App.mockClear()
   Content.mockClear()

@@ -7,12 +7,14 @@ jest.mock('nyc-lib/nyc/Content')
 
 const mockContent = {
   messages: {
-    pods_url: 'mock-url'
+    pods_url: 'mock-url',
+    active: 'true'
   },
   message: (key) => {
     return mockContent.messages[key]
   }
 }
+
 beforeEach(() => {
   App.mockClear()
   Content.mockClear()
@@ -25,8 +27,6 @@ beforeEach(() => {
 
 test('constructs instance of App with active PODs', () => {
   expect.assertions(6)
-
-  mockContent.messages.active = 'true'
 
   const test = async () => {
     return new Promise(resolve => {
