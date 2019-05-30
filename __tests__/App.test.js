@@ -439,3 +439,53 @@ describe('highlightListItem', () => {
   
   })
 })
+
+
+describe('addLegend', () => {
+  let description, legend
+  
+  beforeEach(() => {
+    description = $(pods.DESCRIPTION_HTML)
+    legend = $(pods.LEGEND_HTML)
+    legend.css('display', 'none')
+    $('body').append(description).append(legend)
+  })
+
+  afterEach(() => {
+    description.remove()
+    legend.remove()
+  })
+
+  test('addLegend - active true', () => {
+    expect.assertions(3)
+    mockContent.messages.active = 'true'
+
+    const app = new App(mockContent, 'http://pods-endpoint')
+    app.addLegend = addLegend
+
+    expect($('.legend').css('display')).toBe('none')
+
+    app.addLegend()
+
+    expect($('.desc').children().last().html()).toBe(legend.html())
+    expect($('.legend').css('display')).toBe('block')
+
+  })
+
+  test('addLegend - active false', () => {
+    expect.assertions(3)
+    mockContent.messages.active = 'false'
+
+    const app = new App(mockContent, 'http://pods-endpoint')
+    app.addLegend = addLegend
+
+    expect($('.legend').css('display')).toBe('none')
+
+    app.addLegend()
+    expect($('.desc').children().last().html()).toBe('')
+    expect($('.legend').css('display')).toBe('none')
+
+  })
+
+
+})
