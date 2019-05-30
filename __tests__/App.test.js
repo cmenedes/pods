@@ -12,7 +12,8 @@ jest.mock('ol/format/GeoJSON')
 const mockContent = {
   messages: {
     title: 'app title',
-    splash: 'splash content'
+    splash: 'splash content',
+    marquee: 'marquee msg'
   },
   message: (key) => {
     return mockContent.messages[key]
@@ -39,6 +40,15 @@ describe('constructor', () => {
     App.prototype.rearrangeLayers = jest.fn()
     App.prototype.addLabels = jest.fn()
     App.prototype.highlightSite = jest.fn()
+  })
+
+  afterEach(() => {
+    App.prototype.addMarquee = addMarquee
+    App.prototype.addDescription = addDescription
+    App.prototype.addLegend = addLegend
+    App.prototype.rearrangeLayers = rearrangeLayers
+    App.prototype.addLabels = addLabels
+    App.prototype.highlightSite = highlightSite
   })
 
   test('constructor active', () => {
@@ -199,5 +209,66 @@ describe('constructor', () => {
     expect(App.prototype.addLabels).toHaveBeenCalledTimes(1)
     expect(App.prototype.highlightSite).toHaveBeenCalledTimes(1)
 
+  })
+})
+
+describe('addMarquee', () => {
+  const addMarquee = App.prototype.addMarquee
+  const addDescription = App.prototype.addDescription
+  const addLegend = App.prototype.addLegend
+  const rearrangeLayers = App.prototype.rearrangeLayers
+  const addLabels = App.prototype.addLabels
+  const highlightSite = App.prototype.highlightSite
+  let marquee
+  
+  beforeEach(() => {
+    marquee = $('<div id="marquee"><div><div><div></div></div></div></div>')
+    $('body').append(marquee).removeClass('alert')
+    App.prototype.addMarquee = jest.fn()
+    App.prototype.addDescription = jest.fn()
+    App.prototype.addLegend = jest.fn()
+    App.prototype.rearrangeLayers = jest.fn()
+    App.prototype.addLabels = jest.fn()
+    App.prototype.highlightSite = jest.fn()
+  })
+
+  afterEach(() => {
+    marquee.remove()
+    App.prototype.addMarquee = addMarquee
+    App.prototype.addDescription = addDescription
+    App.prototype.addLegend = addLegend
+    App.prototype.rearrangeLayers = rearrangeLayers
+    App.prototype.addLabels = addLabels
+    App.prototype.highlightSite = highlightSite
+  })
+
+  test('addMarquee active', () => {
+    expect.assertions(2)
+
+    mockContent.messages.active = 'true'
+
+    const app = new App(mockContent, 'http://pods-endpoint')
+
+    app.addMarquee = addMarquee
+
+    app.addMarquee()
+
+    expect($('#marquee div>div>div').html()).toBe('marquee msg')
+    expect($('body').hasClass('alert')).toBe(true)
+  })
+
+  test('addMarquee not active', () => {
+    expect.assertions(2)
+
+    mockContent.messages.active = 'false'
+
+    const app = new App(mockContent, 'http://pods-endpoint')
+
+    app.addMarquee = addMarquee
+
+    app.addMarquee()
+
+    expect($('#marquee div>div>div').html()).toBe('')
+    expect($('body').hasClass('alert')).toBe(false)
   })
 })

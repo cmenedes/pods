@@ -112,8 +112,7 @@ class App extends FinderApp {
   addMarquee() {
     const active = this.content.message('active')
     const marquee = this.content.message('marquee')
-    if (active == 'true') {
-      console.warn('active true')
+    if (active === 'true') {
       $('body').addClass('alert')
       $('#marquee div>div>div').html(marquee)
     }
