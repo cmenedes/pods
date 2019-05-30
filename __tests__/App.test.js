@@ -327,11 +327,6 @@ describe('addLabels', () => {
     addLayer: jest.fn()
   }
 
-
-  beforeEach(() => {
-
-  })
-
   test('addLabels', () => {
     expect.assertions(5)
 
@@ -350,5 +345,53 @@ describe('addLabels', () => {
     expect(Layer.mock.calls[0][0].style).toBe(facilityStyle.textStyle)
     expect(Layer.mock.calls[0][0].declutter).toBe(true)
     expect(Layer.mock.calls[0][0].zIndex).toBe(2)
+  })
+})
+
+describe('highlightSite', () => {
+  const mockMap = {
+    handlers: {},
+    forEachFeatureAtPixel: jest.fn(),
+    on: (event, handler) => {
+      mockMap.handlers[event] = handler
+    },
+    trigger: (event) => {
+      mockMap.handlers[event]({pixel: 'mock-pixel'})
+    }
+  }
+  let listIt
+
+  beforeEach(() => {
+    listIt = $('<div class="lst-it active"></div>')
+    $('body').append(listIt)
+    mockMap.forEachFeatureAtPixel.mockClear()
+  })
+
+  afterEach(() => {
+    listIt.remove()
+  })
+
+  test.only('highlightSite', () => {
+    expect.assertions(6)
+
+    mockContent.messages.active = 'true'
+
+    const app = new App(mockContent, 'http://pods-endpoint')
+    app.map = mockMap
+
+    app.highlightSite = highlightSite
+
+    expect(listIt.hasClass('active')).toBe(true)
+
+    app.highlightSite()
+
+    expect(typeof mockMap.handlers.pointermove).toBe('function')
+
+    mockMap.trigger('pointermove')
+
+    expect(mockMap.forEachFeatureAtPixel).toHaveBeenCalledTimes(1)
+    expect(mockMap.forEachFeatureAtPixel.mock.calls[0][0]).toBe('mock-pixel')
+    expect(mockMap.forEachFeatureAtPixel.mock.calls[0][1]).toBe(app.highlightListItem)
+    expect(listIt.hasClass('active')).toBe(false)
   })
 })
