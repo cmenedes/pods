@@ -10,6 +10,7 @@ import Layer from 'ol/layer/Vector'
 jest.mock('nyc-lib/nyc/ol/FinderApp')
 jest.mock('ol/format/GeoJSON')
 jest.mock('ol/layer/Vector')
+jest.mock('ol/geom/Point')
 
 const mockContent = {
   messages: {
@@ -487,5 +488,42 @@ describe('addLegend', () => {
 
   })
 
+})
+
+describe('located', () => {
+  const located = FinderApp.prototype.located
+  const zoomToExtent = App.prototype.zoomToExtent
+
+  beforeEach(() => {
+    FinderApp.prototype.located = jest.fn()
+    App.prototype.zoomToExtent = jest.fn()
+  })
+
+  afterEach(() => {
+    FinderApp.prototype.located = located
+    App.prototype.zoomToExtent = zoomToExtent
+  })
+
+
+ test('located', () => {
+  expect.assertions(6)
+  mockContent.messages.active = 'true'
+
+  const app = new App(mockContent, 'http://pods-endpoint')
+  const loc = {
+    coordinate: 'mock-coordinate'
+  }
+
+  app.located(loc)
+
+  expect(FinderApp).toHaveBeenCalledTimes(1)
+  expect(FinderApp.prototype.located).toHaveBeenCalledTimes(1)
+  expect(FinderApp.prototype.located.mock.calls[0][0]).toBe(loc)
+
+  expect(App.prototype.zoomToExtent).toHaveBeenCalledTimes(1)
+  expect(App.prototype.zoomToExtent.mock.calls[0][0]).toBe(loc.coordinate)
+  expect(App.prototype.zoomToExtent.mock.calls[0][1]).toBe(3)
+
+ })
 
 })
