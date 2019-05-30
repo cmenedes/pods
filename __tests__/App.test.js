@@ -316,3 +316,65 @@ describe('addDescription', () => {
     expect($('.description').parent().html()).toBe(`${pods.DESCRIPTION_HTML}<div class="list"></div>`)
   })
 })
+
+describe('rearrangeLayers', () => {
+  const addMarquee = App.prototype.addMarquee
+  const addDescription = App.prototype.addDescription
+  const addLegend = App.prototype.addLegend
+  const rearrangeLayers = App.prototype.rearrangeLayers
+  const addLabels = App.prototype.addLabels
+  const highlightSite = App.prototype.highlightSite
+  
+  const setZ = jest.fn()
+  const mockMap = {
+    getBaseLayers: () => {
+      return {
+        labels: {
+          base: {
+            setZIndex: setZ
+          }
+        }
+      }
+    }
+  }
+  const mockLayer = {
+    setZIndex: setZ
+  }
+
+  beforeEach(() => {
+    setZ.mockClear()
+    App.prototype.addMarquee = jest.fn()
+    App.prototype.addDescription = jest.fn()
+    App.prototype.addLegend = jest.fn()
+    App.prototype.rearrangeLayers = jest.fn()
+    App.prototype.addLabels = jest.fn()
+    App.prototype.highlightSite = jest.fn()
+  })
+
+  afterEach(() => {
+    App.prototype.addMarquee = addMarquee
+    App.prototype.addDescription = addDescription
+    App.prototype.addLegend = addLegend
+    App.prototype.rearrangeLayers = rearrangeLayers
+    App.prototype.addLabels = addLabels
+    App.prototype.highlightSite = highlightSite
+  })
+  
+  test('rearrangeLayers', () => {
+    expect.assertions(3)
+
+    mockContent.messages.active = 'true'
+
+    const app = new App(mockContent, 'http://pods-endpoint')
+    app.map = mockMap
+    app.layer = mockLayer
+
+    app.rearrangeLayers = rearrangeLayers
+
+    app.rearrangeLayers()
+
+    expect(setZ).toHaveBeenCalledTimes(2)
+    expect(setZ.mock.calls[0][0]).toBe(0)
+    expect(setZ.mock.calls[1][0]).toBe(1)
+  })
+})
