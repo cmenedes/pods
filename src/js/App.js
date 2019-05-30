@@ -120,7 +120,7 @@ class App extends FinderApp {
   }
   addDescription() {
     let list = $('#facilities .list')
-    $('<div class="description"><div class="desc">All Points of Dispensing sites may not be activated at the time of an incident. Please continue checking this page to see which sites are activated following an event.<br><br>Click on the NYC Health Logo to refresh the map.</div></div>').insertBefore(list)
+    $(pods.DESCRIPTION_HTML).insertBefore(list)
   }
 
   addLegend() {

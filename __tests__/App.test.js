@@ -272,3 +272,47 @@ describe('addMarquee', () => {
     expect($('body').hasClass('alert')).toBe(false)
   })
 })
+
+describe('addDescription', () => {
+  const addMarquee = App.prototype.addMarquee
+  const addDescription = App.prototype.addDescription
+  const addLegend = App.prototype.addLegend
+  const rearrangeLayers = App.prototype.rearrangeLayers
+  const addLabels = App.prototype.addLabels
+  const highlightSite = App.prototype.highlightSite
+  let facilityList
+  
+  beforeEach(() => {
+    facilityList = $('<div id="facilities"><div class="list"></div></div>')
+    $('body').append(facilityList)
+    App.prototype.addMarquee = jest.fn()
+    App.prototype.addDescription = jest.fn()
+    App.prototype.addLegend = jest.fn()
+    App.prototype.rearrangeLayers = jest.fn()
+    App.prototype.addLabels = jest.fn()
+    App.prototype.highlightSite = jest.fn()
+  })
+
+  afterEach(() => {
+    facilityList.remove()
+    App.prototype.addMarquee = addMarquee
+    App.prototype.addDescription = addDescription
+    App.prototype.addLegend = addLegend
+    App.prototype.rearrangeLayers = rearrangeLayers
+    App.prototype.addLabels = addLabels
+    App.prototype.highlightSite = highlightSite
+  })
+
+  test('addDescription', () => {
+    expect.assertions(1)
+
+    mockContent.messages.active = 'true'
+
+    const app = new App(mockContent, 'http://pods-endpoint')
+
+    app.addDescription = addDescription
+
+    app.addDescription()
+    expect($('.description').parent().html()).toBe(`${pods.DESCRIPTION_HTML}<div class="list"></div>`)
+  })
+})
