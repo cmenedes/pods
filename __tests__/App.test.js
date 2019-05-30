@@ -371,7 +371,7 @@ describe('highlightSite', () => {
     listIt.remove()
   })
 
-  test.only('highlightSite', () => {
+  test('highlightSite', () => {
     expect.assertions(6)
 
     mockContent.messages.active = 'true'
@@ -393,5 +393,49 @@ describe('highlightSite', () => {
     expect(mockMap.forEachFeatureAtPixel.mock.calls[0][0]).toBe('mock-pixel')
     expect(mockMap.forEachFeatureAtPixel.mock.calls[0][1]).toBe(app.highlightListItem)
     expect(listIt.hasClass('active')).toBe(false)
+  })
+})
+
+describe('highlightListItem', () => {
+  let feature1Div, feature2Div
+
+  const feature1 = {
+    getId: jest.fn().mockImplementation(() => {
+      return 'feature1'
+    })
+  }
+  const feature2 = {
+    getId: jest.fn().mockImplementation(() => {
+      return 'feature2'
+    })
+  }
+
+  beforeEach(() => {
+    feature1.getId.mockClear()
+    feature2.getId.mockClear()
+    feature1Div = $('<div class="lst-it"><div class="feature1"></div></div>')
+    feature2Div = $('<div class="lst-it"><div class="feature2"></div></div>')
+    $('body').append(feature1Div).append(feature2Div)
+  })
+
+  afterEach(() => {
+    feature1Div.remove()
+    feature2Div.remove()
+  })
+
+  test('highlightListItem', () => {
+    expect.assertions(4)
+    mockContent.messages.active = 'true'
+
+    const app = new App(mockContent, 'http://pods-endpoint')
+  
+    expect($('.feature1').parent().hasClass('active')).toBe(false)
+    expect($('.feature2').parent().hasClass('active')).toBe(false)
+
+    app.highlightListItem(feature1)
+    expect($('.feature1').parent().hasClass('active')).toBe(true)
+    app.highlightListItem(feature2)
+    expect($('.feature2').parent().hasClass('active')).toBe(true)
+  
   })
 })
