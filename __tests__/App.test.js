@@ -37,7 +37,7 @@ describe('constructor', () => {
   })
 
   test('constructor active', () => {
-    expect.assertions(22)
+    expect.assertions(62)
 
     mockContent.messages.active = 'true'
 
@@ -59,10 +59,63 @@ describe('constructor', () => {
     expect(FinderApp.mock.calls[0][0].facilityStyle).toBe(facilityStyle.pointStyle)
     expect(FinderApp.mock.calls[0][0].facilitySearch.displayField).toBe('search_label')
     expect(FinderApp.mock.calls[0][0].facilitySearch.nameField).toBe('name')
+    
     expect(FinderApp.mock.calls[0][0].decorations.length).toBe(2)
     expect(FinderApp.mock.calls[0][0].decorations[0].content).toBe(mockContent)
     expect(FinderApp.mock.calls[0][0].decorations[1]).toBe(decorations)
 
+    expect(FinderApp.mock.calls[0][0].geoclientUrl).toBe(pods.GEOCLIENT_URL)
+    expect(FinderApp.mock.calls[0][0].directionsUrl).toBe(pods.DIRECTIONS_URL)
+
+    expect(FinderApp.mock.calls[0][0].highlightStyle).toBe(facilityStyle.highlightStyle)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions.length).toBe(2)
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].title).toBe('Borough')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices.length).toBe(5)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].name).toBe('boro')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].values).toEqual(['Brooklyn'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].label).toBe('Brooklyn')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].checked).toBe(true)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].name).toBe('boro')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].values).toEqual(['Bronx'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].label).toBe('Bronx')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].checked).toBe(true)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].name).toBe('boro')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].values).toEqual(['Queens'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].label).toBe('Queens')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].checked).toBe(true)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].name).toBe('boro')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].values).toEqual(['Staten Island'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].label).toBe('Staten Island')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].checked).toBe(true)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].name).toBe('boro')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].values).toEqual(['Manhattan'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].label).toBe('Manhattan')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].checked).toBe(true)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[1].title).toBe('Status')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[1].choices.length).toBe(3)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[1].choices[0].name).toBe('status')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[1].choices[0].values).toEqual(['Open to Public'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[1].choices[0].label).toBe('Open to Public')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[1].choices[0].checked).toBe(true)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[1].choices[1].name).toBe('status')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[1].choices[1].values).toEqual(['Mobilizing'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[1].choices[1].label).toBe('Opening Soon')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[1].choices[1].checked).toBe(true)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[1].choices[2].name).toBe('status')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[1].choices[2].values).toEqual(['Closed to Public', 'Demobilizing', 'Demobilized'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[1].choices[2].label).toBe('Closed to Public')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[1].choices[2].checked).toBe(true)
+    
     expect(App.prototype.addMarquee).toHaveBeenCalledTimes(1)
     expect(App.prototype.addDescription).toHaveBeenCalledTimes(1)
     expect(App.prototype.addLegend).toHaveBeenCalledTimes(1)
