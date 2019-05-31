@@ -1,6 +1,7 @@
 import OlFeature from 'ol/Feature'
 import Content from 'nyc-lib/nyc/Content'
 import decorations from '../src/js/decorations'
+import Point from 'ol/geom/Point';
 
 
 let messages = [
@@ -15,6 +16,7 @@ let content = new Content(messages)
 
 //active, closed
 const examplePOD1 = new OlFeature({
+  geometry: new Point([100, 200]),
   name: 'POD_Site_Name',
   addr: 'Address',
   boro: 'Borough',
@@ -33,6 +35,7 @@ examplePOD1.extendFeature()
 
 //active, open
 const examplePOD2 = new OlFeature({
+  geometry: new Point([100, 100]),
   name: 'POD_Site_Name',
   addr: 'Address',
   boro: 'Borough',
@@ -50,6 +53,7 @@ $.extend(examplePOD2, decorations, {content: content})
 examplePOD2.extendFeature()
 
 const examplePOD3 = new OlFeature({
+  geometry: new Point([200, 200]),
   name: 'POD_Site_Name',
   addr: 'Address',
   boro: 'Borough',
@@ -67,6 +71,7 @@ $.extend(examplePOD3, decorations, {content: content})
 examplePOD3.extendFeature()
 
 const examplePOD5 = new OlFeature({
+  geometry: new Point([300, 0]),
   name: 'POD_Site_Name',
   addr: 'Address',
   boro: 'Borough',

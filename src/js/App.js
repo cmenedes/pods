@@ -141,11 +141,9 @@ class App extends FinderApp {
   zoomToExtent(coord, limit){
     let extent = new Point(coord).getExtent()
     const features = this.source.nearest(coord, limit)
-
     features.forEach(f => {
       extent = extentExtend(extent, f.getGeometry().getExtent())
     })
-      
     this.view.fit(extent, {size: this.map.getSize(), duration: 500})
   }
 

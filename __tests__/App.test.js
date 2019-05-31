@@ -6,11 +6,11 @@ import FinderApp from 'nyc-lib/nyc/ol/FinderApp'
 import App from '../src/js/App';
 import GeoJson from 'ol/format/GeoJSON'
 import Layer from 'ol/layer/Vector'
+import {examplePOD1, examplePOD2, examplePOD3, examplePOD5} from './features.mock'
 
 jest.mock('nyc-lib/nyc/ol/FinderApp')
 jest.mock('ol/format/GeoJSON')
 jest.mock('ol/layer/Vector')
-jest.mock('ol/geom/Point')
 
 const mockContent = {
   messages: {
@@ -490,40 +490,147 @@ describe('addLegend', () => {
 
 })
 
+
 describe('located', () => {
-  const located = FinderApp.prototype.located
   const zoomToExtent = App.prototype.zoomToExtent
 
+beforeEach(() => {
+  App.prototype.zoomToExtent = jest.fn()
+})
+
+afterEach(() => {
+  App.prototype.zoomToExtent = zoomToExtent
+})
+
+  test('located', () => {
+    expect.assertions(6)
+
+    mockContent.messages.active = 'true'
+
+    const app = new App(mockContent, 'http://pods-endpoint')
+    const loc = {
+      coordinate: 'mock-coordinate'
+    }
+
+    app.located(loc)
+
+    expect(FinderApp).toHaveBeenCalledTimes(1)
+    expect(FinderApp.mock.instances[0].located).toHaveBeenCalledTimes(1)
+    expect(FinderApp.mock.instances[0].located.mock.calls[0][0]).toBe(loc)
+
+    expect(App.prototype.zoomToExtent).toHaveBeenCalledTimes(1)
+    expect(App.prototype.zoomToExtent.mock.calls[0][0]).toBe(loc.coordinate)
+    expect(App.prototype.zoomToExtent.mock.calls[0][1]).toBe(3)
+
+  })
+})
+
+describe('zoomToExtent', () => {
+  const mockSource = {
+    nearest: jest.fn().mockImplementation((coord, limit) => {
+      return [examplePOD1, examplePOD2, examplePOD3, examplePOD5]
+    })
+  }
+  const mockMap = {
+    getSize: jest.fn().mockImplementation(() => {
+      return 'mock-size'
+    })
+  }
+  const mockView = {
+    fit: jest.fn()
+  }
+
+  test('zoomToExtent', () => {
+    expect.assertions(8)
+
+    mockContent.messages.active = 'true'
+
+    const app = new App(mockContent, 'http://pods-endpoint')
+    app.source = mockSource
+    app.map = mockMap
+    app.view = mockView
+
+    app.zoomToExtent([100, 150], 3)
+
+    expect(mockSource.nearest).toHaveBeenCalledTimes(1)
+    expect(mockSource.nearest.mock.calls[0][0]).toEqual([100, 150])
+    expect(mockSource.nearest.mock.calls[0][1]).toBe(3)
+
+    expect(mockMap.getSize).toHaveBeenCalledTimes(1)
+    expect(mockView.fit).toHaveBeenCalledTimes(1)
+
+    expect(mockView.fit.mock.calls[0][0]).toEqual([100, 0, 300, 200])
+    expect(mockView.fit.mock.calls[0][1].size).toBe('mock-size')
+    expect(mockView.fit.mock.calls[0][1].duration).toBe(500)
+
+  })
+})
+
+describe('zoomTo', () => {
+  const mockPopup = {
+    hide: jest.fn()
+  }
+  const mockTabs = {
+    open: jest.fn()
+  }
+  const mockMap = {
+    handlers: {},
+    once: (event, handler) => {
+      mockMap.handlers[event] = handler
+    },
+    trigger: (event) => {
+      if (mockMap.handlers[event]) {
+        mockMap.handlers[event]({pixel: 'mock-pixel'})
+        delete mockMap.handlers[event]
+      }
+    }
+  }
+  let tabs
+
   beforeEach(() => {
-    FinderApp.prototype.located = jest.fn()
-    App.prototype.zoomToExtent = jest.fn()
+    tabs = $('<div id="tabs"><div class="btns><h2></h2><h2></h2></div></div>')
+    $('body').append(tabs)
+    mockPopup.hide.mockClear()
+    mockTabs.open.mockClear()
+    mockMap.handlers = {}
   })
 
   afterEach(() => {
-    FinderApp.prototype.located = located
-    App.prototype.zoomToExtent = zoomToExtent
+    tabs.remove()
   })
 
+  test.only('zoomTo', () => {
+    expect.assertions(11)
 
- test('located', () => {
-  expect.assertions(6)
-  mockContent.messages.active = 'true'
+    mockContent.messages.active = 'true'
 
-  const app = new App(mockContent, 'http://pods-endpoint')
-  const loc = {
-    coordinate: 'mock-coordinate'
-  }
+    const app = new App(mockContent, 'http://pods-endpoint')
+    app.popup = mockPopup
+    app.tabs = mockTabs
+    app.map = mockMap
+    app.zoomToExtent = jest.fn()
 
-  app.located(loc)
+    $('#tabs .btns h2:first-of-type').css('display', 'block')
+    console.warn($('#tabs .btns h2:first-of-type')[0],$('#tabs .btns h2:first-of-type').css('display'));
+    app.zoomTo(examplePOD1)
 
-  expect(FinderApp).toHaveBeenCalledTimes(1)
-  expect(FinderApp.prototype.located).toHaveBeenCalledTimes(1)
-  expect(FinderApp.prototype.located.mock.calls[0][0]).toBe(loc)
+    expect(mockPopup.hide).toHaveBeenCalledTimes(1)
+    expect(app.zoomToExtent).toHaveBeenCalledTimes(1)
+    expect(app.zoomToExtent.mock.calls[0][0]).toEqual([100, 200])
+    expect(app.zoomToExtent.mock.calls[0][1]).toBe(4)
+    expect(app.tabs.open).toHaveBeenCalledTimes(1)
+    expect(app.tabs.open.mock.calls[0][0]).toBe('#map')
 
-  expect(App.prototype.zoomToExtent).toHaveBeenCalledTimes(1)
-  expect(App.prototype.zoomToExtent.mock.calls[0][0]).toBe(loc.coordinate)
-  expect(App.prototype.zoomToExtent.mock.calls[0][1]).toBe(3)
+    
+    $('#tabs .btns h2:first-of-type').css('display', 'none')
+    console.warn($('#tabs .btns h2:first-of-type')[0],$('#tabs .btns h2:first-of-type').css('display'));
+    app.zoomTo(examplePOD2)
 
- })
+    expect(mockPopup.hide).toHaveBeenCalledTimes(2)
+    expect(app.zoomToExtent).toHaveBeenCalledTimes(2)
+    expect(app.zoomToExtent.mock.calls[1][0]).toEqual([100, 100])
+    expect(app.zoomToExtent.mock.calls[1][1]).toBe(4)
+    expect(app.tabs.open).toHaveBeenCalledTimes(1)
 
+  })
 })

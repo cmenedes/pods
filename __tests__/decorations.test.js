@@ -1,6 +1,6 @@
 import decorations from '../src/js/decorations'
 import OlFeature from 'ol/Feature'
-import {examplePOD1,examplePOD2,examplePOD3,examplePOD4,examplePOD5,examplePOD6} from './features.mock'
+import {examplePOD1, examplePOD2, examplePOD3, examplePOD4, examplePOD6} from './features.mock'
 import nyc from 'nyc-lib/nyc'
 
 
