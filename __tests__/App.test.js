@@ -568,7 +568,8 @@ describe('zoomToExtent', () => {
 
 describe('zoomTo', () => {
   const mockPopup = {
-    hide: jest.fn()
+    hide: jest.fn(),
+    showFeature: jest.fn()
   }
   const mockTabs = {
     open: jest.fn()
@@ -588,9 +589,10 @@ describe('zoomTo', () => {
   let tabs
 
   beforeEach(() => {
-    tabs = $('<div id="tabs"><div class="btns><h2></h2><h2></h2></div></div>')
+    tabs = $('<div id="tabs"><div class="btns"><h2></h2><h2></h2></div></div>')
     $('body').append(tabs)
     mockPopup.hide.mockClear()
+    mockPopup.showFeature.mockClear()
     mockTabs.open.mockClear()
     mockMap.handlers = {}
   })
@@ -599,8 +601,8 @@ describe('zoomTo', () => {
     tabs.remove()
   })
 
-  test.only('zoomTo', () => {
-    expect.assertions(11)
+  test('zoomTo', () => {
+    expect.assertions(15)
 
     mockContent.messages.active = 'true'
 
@@ -611,7 +613,6 @@ describe('zoomTo', () => {
     app.zoomToExtent = jest.fn()
 
     $('#tabs .btns h2:first-of-type').css('display', 'block')
-    console.warn($('#tabs .btns h2:first-of-type')[0],$('#tabs .btns h2:first-of-type').css('display'));
     app.zoomTo(examplePOD1)
 
     expect(mockPopup.hide).toHaveBeenCalledTimes(1)
@@ -621,9 +622,12 @@ describe('zoomTo', () => {
     expect(app.tabs.open).toHaveBeenCalledTimes(1)
     expect(app.tabs.open.mock.calls[0][0]).toBe('#map')
 
+    mockMap.trigger('moveend')
+
+    expect(app.popup.showFeature).toHaveBeenCalledTimes(1)
+    expect(app.popup.showFeature.mock.calls[0][0]).toBe(examplePOD1)
     
     $('#tabs .btns h2:first-of-type').css('display', 'none')
-    console.warn($('#tabs .btns h2:first-of-type')[0],$('#tabs .btns h2:first-of-type').css('display'));
     app.zoomTo(examplePOD2)
 
     expect(mockPopup.hide).toHaveBeenCalledTimes(2)
@@ -631,6 +635,11 @@ describe('zoomTo', () => {
     expect(app.zoomToExtent.mock.calls[1][0]).toEqual([100, 100])
     expect(app.zoomToExtent.mock.calls[1][1]).toBe(4)
     expect(app.tabs.open).toHaveBeenCalledTimes(1)
+
+    mockMap.trigger('moveend')
+
+    expect(app.popup.showFeature).toHaveBeenCalledTimes(2)
+    expect(app.popup.showFeature.mock.calls[1][0]).toBe(examplePOD2)
 
   })
 })
