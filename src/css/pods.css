@@ -99,7 +99,7 @@ body *, .btn {
 
 .desc {
   padding: 10px 5px 10px 5px; 
-  text-align: center;
+  text-align: left;
   font-size: 18px;
   margin-left: 2px;
   margin-top: -3px;
@@ -339,7 +339,6 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
   .fnd .splash .dia {
       width:340px;
       left: calc(50% - 180px);
-      height: 350px;
       top: 50px;
   }
 }
@@ -348,22 +347,24 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
   .fnd .splash .dia {
       width:300px;
       left: calc(50% - 159px);
-      height: 350px;
       top: 50px;
+  }
+  .fnd .splash .dia .btn-ok {
+    width: calc(95% + 10px) !important;
   }
 }
  
 @media only screen and (max-height: 400px) {
 	.fnd .splash .dia {
     top: 20%;
-	}
+    overflow-y: auto;
+  }
 }
 
 @media only screen and (max-height: 340px) {
   .fnd .splash .dia {
       top:10%;
       height: 100%;
-      overflow-y: auto;
   }
 }
 
@@ -375,15 +376,9 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
       max-width: 320px;
   }
 
-}
 
-
-@media only screen and (max-width: 345px) {
-  .fnd .splash .dia .btn-ok {
-    width: 295px !important;
-  }
 }
 
 .fnd .splash .dia .btn-ok {
-  width: 315px;
+  width: 95%;
 }
