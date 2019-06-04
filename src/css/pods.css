@@ -1,18 +1,3 @@
-@import "nyc-ol-lib.css";
-@import "ol.finderapp.css";
-@import "nyc-ol-lib.css";
-@import "ol.finderapp.css";
-@import "nyc-lib.css";
-
-@import "ol.featuretip.css";
-@import "ol.popup.css";
-@import "ol.finderapp.css";
-@import "nyc-lib.css";
-
-@import "ol.featuretip.css";
-@import "ol.popup.css";
-@import "ol.finderapp.css";
-
 .fnd #banner {
   background-image: url(../img/nyc.svg);
   background-size: 49px 24px;
@@ -381,4 +366,22 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 
 .fnd .splash .dia .btn-ok {
   width: 95%;
+}
+
+.splash .btn-ok {
+  background-color: #0080a9 !important;
+  color: #fff !important;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.splash a:focus {
+  box-shadow: none !important;
+  background-color: #fefcd5 !important;
+  color: #0080a9 !important;
+}
+
+#map .btn-sq:focus {
+  box-shadow: 0 0 3px 3px #fefcd5 inset !important;
+  border: 1px solid #0080a9;
 }

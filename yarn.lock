@@ -4520,10 +4520,10 @@ nyc-build-helper@^0.0.28:
     webpack "4.19.1"
     zip-dir "^1.0.2"
 
-nyc-lib@^1.2.76:
-  version "1.2.76"
-  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.2.76.tgz#0f71555506edac96a09007623406d8b08efbc4f5"
-  integrity sha512-qsPwFQNQg4q9r5SOykLLzHcCmFSONcuJOpVmG0aZRnym/BqKsTvoRaJWdNIuf0bPjDoPaGSsgo6HYO9s3PU2WQ==
+nyc-lib@^1.2.79:
+  version "1.2.79"
+  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.2.79.tgz#53ab9eb72bc6382ce523b91205f7bd63fd539467"
+  integrity sha512-NkZkcXYQESMdWo6ppUloJDgMuvfLloyuDclm1h25NJmJzzd6wOmQyJ5IBAzzNnJW2Zxmo8i0SCmjVMOvqWsuiw==
   dependencies:
     babel-polyfill "^6.26.0"
     eslint-config-openlayers "^11.0.0"
@@ -5454,9 +5454,9 @@ resolve@^1.1.6, resolve@^1.10.0:
     path-parse "^1.0.6"
 
 resolve@^1.1.7, resolve@^1.11.0, resolve@^1.5.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.11.0.tgz#4014870ba296176b86343d50b60f3b50609ce232"
-  integrity sha512-WL2pBDjqT6pGUNSUzMw00o4T7If+z4H2x3Gz893WoUQ5KW8Vr9txp00ykiP16VBaZF5+j/OcXJHZ9+PCvdiDKw==
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.11.1.tgz#ea10d8110376982fef578df8fc30b9ac30a07a3e"
+  integrity sha512-vIpgF6wfuJOZI7KKKSP+HmiKggadPQAdsp5HiC1mvqnfp0gF1vdwgBWZIdrVft9pgqoMFQN+R7BSWZiBxx+BBw==
   dependencies:
     path-parse "^1.0.6"
 

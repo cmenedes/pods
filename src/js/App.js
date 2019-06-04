@@ -80,6 +80,7 @@ class App extends FinderApp {
     this.addLabels()
     this.highlightSite()
 
+    $('.srch input').attr('placeholder', 'Search for an address in NYC...')
   }
 
   rearrangeLayers() {
