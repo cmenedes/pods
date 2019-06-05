@@ -320,49 +320,6 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
   margin-left: 23px;
 }
 
-@media only screen and (max-width: 400px) {
-  .fnd .splash .dia {
-      width:340px;
-      left: calc(50% - 180px);
-      top: 50px;
-  }
-}
-
-@media only screen and (max-width: 345px) {
-  .fnd .splash .dia {
-      width:300px;
-      left: calc(50% - 159px);
-      top: 50px;
-  }
-  .fnd .splash .dia .btn-ok {
-    width: calc(95% + 10px) !important;
-  }
-}
- 
-@media only screen and (max-height: 400px) {
-	.fnd .splash .dia {
-    top: 20%;
-    overflow-y: auto;
-  }
-}
-
-@media only screen and (max-height: 340px) {
-  .fnd .splash .dia {
-      top:10%;
-      height: 100%;
-  }
-}
-
-@media only screen and (max-width: 340px) {
-  .pop, .pop>.content {
-      left: -10px;
-      overflow-x: auto;
-      overflow-y: hidden;
-      max-width: 320px;
-  }
-
-
-}
 
 .fnd .splash .dia .btn-ok {
   width: 95%;
@@ -384,4 +341,33 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 #map .btn-sq:focus, #lng .btn-sq.focused {
   box-shadow: 0 0 3px 3px #fefcd5 inset !important;
   border: 1px solid #0080a9;
+}
+
+@media only screen and (max-width: 340px) {
+  .pop, .pop>.content {
+      left: -10px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      max-width: 320px;
+  }
+}
+
+@media only screen and (max-height: 340px) {
+  .fnd .splash .dia .dia-msg {
+    max-height: 200px;
+    overflow: auto;
+  }
+  .fnd .splash .dia {
+    max-height: 280px;
+    top: 40px;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .fnd .splash .dia {
+      width: auto;
+      left: 0;
+      right: 0;
+      top: 40px;
+  }
 }
