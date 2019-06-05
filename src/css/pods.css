@@ -352,7 +352,7 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
   }
 }
 
-@media only screen and (max-height: 340px) {
+@media only screen and (max-height: 400px) {
   .fnd .splash .dia .dia-msg {
     max-height: 200px;
     overflow: auto;
@@ -360,6 +360,25 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
   .fnd .splash .dia {
     max-height: 280px;
     top: 40px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .fnd .splash .dia .dia-msg {
+    max-height: 200px;
+    overflow: auto;
+  }
+  .fnd .splash .dia {
+    max-height: 280px;
+    top: 40px;
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  .fnd .splash .dia {
+    width: 355px;
+    left: calc(50% - 187px);
+    top: 120px;
   }
 }
 
