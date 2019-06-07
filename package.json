@@ -1,6 +1,6 @@
 {
   "name": "pods",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -38,7 +38,7 @@
     "coveralls": "^3.0.2",
     "jest": "^24.8.0",
     "jest-fetch-mock": "^1.6.5",
-    "nyc-build-helper": "^0.0.30",
+    "nyc-build-helper": "^0.0.31",
     "webpack": "4.19.1",
     "webpack-cli": "2.0.14"
   },
