@@ -140,7 +140,9 @@ body *, .btn {
 #back-to-map.btn:hover:before {
   background-color: var(--color-light);
 }
-
+#back-to-map * {
+  color: #fff;
+}
 .fnd #facilities {
   background-color: var(--color-medium);
 }
