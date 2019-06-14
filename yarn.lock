@@ -885,9 +885,9 @@
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
 "@types/node@*":
-  version "12.0.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.7.tgz#4f2563bad652b2acb1722d7e7aae2b0ff62d192c"
-  integrity sha512-1YKeT4JitGgE4SOzyB9eMwO0nGVNkNEsm9qlIt1Lqm/tG2QEiSMTD4kS3aO6L+w5SClLVxALmIBESK6Mk5wX0A==
+  version "12.0.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.8.tgz#551466be11b2adc3f3d47156758f610bd9f6b1d8"
+  integrity sha512-b8bbUOTwzIY3V5vDTY1fIJ+ePKDUBqt2hC2woVGotdQQhG/2Sh62HOKHrT7ab+VerXAcPyAiTEipPu/FsreUtg==
 
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
@@ -6075,10 +6075,10 @@ nwsapi@^2.0.7:
   resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.1.4.tgz#e006a878db23636f8e8a67d33ca0e4edf61a842f"
   integrity sha512-iGfd9Y6SFdTNldEy2L0GUhcarIutFmk+MPWIn9dmj8NMIup03G08uUF2KGbbmv/Ux4RT0VZJoP/sVbWA6d/VIw==
 
-nyc-build-helper@^0.0.31:
-  version "0.0.31"
-  resolved "https://registry.yarnpkg.com/nyc-build-helper/-/nyc-build-helper-0.0.31.tgz#e05e1091e49024743df2ba943c4ae5fc4d206e6d"
-  integrity sha512-jinSLfUXBnbqi0032uObKPGPMgsbd7Ya12WadzUkQ2x0GbBNEDRH7N8zzY7Lnx9ljdS6tQUDCJWqwlmOKrkqVQ==
+nyc-build-helper@^0.0.32:
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/nyc-build-helper/-/nyc-build-helper-0.0.32.tgz#60cafc37c762db7c3cf49e3d92b7f3f590495e55"
+  integrity sha512-gtNTwBhvDPJ+9tud8FxC4aZdnxnH2XWB4hwEEfBkzfZ5HxXiHqSW8q2VHFzIWxlNj9sXeqA3mCNaa9PBT7YvkQ==
   dependencies:
     clean-webpack-plugin "^3.0.0"
     copy-webpack-plugin "^5.0.3"
@@ -6089,10 +6089,10 @@ nyc-build-helper@^0.0.31:
     webpack "4.19.1"
     zip-dir "^1.0.2"
 
-nyc-lib@^1.2.95:
-  version "1.2.95"
-  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.2.95.tgz#a68b6fe16fd7ff66236a1d468af142aaba2ab3c5"
-  integrity sha512-8jv9mWB8ysda50Mac71XPxoDpfNAKwhkZozImAkKkeAAlt36vrkhU/pf/H3CJjkFyeC1wVX4xNI/rVXxtEF6mw==
+nyc-lib@^1.2.98:
+  version "1.2.98"
+  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.2.98.tgz#bbc73b8cf8f30145c0144f671170999ec5eb613c"
+  integrity sha512-vGxQeQBDgd1G3leosdgngudV3o46kgrejovdgq4b36BNP/4fIswqUj7rUT9JDoCSM54rckq3wwi0tgFLPdpQ4A==
   dependencies:
     eslint-config-openlayers "^11.0.0"
     eslint-import-resolver-alias "^1.1.2"
