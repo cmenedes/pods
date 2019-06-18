@@ -343,10 +343,6 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
   color: #0080a9 !important;
 }
 
-.fnd.rtl .splash .dia-msg * {
-  text-align: right;
-}
-
 .btn-shr:focus, .btn-z-in:focus, .btn-z-out:focus, .btn-geo:focus, #lng .btn-sq.focused {
   box-shadow: 0 0 3px 3px #fefcd5 inset !important;
   border: 1px solid #0080a9;
