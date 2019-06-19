@@ -1,7 +1,7 @@
 {  
   "short_name": "Points of Dispensing (POD) Finder",  
-  "name": "Points of Dispensing (POD) Finder",  
-  "description": "Points of Dispensing (POD) Finder",  
+  "name": "NYC DOHMH Points of Dispensing (POD) Finder",  
+  "description": "Points of Dispensing (PODs) are temporary sites that are ready to open to provide life-saving medications to anyone who needs them after a biological attack or during a communicable disease outbreak. The sites are located throughout the city and are run by the NYC Department of Health and Mental Hygiene. All NYC POD sites are wheelchair accessible.",  
   "start_url": "index.html",  
   "icons": [  
     {  
