@@ -91,6 +91,12 @@ body *, .btn {
   border-bottom: 1px solid var(--color-border);
   font-weight: bold;
 }
+.translated-rtl .leg-sw {
+  float: right;
+}
+.translated-rtl .desc {
+  text-align: right;
+}
 
 @media only screen and (min-width: 605px) {
   .fnd #banner * {
@@ -286,6 +292,23 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
   border-radius: 50%;
   margin: 0 3px -4px -22px;
 }
+.translated-rtl .chc-chc.status label:before,
+.translated-rtl .facility.open-to-public .name:before,
+.translated-rtl .facility.opening-soon .name:before,
+.translated-rtl .facility.closed-to-public .name:before {
+  margin: 0 3px -4px 3px;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .translated-rtl .chc-chc input {
+    margin-left: -12px;
+    margin-right: 8px;
+  }
+  .chc-chc input {
+    margin-right: -10px;
+    margin-left: 8px;
+  }
+}
 .chc-chc.status label:before {
   margin: 0 7px -4px -4px;
 }
@@ -436,4 +459,9 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 
 .apply font {
   color: inherit;
+}
+
+.translated-rtl .pop>.content .name {
+  margin-right: auto;
+  padding-right: inherit;
 }
