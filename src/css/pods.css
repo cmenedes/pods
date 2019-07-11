@@ -38,7 +38,9 @@
   animation: alert 15s linear infinite;
   color: #FCED04;
 }
-
+.alert #marquee div>div>div * {
+  color: #FCED04;
+}
 @keyframes alert {
   0% {
     right: -200%;
