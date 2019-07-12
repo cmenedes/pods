@@ -487,6 +487,6 @@ html[lang="ur"] .fnd #banner>div {
   white-space: nowrap;
 }
 
-html[lang="ur"] font {
+html[lang="ur"] font, html[lang="ur"] .srch-ctl input, html[lang="ur"] #fld-from input  {
   line-height: 25px;
 }
