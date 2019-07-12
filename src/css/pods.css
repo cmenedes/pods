@@ -17,7 +17,7 @@
   background-color: #E75624;
   display: table;
   position: fixed;
-  top: 36px;
+  top: 35px;
   right: 0;
   left: auto;
   height: 24px;
@@ -477,4 +477,16 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 .translated-rtl .pop>.content .name {
   margin-right: auto;
   padding-right: inherit;
+}
+
+html[lang="ur"] .fnd #banner>div {
+  margin-right: 150px;
+  overflow: hidden;
+  max-height: 35px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+html[lang="ur"] font {
+  line-height: 25px;
 }
