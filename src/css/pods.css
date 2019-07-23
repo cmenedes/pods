@@ -10,6 +10,14 @@
   margin-left: -48.5px;
 }
 
+.fnd .splash .dia {
+  top: 60px;
+}
+
+.fnd .splash .dia a.btn-no, .fnd .splash .dia a.btn-yes {
+  width: 320px;
+}
+
 #marquee {
   display: none;
   border-top: 1px solid #F2DEDE;
@@ -358,19 +366,9 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
   margin-left: 23px;
 }
 
-
-.fnd .splash .dia .btn-ok {
-  width: 95%;
-}
-
-.splash .btn-ok, .splash .btn-ok * {
+.splash .btn, .splash .btn * {
   background-color: #0080a9 !important;
   color: #fff !important;
-}
-
-.splash .btn-ok {
-  padding-left: 3px;
-  padding-right: 3px;
 }
 
 .splash a:focus, .splash a:focus * {
@@ -433,12 +431,11 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 
 @media only screen and (max-height: 400px) {
   .fnd .splash .dia .dia-msg {
-    max-height: 200px;
+    max-height: 185px;
     overflow: auto;
   }
   .fnd .splash .dia {
     max-height: 280px;
-    top: 40px;
   }
 }
 
@@ -449,7 +446,6 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
   }
   .fnd .splash .dia {
     max-height: 280px;
-    top: 40px;
   }
 }
 
@@ -466,7 +462,6 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
       width: auto;
       left: 0;
       right: 0;
-      top: 40px;
   }
 }
 

@@ -54,7 +54,7 @@ class App extends FinderApp {
       title: content.message('title'),
       splashOptions: {
         message: content.message('splash'),
-        buttonText: ['View Map to Find Your Closest POD Site']
+        buttonText: ['Screen reader instructions', 'View map to find your closest POD Site']
       },
       facilityUrl: url,
       facilityFormat: new GeoJson({

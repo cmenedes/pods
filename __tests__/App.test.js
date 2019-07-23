@@ -65,7 +65,7 @@ describe('constructor', () => {
 
     expect(FinderApp.mock.calls[0][0].title).toBe('app title')
     expect(FinderApp.mock.calls[0][0].splashOptions.message).toBe('splash content')
-    expect(FinderApp.mock.calls[0][0].splashOptions.buttonText).toEqual(['View Map to Find Your Closest POD Site'])
+    expect(FinderApp.mock.calls[0][0].splashOptions.buttonText).toEqual(['Screen reader instructions', 'View map to find your closest POD Site'])
     expect(FinderApp.mock.calls[0][0].facilityUrl).toBe('http://pods-endpoint')
     
     expect(GeoJson).toHaveBeenCalledTimes(1)
@@ -155,7 +155,7 @@ describe('constructor', () => {
 
     expect(FinderApp.mock.calls[0][0].title).toBe('app title')
     expect(FinderApp.mock.calls[0][0].splashOptions.message).toBe('splash content')
-    expect(FinderApp.mock.calls[0][0].splashOptions.buttonText).toEqual(['View Map to Find Your Closest POD Site'])
+    expect(FinderApp.mock.calls[0][0].splashOptions.buttonText).toEqual(['Screen reader instructions', 'View map to find your closest POD Site'])
     expect(FinderApp.mock.calls[0][0].facilityUrl).toBe('http://pods-endpoint')
     
     expect(GeoJson).toHaveBeenCalledTimes(1)
