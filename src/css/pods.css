@@ -14,8 +14,17 @@
   top: 60px;
 }
 
-.fnd .splash .dia a.btn-no, .fnd .splash .dia a.btn-yes {
+.fnd .splash .dia a.btn {
   width: 320px;
+}
+.fnd .splash .dia a.btn-yes {
+  background-image: var(--speaker-icon-light);
+}
+.fnd .splash .dia a.btn-yes:focus {
+  background-image: var(--speaker-icon-dark);
+}
+.fnd .splash .dia a.btn-yes:hover {
+  background-image: var(--speaker-icon-light);
 }
 
 #marquee {
