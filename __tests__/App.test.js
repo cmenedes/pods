@@ -476,7 +476,7 @@ describe('addLegend', () => {
   })
 
   test('addLegend - active false', () => {
-    expect.assertions(3)
+    expect.assertions(2)
     mockContent.messages.active = 'false'
 
     const app = new App(mockContent, 'http://pods-endpoint')
@@ -485,7 +485,6 @@ describe('addLegend', () => {
     expect($('.legend').css('display')).toBe('none')
 
     app.addLegend()
-    expect($('.desc').children().last().html()).toBe('')
     expect($('.legend').css('display')).toBe('none')
 
   })

@@ -13,7 +13,11 @@
 .fnd .splash .dia {
   top: 60px;
 }
-
+.fnd .splash h2 {
+  text-align: center !important;
+  font-size: 110%;
+  margin: 0;
+}
 .fnd .splash .dia a.btn {
   width: 320px;
 }
