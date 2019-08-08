@@ -16,7 +16,8 @@ const mockContent = {
   messages: {
     title: 'app title',
     splash: 'splash content',
-    marquee: 'marquee msg'
+    marquee: 'marquee msg',
+    description: 'description text'
   },
   message: (key) => {
     return mockContent.messages[key]
@@ -261,7 +262,7 @@ describe('addMarquee', () => {
 
 describe('addDescription', () => {
   let facilityList
-  
+  // const description = mockContent.messages.description
   beforeEach(() => {
     facilityList = $('<div id="facilities"><div class="list"></div></div>')
     $('body').append(facilityList)
@@ -272,16 +273,37 @@ describe('addDescription', () => {
   })
 
   test('addDescription', () => {
-    expect.assertions(1)
+    expect.assertions(4)
 
     mockContent.messages.active = 'true'
 
     const app = new App(mockContent, 'http://pods-endpoint')
 
     app.addDescription = addDescription
+    
+    expect($('#facilities .list').prev()[0]).toBe(undefined)
+    expect($('div.description').length).toBe(0)
 
     app.addDescription()
-    expect($('.description').parent().html()).toBe(`${pods.DESCRIPTION_HTML}<div class="list"></div>`)
+    expect($('#facilities .list').prev()[0]).not.toBe(undefined)
+    expect($('div.description')).toEqual($('<div class="description"><div class="desc">description text</div></div>'))
+  })
+
+  test('addDescription - description false', () => {
+    expect.assertions(4)
+
+    mockContent.messages.description = ''
+
+    const app = new App(mockContent, 'http://pods-endpoint')
+
+    app.addDescription = addDescription
+    
+    expect($('#facilities .list').prev()[0]).toBe(undefined)
+    expect($('div.description').length).toBe(0)
+
+    app.addDescription()
+    expect($('#facilities .list').prev()[0]).toBe(undefined)
+    expect($('div.description').length).toBe(0)
   })
 })
 
@@ -445,22 +467,20 @@ describe('highlightListItem', () => {
 
 
 describe('addLegend', () => {
-  let description, legend
-  
+  let legend
   beforeEach(() => {
-    description = $(pods.DESCRIPTION_HTML)
+    // mockContent.messages.description = 'description text'
     legend = $(pods.LEGEND_HTML)
     legend.css('display', 'none')
-    $('body').append(description).append(legend)
+    $('body').append(legend)
   })
 
   afterEach(() => {
-    description.remove()
     legend.remove()
   })
 
   test('addLegend - active true', () => {
-    expect.assertions(3)
+    expect.assertions(2)
     mockContent.messages.active = 'true'
 
     const app = new App(mockContent, 'http://pods-endpoint')
@@ -469,8 +489,6 @@ describe('addLegend', () => {
     expect($('.legend').css('display')).toBe('none')
 
     app.addLegend()
-
-    expect($('.desc').children().last().html()).toBe(legend.html())
     expect($('.legend').css('display')).toBe('block')
 
   })

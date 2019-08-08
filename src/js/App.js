@@ -122,16 +122,21 @@ class App extends FinderApp {
   
   }
   addDescription() {
-    let list = $('#facilities .list')
-    $(pods.DESCRIPTION_HTML).insertBefore(list)
+    let list = $('#facilities .list') 
+    const description = this.content.message('description')
+    if(description) {
+      let description = `<div class="description"><div class="desc">${this.content.message('description')}</div></div>`
+      $(description).insertBefore(list)
+    }
   }
 
   addLegend() {
     const active = this.content.message('active')
-    let desc = $('.desc')
+
     if(active == 'true'){
+      let list = $('#facilities .list') 
       $('.legend').css('display', 'block')
-      desc.append($('.legend'))
+      $('.legend').insertBefore(list)
     }
   }
   

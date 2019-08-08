@@ -105,7 +105,7 @@ body *, .btn {
   color: black;
 }
 
-.desc {
+.desc, .legend {
   padding: 10px 5px 10px 5px; 
   text-align: left;
   font-size: 18px;
@@ -243,7 +243,6 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 .legend {
   display: none;
   padding-top: 10px;
-  
 }
 .leg-sw.closed{
   background-color: #999999;
