@@ -101,7 +101,7 @@ body *, .btn {
 	background-color: #006080;
 }
 
-.tabs .btns button.btn.active:focus{
+.tabs button.btn.active:focus, .tabs button.btn.active:focus * {
   color: black;
 }
 
@@ -117,7 +117,7 @@ body *, .btn {
 .translated-rtl .leg-sw {
   float: right;
 }
-.translated-rtl .desc {
+.translated-rtl .desc, .translated-rtl .legend {
   text-align: right;
 }
 
