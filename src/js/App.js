@@ -8,6 +8,7 @@ import decorations from './decorations'
 
 import FinderApp from 'nyc-lib/nyc/ol/FinderApp'
 import GeoJson from 'ol/format/GeoJSON'
+import CsvPoint from 'nyc-lib/nyc/ol/format/CsvPoint'
 import facilityStyle from './facility-style'
 
 import {extend as extentExtend} from 'ol/extent'
@@ -16,6 +17,7 @@ import Directions from 'nyc-lib/nyc/Directions'
 import Point from 'ol/geom/Point'
 
 import Layer from 'ol/layer/Vector'
+import { format } from 'ol/coordinate'
 
 
 
@@ -50,6 +52,19 @@ class App extends FinderApp {
       })
     }
 
+    let format
+    if (url === pods.FACILITY_CSV_URL) {
+      format = new CsvPoint({
+        x: 'lng',
+        y: 'lat',
+        dataProjection: 'EPSG:4326'
+      })
+    } else {
+      format = new GeoJson({
+        dataProjection: 'EPSG:2263',
+        featureProjection: 'EPSG:3857'
+      })
+    }
     super({
       title: content.message('title'),
       splashOptions: {
@@ -57,10 +72,7 @@ class App extends FinderApp {
         buttonText: ['Screen reader instructions', 'View map to find your closest POD Site']
       },
       facilityUrl: url,
-      facilityFormat: new GeoJson({
-        dataProjection: 'EPSG:2263',
-        featureProjection: 'EPSG:3857'
-      }),
+      facilityFormat: format,
       facilityTabTitle: 'PODs',
       facilityStyle: facilityStyle.pointStyle,
       facilitySearch: { displayField: 'search_label', nameField: 'name' },
