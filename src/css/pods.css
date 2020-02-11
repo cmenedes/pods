@@ -304,9 +304,9 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
 /* .chc-chc input:before {
   display: inline-block;
 } */
-.chc-chc.status label:before,
+.chc-chc.Ops_status label:before,
 .facility.open-to-public .name:before,
-.facility.opening-soon .name:before,
+.facility.OpeningTime-soon .name:before,
 .facility.closed-to-public .name:before {
   display: inline-block;
   width: 18px;
@@ -316,46 +316,46 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
   border-radius: 50%;
   margin: 0 3px -4px -22px;
 }
-.translated-rtl .chc-chc.status label:before,
+.translated-rtl .chc-chc.Ops_status label:before,
 .translated-rtl .facility.open-to-public .name:before,
-.translated-rtl .facility.opening-soon .name:before,
+.translated-rtl .facility.OpeningTime-soon .name:before,
 .translated-rtl .facility.closed-to-public .name:before {
   margin: 0 3px -4px 3px;
 }
 /* IE */
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  .translated-rtl .chc-chc.boro input {
+  .translated-rtl .chc-chc.Borough input {
     margin-left: -14px;
     margin-right: 8px;
   }
-  .chc-chc.boro input {
+  .chc-chc.Borough input {
     margin-right: -12px;
     margin-left: 8px;
   }
 
-  .translated-rtl .chc-chc.status input {
+  .translated-rtl .chc-chc.Ops_status input {
     margin-left: -14px;
     margin-right: 8px;
   }
-  .chc-chc.status input {
+  .chc-chc.Ops_status input {
     margin-right: -10px;
     margin-left: 8px;
   }
 }
-.chc-chc.status label:before {
+.chc-chc.Ops_status label:before {
   margin: 0 7px -4px -4px;
 }
-.chc-chc.status label[for=chc-chc-5]:before,
+.chc-chc.Ops_status label[for=chc-chc-5]:before,
 .facility.open-to-public .name:before {
   background-color: #19DB17;
 }
 
-.chc-chc.status label[for=chc-chc-6]:before,
-.facility.opening-soon .name:before   {
+.chc-chc.Ops_status label[for=chc-chc-6]:before,
+.facility.OpeningTime-soon .name:before   {
   background-color: #F3E318;
 }
 
-.chc-chc.status label[for=chc-chc-7]:before,
+.chc-chc.Ops_status label[for=chc-chc-7]:before,
 .facility.closed-to-public .name:before {
   background-color: #999999;
 }
@@ -374,7 +374,7 @@ button.btn.btn-rnd.btn-prv, button.btn.btn-rnd.btn-nxt {
   color: #fff;
 }
 
-.alert .facility .addr {
+.alert .facility .Address {
   margin-left: 23px;
 }
 

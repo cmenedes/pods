@@ -7,16 +7,16 @@ import nyc from 'nyc-lib/nyc'
 
 const decorations = {
   extendFeature() {
-    this.setId(this.get('id'))
+    this.setId(this.get('DOECode'))
     this.active = this.content.message('active')
     this.set(
       'search_label',
       `<b><span class="srch-lbl-lg">${this.getName()}</span></b><br>
       <span class="srch-lbl-sm">${this.getAddress1()}</span>`
     )
-    if (this.active) {
-      const status = this.get('status')
-      if (!status || status === pods.CSV_NOT_ACTIVE_STATUS) {
+    if (this.active === 'true') {
+      const Ops_status = this.get('Ops_status')
+      if (!Ops_status || Ops_status === pods.CSV_NOT_ACTIVE_STATUS) {
         if (this.app) {
           this.app.remove.push(this)
         }
@@ -24,7 +24,7 @@ const decorations = {
     }
   },
   getName() {
-    return this.get('name')
+    return this.get('PODSiteName')
   },
   html() {
     return $('<div class="facility"></div>')
@@ -55,17 +55,17 @@ const decorations = {
       .append('<i class="dir-tip">Click on site for directions</i>')
   },
   getAddress1() {
-    return this.get('addr')
+    return this.get('Address')
   },
   getCityStateZip() {
-    return `${this.get('boro')}, NY ${this.get('zip')}`
+    return `${this.get('Borough')}, NY ${this.get('ZIP')}`
   },
   getActive() {
     return this.active
   },
   getStatus() {
-    const status = this.get('status')
-    switch(status) {
+    const Ops_status = this.get('Ops_status')
+    switch(Ops_status) {
       case 'Mobilizing':
         return 'Opening Soon'
       case 'Open to Public':
@@ -80,7 +80,7 @@ const decorations = {
     return 'Inactive'
   },
   getLatestDate() {
-    const date = this.get('updated')
+    const date = this.get('LatestDate')
 
     if(date){
       const date_convert = new Date(date)
@@ -88,7 +88,7 @@ const decorations = {
     }
   },
   getOpeningTime() {
-    const time = this.get('opening')
+    const time = this.get('OpeningTime')
 
     if(time){
       const time_convert = new Date(time)
@@ -96,10 +96,10 @@ const decorations = {
     }
   },
   getPODLink() {
-    return this.get('lnk')
+    return this.get('DOHMHPODLink')
   },
   getWaitTime() {
-    return this.get('wait')
+    return this.get('wait_time')
   },
   detailsHtml() {
     if (this.getActive() === 'true') {
@@ -107,8 +107,8 @@ const decorations = {
       let ul = $('<ul></ul>')
 
       if (this.getStatus() === 'Open to Public') {
-        const wait = this.getWaitTime() ? this.getWaitTime() + ' minutes' : 'N/A'
-        const waitTime = `<li><b>Wait time: </b>${wait}</li>`
+        const wait_time = this.getWaitTime() ? this.getWaitTime() + ' minutes' : 'N/A'
+        const waitTime = `<li><b>Wait time: </b>${wait_time}</li>`
 
         ul.append(waitTime)
       }
@@ -117,13 +117,13 @@ const decorations = {
         ul.append(openingTime)
       }
     
-      const status = `<li><b>Status: </b>${this.getStatus()}</li>`
+      const Ops_status = `<li><b>Status: </b>${this.getStatus()}</li>`
 
       const update = this.getLatestDate()
       const latestUpdate = `<li><b>Last Updated: </b>${update||'N/A'}</li>`
       ul.append(latestUpdate)
 
-      ul.prepend(status)
+      ul.prepend(Ops_status)
 
       return ul
     }

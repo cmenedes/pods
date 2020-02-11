@@ -48,7 +48,7 @@ describe('pointStyle', () => {
     
   })
 
-  test('active is true, facility opening soon', () => {
+  test('active is true, facility OpeningTime soon', () => {
     expect.assertions(9)
 
     const style = facilityStyle.pointStyle(examplePOD3, 305.748113140705)
@@ -65,7 +65,7 @@ describe('pointStyle', () => {
     
   })
 
-  test('active is true, status unknown', () => {
+  test('active is true, Ops_status unknown', () => {
     expect.assertions(9)
 
     const style = facilityStyle.pointStyle(examplePOD5, 305.748113140705)
@@ -180,12 +180,12 @@ describe('textStyle', () => {
     expect(style).toBeUndefined()
   })
 
-  test('labelpos - N', () => {
+  test('LabelPos - N', () => {
     expect.assertions(15)
 
     const style = facilityStyle.textStyle(examplePOD1, 9.554628535647032)
 
-    expect(examplePOD1.get('labelpos')).toBe('N')
+    expect(examplePOD1.get('LabelPos')).toBe('N')
 
     expect(facilityStyle.calcRadius).toHaveBeenCalledTimes(1)
     expect(facilityStyle.calcRadius.mock.calls[0][0]).toBe(14)
@@ -208,12 +208,12 @@ describe('textStyle', () => {
     
   })
 
-  test('labelpos - S', () => {
+  test('LabelPos - S', () => {
     expect.assertions(15)
 
     const style = facilityStyle.textStyle(examplePOD2, 9.554628535647032)
 
-    expect(examplePOD2.get('labelpos')).toBe('S')
+    expect(examplePOD2.get('LabelPos')).toBe('S')
 
     expect(facilityStyle.calcRadius).toHaveBeenCalledTimes(1)
     expect(facilityStyle.calcRadius.mock.calls[0][0]).toBe(14)
@@ -233,12 +233,12 @@ describe('textStyle', () => {
     expect(style.getText().getStroke().getWidth()).toBe(5)
   })
 
-  test('labelpos - E', () => {
+  test('LabelPos - E', () => {
     expect.assertions(15)
 
     const style = facilityStyle.textStyle(examplePOD3, 9.554628535647032)
 
-    expect(examplePOD3.get('labelpos')).toBe('E')
+    expect(examplePOD3.get('LabelPos')).toBe('E')
 
     expect(facilityStyle.calcRadius).toHaveBeenCalledTimes(1)
     expect(facilityStyle.calcRadius.mock.calls[0][0]).toBe(14)
@@ -258,12 +258,12 @@ describe('textStyle', () => {
     expect(style.getText().getStroke().getWidth()).toBe(5)
   })
 
-  test('labelpos - W', () => {
+  test('LabelPos - W', () => {
     expect.assertions(15)
 
     const style = facilityStyle.textStyle(examplePOD4, 9.554628535647032)
 
-    expect(examplePOD4.get('labelpos')).toBe('W')
+    expect(examplePOD4.get('LabelPos')).toBe('W')
 
     expect(facilityStyle.calcRadius).toHaveBeenCalledTimes(1)
     expect(facilityStyle.calcRadius.mock.calls[0][0]).toBe(14)
@@ -283,12 +283,12 @@ describe('textStyle', () => {
     expect(style.getText().getStroke().getWidth()).toBe(5)
   })
 
-  test('labelpos - not provided(default)', () => {
+  test('LabelPos - not provided(default)', () => {
     expect.assertions(15)
 
     const style = facilityStyle.textStyle(examplePOD5, 9.554628535647032)
 
-    expect(examplePOD5.get('labelpos')).toBeUndefined()
+    expect(examplePOD5.get('LabelPos')).toBeUndefined()
 
     expect(facilityStyle.calcRadius).toHaveBeenCalledTimes(1)
     expect(facilityStyle.calcRadius.mock.calls[0][0]).toBe(14)

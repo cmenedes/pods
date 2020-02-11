@@ -49,17 +49,17 @@ describe('decorations', () => {
     expect.assertions(4)
     examplePOD1.extendFeature()
     expect(examplePOD1.active).toBe(examplePOD1.content.message("active"))
-    expect(examplePOD1.getId()).toBe(examplePOD1.get('id'))
+    expect(examplePOD1.getId()).toBe(examplePOD1.get('DOECode'))
     expect(examplePOD1.get('search_label')).not.toBeNull()
-    expect(examplePOD1.get('search_label')).toBe(`<b><span class="srch-lbl-lg">${examplePOD1.get('name')}</span></b><br>
-      <span class="srch-lbl-sm">${examplePOD1.get('addr')}</span>`)
+    expect(examplePOD1.get('search_label')).toBe(`<b><span class="srch-lbl-lg">${examplePOD1.get('PODSiteName')}</span></b><br>
+      <span class="srch-lbl-sm">${examplePOD1.get('Address')}</span>`)
 
   })
 
   test('html - active true', () => {
     expect.assertions(8)
 
-    let date = new Date(examplePOD1.get('updated'))
+    let date = new Date(examplePOD1.get('LatestDate'))
     const time = date.toLocaleTimeString()
     date = date.toLocaleDateString()
 
@@ -111,7 +111,7 @@ describe('decorations', () => {
   test('getTip', () => {
     expect.assertions(2)
 
-    let date = new Date(examplePOD1.get('updated'))
+    let date = new Date(examplePOD1.get('LatestDate'))
     const time = date.toLocaleTimeString()
     date = date.toLocaleDateString()
 
@@ -122,32 +122,32 @@ describe('decorations', () => {
 
   test('getAddress1', () => {
     expect.assertions(2)
-    expect(examplePOD1.getAddress1()).toBe(`${examplePOD1.get('addr')}`)
+    expect(examplePOD1.getAddress1()).toBe(`${examplePOD1.get('Address')}`)
     expect(examplePOD1.getAddress1()).not.toBeNull()
   })
 
 
   test('getCityStateZip', () => {
     expect.assertions(2)
-    expect(examplePOD1.getCityStateZip()).toBe(`${examplePOD1.get('boro')}, NY ${examplePOD1.get('zip')}`)
+    expect(examplePOD1.getCityStateZip()).toBe(`${examplePOD1.get('Borough')}, NY ${examplePOD1.get('ZIP')}`)
     expect(examplePOD1.getCityStateZip()).not.toBeNull()
     
   })
   
   test('getName', () => {
     expect.assertions(2)
-    expect(examplePOD1.getName()).toBe(`${examplePOD1.get('name')}`)
+    expect(examplePOD1.getName()).toBe(`${examplePOD1.get('PODSiteName')}`)
     expect(examplePOD1.getName()).not.toBeNull()
     
   })
 describe('getStatus', () => {
   afterEach(() => {
-    examplePOD1.set('status', 'Closed to Public')
+    examplePOD1.set('Ops_status', 'Closed to Public')
   })
   test('getStatus - open soon', () => {
     expect.assertions(3)
-    examplePOD1.set('status', 'Mobilizing')
-    expect(examplePOD1.get('status')).toBe('Mobilizing')
+    examplePOD1.set('Ops_status', 'Mobilizing')
+    expect(examplePOD1.get('Ops_status')).toBe('Mobilizing')
     expect(examplePOD1.getStatus()).toBe('Opening Soon')
     expect(examplePOD1.getStatus()).not.toBeNull()
     
@@ -155,16 +155,16 @@ describe('getStatus', () => {
   test('getStatus - closed', () => {
     expect.assertions(7)
 
-    examplePOD1.set('status', 'Demobilizing')
-    expect(examplePOD1.get('status')).toBe('Demobilizing')
+    examplePOD1.set('Ops_status', 'Demobilizing')
+    expect(examplePOD1.get('Ops_status')).toBe('Demobilizing')
     expect(examplePOD1.getStatus()).toBe('Closed to Public')
 
-    examplePOD1.set('status', 'Demobilized')
-    expect(examplePOD1.get('status')).toBe('Demobilized')
+    examplePOD1.set('Ops_status', 'Demobilized')
+    expect(examplePOD1.get('Ops_status')).toBe('Demobilized')
     expect(examplePOD1.getStatus()).toBe('Closed to Public')
 
-    examplePOD1.set('status', 'Closed to Public')
-    expect(examplePOD1.get('status')).toBe('Closed to Public')
+    examplePOD1.set('Ops_status', 'Closed to Public')
+    expect(examplePOD1.get('Ops_status')).toBe('Closed to Public')
     expect(examplePOD1.getStatus()).toBe('Closed to Public')
 
     expect(examplePOD1.getStatus()).not.toBeNull()
@@ -172,7 +172,7 @@ describe('getStatus', () => {
   })
   test('getStatus - open', () => {
     expect.assertions(2)
-    examplePOD1.set('status', 'Open to Public')
+    examplePOD1.set('Ops_status', 'Open to Public')
     expect(examplePOD1.getStatus()).toBe('Open to Public')
     expect(examplePOD1.getStatus()).not.toBeNull()
     
@@ -180,7 +180,7 @@ describe('getStatus', () => {
 
   test('getStatus - inactive', () => {
     expect.assertions(2)
-    examplePOD1.set('status', '')
+    examplePOD1.set('Ops_status', '')
     expect(examplePOD1.getStatus()).toBe('Inactive')
     expect(examplePOD1.getStatus()).not.toBeNull()
   })
@@ -189,7 +189,7 @@ describe('getStatus', () => {
 
   test('getLatestDate', () => {
     expect.assertions(2)
-    let date = new Date(examplePOD1.get('updated'))
+    let date = new Date(examplePOD1.get('LatestDate'))
     let formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`
     expect(examplePOD1.getLatestDate()).toBe(formattedDate)
     expect(examplePOD1.getLatestDate()).not.toBeNull()
@@ -220,15 +220,15 @@ describe('getStatus', () => {
 
   test('getWaitTime', () => {
     expect.assertions(2)
-    expect(examplePOD1.getWaitTime()).toBe(`${examplePOD1.get('wait')}`)
+    expect(examplePOD1.getWaitTime()).toBe(`${examplePOD1.get('wait_time')}`)
     expect(examplePOD1.getWaitTime()).not.toBeNull()
   })
 
   describe('detailsHtml', () => {
     afterEach(() => {
-      examplePOD1.set('updated', '1/10/2019,3:54 PM')
-      examplePOD2.set('wait', 'Wait_Time')
-      examplePOD3.set('opening', '1/10/2019,3:55 PM')
+      examplePOD1.set('LatestDate', '1/10/2019,3:54 PM')
+      examplePOD2.set('wait_time', 'Wait_Time')
+      examplePOD3.set('OpeningTime', '1/10/2019,3:55 PM')
       
     })
 
@@ -237,19 +237,19 @@ describe('getStatus', () => {
       expect(examplePOD4.detailsHtml()).toBeUndefined()
     })
   
-    test('detailsHtml - active is true, status is open to public', () => {
+    test('detailsHtml - active is true, Ops_status is open to public', () => {
       expect.assertions(4)
-      const update = new Date(examplePOD2.get('updated'))
+      const update = new Date(examplePOD2.get('LatestDate'))
       let ul = $('<ul></ul>')
         .append(`<li><b>Status: </b>${examplePOD2.getStatus()}</li>`)
-        .append(`<li><b>Wait time: </b>${examplePOD2.get('wait')} minutes</li>`)
+        .append(`<li><b>Wait time: </b>${examplePOD2.get('wait_time')} minutes</li>`)
         .append(`<li><b>Last Updated: </b>${update.toLocaleDateString()} ${update.toLocaleTimeString()}</li>`)
     
       expect(examplePOD2.detailsHtml()).toEqual(ul)
       expect(examplePOD2.detailsHtml().children().length).toBe(3)
 
 
-      examplePOD2.set('wait', '')
+      examplePOD2.set('wait_time', '')
 
       ul = $('<ul></ul>')
         .append(`<li><b>Status: </b>${examplePOD2.getStatus()}</li>`)
@@ -260,21 +260,21 @@ describe('getStatus', () => {
         expect(examplePOD2.detailsHtml().children().length).toBe(3)
     })
   
-    test('detailsHtml - active is true, status is opening soon', () => {
+    test('detailsHtml - active is true, Ops_status is OpeningTime soon', () => {
       expect.assertions(4)
-      const update = new Date(examplePOD3.get('updated'))
-      const opening = new Date(examplePOD3.get('opening'))
+      const update = new Date(examplePOD3.get('LatestDate'))
+      const OpeningTime = new Date(examplePOD3.get('OpeningTime'))
   
       let ul = $('<ul></ul>')
         .append(`<li><b>Status: </b>${examplePOD3.getStatus()}</li>`)
-        .append(`<li><b>Estimated Opening Time: </b>${opening.toLocaleDateString()} ${opening.toLocaleTimeString()}</li>`)
+        .append(`<li><b>Estimated Opening Time: </b>${OpeningTime.toLocaleDateString()} ${OpeningTime.toLocaleTimeString()}</li>`)
         .append(`<li><b>Last Updated: </b>${update.toLocaleDateString()} ${update.toLocaleTimeString()}</li>`)
     
       expect(examplePOD3.detailsHtml()).toEqual(ul)
       expect(examplePOD3.detailsHtml().children().length).toBe(3)
 
 
-      examplePOD3.set('opening', '')
+      examplePOD3.set('OpeningTime', '')
 
       ul = $('<ul></ul>')
         .append(`<li><b>Status: </b>${examplePOD3.getStatus()}</li>`)
@@ -285,16 +285,16 @@ describe('getStatus', () => {
         expect(examplePOD3.detailsHtml().children().length).toBe(3)
     })
   
-    test('detailsHtml - active is true, status is closed', () => {
+    test('detailsHtml - active is true, Ops_status is closed', () => {
       expect.assertions(4)
-      const update = new Date(examplePOD1.get('updated'))
+      const update = new Date(examplePOD1.get('LatestDate'))
       let ul = $('<ul></ul>').append(`<li><b>Status: </b>${examplePOD1.getStatus()}</li>`)
       .append(`<li><b>Last Updated: </b>${update.toLocaleDateString()} ${update.toLocaleTimeString()}</li>`)
     
       expect(examplePOD1.detailsHtml()).toEqual(ul)
       expect(examplePOD1.detailsHtml().children().length).toBe(2)
   
-      examplePOD1.set('updated', '')
+      examplePOD1.set('LatestDate', '')
       ul = $('<ul></ul>')
         .append(`<li><b>Status: </b>${examplePOD1.getStatus()}</li>`)
         .append(`<li><b>Last Updated: </b>N/A</li>`)

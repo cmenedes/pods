@@ -14,19 +14,19 @@ const facilityStyle = {
   pointStyle: (feature, resolution) => {
     const zoom = nycOl.TILE_GRID.getZForResolution(resolution)
     const active = feature.getActive()
-    const status = feature.getStatus()
+    const Ops_status = feature.getStatus()
     const siteName = feature.getName()
 
     let fillColor = '#0080A9'
 
     if (active === 'true') {
-      if(status === 'Open to Public') {
+      if(Ops_status === 'Open to Public') {
         fillColor = '#19DB17'
       }
-      else if (status === 'Opening Soon') {
+      else if (Ops_status === 'Opening Soon') {
         fillColor = '#F3E318'
       }
-      else if (status === 'Closed to Public') {
+      else if (Ops_status === 'Closed to Public') {
         fillColor = '#999999'
       }
     }
@@ -71,7 +71,7 @@ const facilityStyle = {
   textStyle: (feature, resolution) => {
     const zoom = nycOl.TILE_GRID.getZForResolution(resolution)
     const idx = zoom - 14
-    let pos = feature.get('labelpos')
+    let pos = feature.get('LabelPos')
     if (pos) {
       pos = pos.split(' ')[idx]
     }

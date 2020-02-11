@@ -29,9 +29,9 @@ class App extends FinderApp {
     if (url === '') {
       url = pods.FACILITY_CSV_URL
       format = new CsvPoint({
-        x: 'lng',
-        y: 'lat',
-        dataProjection: 'EPSG:4326'
+        x: 'x',
+        y: 'y',
+        dataProjection: 'EPSG:2263'
       })
     } else {
       format = new GeoJson({
@@ -46,20 +46,20 @@ class App extends FinderApp {
     const filters = [{
       title: 'Borough',
       choices: [
-        { name: 'boro', values: ['Brooklyn'], label: 'Brooklyn', checked: true },
-        { name: 'boro', values: ['Bronx'], label: 'Bronx', checked: true },
-        { name: 'boro', values: ['Queens'], label: 'Queens', checked: true },
-        { name: 'boro', values: ['Staten Island'], label: 'Staten Island', checked: true },
-        { name: 'boro', values: ['Manhattan'], label: 'Manhattan', checked: true }
+        { name: 'Borough', values: ['Brooklyn'], label: 'Brooklyn', checked: true },
+        { name: 'Borough', values: ['Bronx'], label: 'Bronx', checked: true },
+        { name: 'Borough', values: ['Queens'], label: 'Queens', checked: true },
+        { name: 'Borough', values: ['Staten Island'], label: 'Staten Island', checked: true },
+        { name: 'Borough', values: ['Manhattan'], label: 'Manhattan', checked: true }
       ]
     }]
     if (content.message('active') === 'true') {
       filters.push({
         title: 'Status',
         choices: [
-          { name: 'status', values: ['Open to Public'], label: 'Open to Public', checked: true },
-          { name: 'status', values: ['Mobilizing'], label: 'Opening Soon', checked: true },
-          { name: 'status', values: ['Closed to Public', 'Demobilizing', 'Demobilized'], label: 'Closed to Public', checked: true }
+          { name: 'Ops_status', values: ['Open to Public'], label: 'Open to Public', checked: true },
+          { name: 'Ops_status', values: ['Mobilizing'], label: 'Opening Soon', checked: true },
+          { name: 'Ops_status', values: ['Closed to Public', 'Demobilizing', 'Demobilized'], label: 'Closed to Public', checked: true }
         ]
       })
     }
@@ -131,8 +131,8 @@ class App extends FinderApp {
       $('body').addClass('alert')
       $('#marquee div>div>div').html(marquee)
     }
-  
   }
+
   addDescription() {
     let list = $('#facilities .list') 
     const description = this.content.message('description')
@@ -179,10 +179,10 @@ class App extends FinderApp {
   }
 
   ready(features) {
-    super.ready(features)
     this.remove.forEach(feature => {
       this.source.removeFeature(feature)
     })
+    super.ready(this.source.getFeatures())
   }
 }
 

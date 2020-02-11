@@ -37,7 +37,7 @@ build/
 dist/
 out/
 tmp/
-*.zip
+*.ZIP
 
 # Dependency directories
 node_modules/

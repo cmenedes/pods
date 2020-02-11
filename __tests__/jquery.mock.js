@@ -100,7 +100,7 @@ $.resetMocks = () => {
   })
 
   $.getScript = jest.fn()
-  $.getScript.result = {text: '', status: 200, xhr: {}}
+  $.getScript.result = {text: '', Ops_status: 200, xhr: {}}
   $.getScript.mockImplementation((url, success) => {
     const idx = url.indexOf('callback')
     if (idx > -1) {
@@ -108,7 +108,7 @@ $.resetMocks = () => {
       cb = cb.split('&')[0]
       eval(`${cb}()`)
     }
-    if (success) success($.getScript.result.text, $.getScript.result.status, $.getScript.result.xhr)
+    if (success) success($.getScript.result.text, $.getScript.result.Ops_status, $.getScript.result.xhr)
   })
 
   $.mocks = {
