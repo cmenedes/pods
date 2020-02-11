@@ -71,7 +71,7 @@ describe('constructor', () => {
     expect(FinderApp.mock.calls[0][0].title).toBe('app title')
     expect(FinderApp.mock.calls[0][0].splashOptions.message).toBe('splash content')
     expect(FinderApp.mock.calls[0][0].splashOptions.buttonText).toEqual(['Screen reader instructions', 'View map to find your closest POD Site'])
-    expect(FinderApp.mock.calls[0][0].facilityUrl).toBe('http://pods-endpoint' + encodeURIComponent(pods.ACTIVE_POD_WHERE_CLAUSE))
+    expect(FinderApp.mock.calls[0][0].facilityUrl).toBe('http://pods-endpoint')
     
     expect(GeoJson).toHaveBeenCalledTimes(1)
     expect(GeoJson.mock.calls[0][0].dataProjection).toBe('EPSG:2263')

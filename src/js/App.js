@@ -39,9 +39,6 @@ class App extends FinderApp {
         dataProjection: 'EPSG:2263',
         featureProjection: 'EPSG:3857'
       })
-      if (active) {
-        url += encodeURIComponent(pods.ACTIVE_POD_WHERE_CLAUSE)
-      }
     }
 
     const filters = [{
