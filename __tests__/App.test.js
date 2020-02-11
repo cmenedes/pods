@@ -7,6 +7,7 @@ import App from '../src/js/App';
 import GeoJson from 'ol/format/GeoJSON'
 import Layer from 'ol/layer/Vector'
 import {examplePOD1, examplePOD2, examplePOD3, examplePOD5} from './features.mock'
+import Basemap from 'nyc-lib/nyc/ol/Basemap'
 
 jest.mock('nyc-lib/nyc/ol/FinderApp')
 jest.mock('ol/format/GeoJSON')
@@ -34,6 +35,8 @@ const highlightSite = App.prototype.highlightSite
 
 beforeEach(() => {
   FinderApp.mockClear()
+  FinderApp.prototype.map = {getSize: jest.fn().mockImplementation(() => {return 'mock-size'})}
+  FinderApp.prototype.view = {fit: jest.fn()}
   GeoJson.mockClear()
   Layer.mockClear()
   App.prototype.addMarquee = jest.fn()
@@ -146,7 +149,7 @@ describe('constructor', () => {
   })
 
   test('constructor not active', () => {
-    expect.assertions(49)
+    expect.assertions(53)
 
     mockContent.messages.active = 'false'
 
@@ -154,6 +157,11 @@ describe('constructor', () => {
 
     expect(app instanceof FinderApp).toBe(true)
     expect(FinderApp).toHaveBeenCalledTimes(1)
+
+    expect(FinderApp.prototype.map.getSize).toHaveBeenCalledTimes(1)
+    expect(FinderApp.prototype.view.fit).toHaveBeenCalledTimes(1)
+    expect(FinderApp.prototype.view.fit.mock.calls[0][0]).toBe(Basemap.EXTENT)
+    expect(FinderApp.prototype.view.fit.mock.calls[0][1]).toEqual({size: 'mock-size', duration: 500})
 
     expect(FinderApp.mock.calls[0][0].title).toBe('app title')
     expect(FinderApp.mock.calls[0][0].splashOptions.message).toBe('splash content')

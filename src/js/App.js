@@ -6,6 +6,7 @@ import $ from 'jquery'
 import pods from './pods'
 import decorations from './decorations'
 
+import Basemap from 'nyc-lib/nyc/ol/Basemap'
 import FinderApp from 'nyc-lib/nyc/ol/FinderApp'
 import GeoJson from 'ol/format/GeoJSON'
 import CsvPoint from 'nyc-lib/nyc/ol/format/CsvPoint'
@@ -83,6 +84,11 @@ class App extends FinderApp {
       highlightStyle: facilityStyle.highlightStyle
     })
 
+    this.view.fit(Basemap.EXTENT, {
+      size: this.map.getSize(),
+      duration: 500
+    })
+    
     this.remove = []
     this.content = content
     this.addMarquee()
