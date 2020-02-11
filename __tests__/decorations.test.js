@@ -31,6 +31,9 @@ describe('decorations', () => {
       },
       handleOut() {
         return 'out'
+      },
+      app: {
+        remove: []
       }
     }
     $.extend(examplePOD1, extendedDecorations)

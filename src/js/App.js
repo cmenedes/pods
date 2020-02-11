@@ -23,9 +23,9 @@ class App extends FinderApp {
    * @param {module:nyc-lib/nyc/Content~Content} content The POD content
    */
   constructor(content) {
+    const active = content.message('active') === 'true'
     let format
     let url = content.message('pods_url')
-    const active = content.message('active') === 'true'
     if (url === '') {
       url = pods.FACILITY_CSV_URL
       format = new CsvPoint({
@@ -83,6 +83,7 @@ class App extends FinderApp {
       highlightStyle: facilityStyle.highlightStyle
     })
 
+    this.remove = []
     this.content = content
     this.addMarquee()
     this.addDescription()
@@ -177,6 +178,13 @@ class App extends FinderApp {
     this.zoomToExtent(feature.getGeometry().getCoordinates(), 4)
   }
 
+  ready(features) {
+    super.ready(features)
+    this.remove.forEach(feature => {
+      console.warn(feature.get('status'))
+      this.source.removeFeature(feature)
+    })
+  }
 }
 
 export default App

@@ -14,6 +14,14 @@ const decorations = {
       `<b><span class="srch-lbl-lg">${this.getName()}</span></b><br>
       <span class="srch-lbl-sm">${this.getAddress1()}</span>`
     )
+    if (this.active) {
+      const status = this.get('status')
+      if (!status || status === pods.CSV_NOT_ACTIVE_STATUS) {
+        if (this.app) {
+          this.app.remove.push(this)
+        }
+      }
+    }
   },
   getName() {
     return this.get('name')
