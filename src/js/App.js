@@ -181,7 +181,6 @@ class App extends FinderApp {
   ready(features) {
     super.ready(features)
     this.remove.forEach(feature => {
-      console.warn(feature.get('status'))
       this.source.removeFeature(feature)
     })
   }

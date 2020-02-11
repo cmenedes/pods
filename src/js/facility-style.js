@@ -70,7 +70,12 @@ const facilityStyle = {
 
   textStyle: (feature, resolution) => {
     const zoom = nycOl.TILE_GRID.getZForResolution(resolution)
-    const pos = feature.get('labelpos') || 'E'
+    const idx = zoom - 14
+    let pos = feature.get('labelpos')
+    if (pos) {
+      pos = pos.split(' ')[idx]
+    }
+    pos = pos || 'E'
     let offsetX = 0
     let offsetY = 0
     let textAlign = 'center'
