@@ -7,8 +7,7 @@ jest.mock('nyc-lib/nyc/Content')
 
 const mockContent = {
   messages: {
-    pods_url: 'mock-url',
-    active: 'false'
+    pods_url: 'mock-url'
   },
   message: (key) => {
     return mockContent.messages[key]
@@ -25,8 +24,8 @@ beforeEach(() => {
   })
 })
 
-test('constructs instance of App with inactive PODs', () => {
-  expect.assertions(6)
+test('constructs instance of App', () => {
+  expect.assertions(5)
 
   mockContent.messages.active = 'false'
 
@@ -37,7 +36,6 @@ test('constructs instance of App with inactive PODs', () => {
         expect(Content.loadCsv.mock.calls[0][0].url).toBe(pods.CONTENT_URL)
         expect(App).toHaveBeenCalledTimes(1)
         expect(App.mock.calls[0][0]).toBe(mockContent)
-        expect(App.mock.calls[0][1]).toBe(mockContent.message('pods_url'))
         resolve(true)
       }, 500)
     })

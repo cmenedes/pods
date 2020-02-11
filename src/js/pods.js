@@ -17,6 +17,7 @@ const cacheBust = nyc.cacheBust(5)
 */
 const pods = {
   ACTIVE_POD_WHERE_CLAUSE: " AND Ops_status <> 'Inactive' AND Ops_status IS NOT NULL",
+  ACTIVE_CSV_FILTER: " AND Ops_status <> 'Inactive' AND Ops_status IS NOT NULL",
   CONTENT_URL: `data/content.csv?${cacheBust}`,
   FACILITY_CSV_URL: `data/facility.csv?${cacheBust}`,
   GEOCLIENT_URL: 'https://maps.nyc.gov/geoclient/v1/search.json?app_key=74DF5DB1D7320A9A2&app_id=nyc-lib-example',

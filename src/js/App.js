@@ -12,14 +12,8 @@ import CsvPoint from 'nyc-lib/nyc/ol/format/CsvPoint'
 import facilityStyle from './facility-style'
 
 import {extend as extentExtend} from 'ol/extent'
-
-import Directions from 'nyc-lib/nyc/Directions'
-import Point from 'ol/geom/Point'
-
 import Layer from 'ol/layer/Vector'
-import { format } from 'ol/coordinate'
-
-
+import Point from 'ol/geom/Point'
 
 class App extends FinderApp {
   /**
@@ -27,9 +21,27 @@ class App extends FinderApp {
    * @public
    * @constructor
    * @param {module:nyc-lib/nyc/Content~Content} content The POD content
-   * @param {string} url The POD data URL
    */
-  constructor(content, url) {
+  constructor(content) {
+    let format
+    let url = content.message('pods_url')
+    const active = content.message('active') === 'true'
+    if (url === '') {
+      url = pods.FACILITY_CSV_URL
+      format = new CsvPoint({
+        x: 'lng',
+        y: 'lat',
+        dataProjection: 'EPSG:4326'
+      })
+    } else {
+      format = new GeoJson({
+        dataProjection: 'EPSG:2263',
+        featureProjection: 'EPSG:3857'
+      })
+      if (active) {
+        url += encodeURIComponent(pods.ACTIVE_POD_WHERE_CLAUSE)
+      }
+    }
 
     const filters = [{
       title: 'Borough',
@@ -52,19 +64,6 @@ class App extends FinderApp {
       })
     }
 
-    let format
-    if (url === pods.FACILITY_CSV_URL) {
-      format = new CsvPoint({
-        x: 'lng',
-        y: 'lat',
-        dataProjection: 'EPSG:4326'
-      })
-    } else {
-      format = new GeoJson({
-        dataProjection: 'EPSG:2263',
-        featureProjection: 'EPSG:3857'
-      })
-    }
     super({
       title: content.message('title'),
       splashOptions: {

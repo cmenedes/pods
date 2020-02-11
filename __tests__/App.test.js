@@ -17,7 +17,8 @@ const mockContent = {
     title: 'app title',
     splash: 'splash content',
     marquee: 'marquee msg',
-    description: 'description text'
+    description: 'description text',
+    pods_url: 'http://pods-endpoint'
   },
   message: (key) => {
     return mockContent.messages[key]
@@ -59,7 +60,7 @@ describe('constructor', () => {
 
     mockContent.messages.active = 'true'
 
-    const app = new App(mockContent, 'http://pods-endpoint')
+    const app = new App(mockContent)
 
     expect(app instanceof FinderApp).toBe(true)
     expect(FinderApp).toHaveBeenCalledTimes(1)
@@ -67,7 +68,7 @@ describe('constructor', () => {
     expect(FinderApp.mock.calls[0][0].title).toBe('app title')
     expect(FinderApp.mock.calls[0][0].splashOptions.message).toBe('splash content')
     expect(FinderApp.mock.calls[0][0].splashOptions.buttonText).toEqual(['Screen reader instructions', 'View map to find your closest POD Site'])
-    expect(FinderApp.mock.calls[0][0].facilityUrl).toBe('http://pods-endpoint')
+    expect(FinderApp.mock.calls[0][0].facilityUrl).toBe('http://pods-endpoint' + encodeURIComponent(pods.ACTIVE_POD_WHERE_CLAUSE))
     
     expect(GeoJson).toHaveBeenCalledTimes(1)
     expect(GeoJson.mock.calls[0][0].dataProjection).toBe('EPSG:2263')
@@ -149,7 +150,7 @@ describe('constructor', () => {
 
     mockContent.messages.active = 'false'
 
-    const app = new App(mockContent, 'http://pods-endpoint')
+    const app = new App(mockContent)
 
     expect(app instanceof FinderApp).toBe(true)
     expect(FinderApp).toHaveBeenCalledTimes(1)
@@ -234,7 +235,7 @@ describe('addMarquee', () => {
 
     mockContent.messages.active = 'true'
 
-    const app = new App(mockContent, 'http://pods-endpoint')
+    const app = new App(mockContent)
 
     app.addMarquee = addMarquee
 
@@ -249,7 +250,7 @@ describe('addMarquee', () => {
 
     mockContent.messages.active = 'false'
 
-    const app = new App(mockContent, 'http://pods-endpoint')
+    const app = new App(mockContent)
 
     app.addMarquee = addMarquee
 
@@ -277,7 +278,7 @@ describe('addDescription', () => {
 
     mockContent.messages.active = 'true'
 
-    const app = new App(mockContent, 'http://pods-endpoint')
+    const app = new App(mockContent)
 
     app.addDescription = addDescription
     
@@ -294,7 +295,7 @@ describe('addDescription', () => {
 
     mockContent.messages.description = ''
 
-    const app = new App(mockContent, 'http://pods-endpoint')
+    const app = new App(mockContent)
 
     app.addDescription = addDescription
     
@@ -333,7 +334,7 @@ describe('rearrangeLayers', () => {
 
     mockContent.messages.active = 'true'
 
-    const app = new App(mockContent, 'http://pods-endpoint')
+    const app = new App(mockContent)
     app.map = mockMap
     app.layer = mockLayer
 
@@ -357,7 +358,7 @@ describe('addLabels', () => {
 
     mockContent.messages.active = 'true'
 
-    const app = new App(mockContent, 'http://pods-endpoint')
+    const app = new App(mockContent)
     app.map = mockMap
     app.source = 'mock-source'
 
@@ -401,7 +402,7 @@ describe('highlightSite', () => {
 
     mockContent.messages.active = 'true'
 
-    const app = new App(mockContent, 'http://pods-endpoint')
+    const app = new App(mockContent)
     app.map = mockMap
 
     app.highlightSite = highlightSite
@@ -452,7 +453,7 @@ describe('highlightListItem', () => {
     expect.assertions(4)
     mockContent.messages.active = 'true'
 
-    const app = new App(mockContent, 'http://pods-endpoint')
+    const app = new App(mockContent)
   
     expect($('.feature1').parent().hasClass('active')).toBe(false)
     expect($('.feature2').parent().hasClass('active')).toBe(false)
@@ -483,7 +484,7 @@ describe('addLegend', () => {
     expect.assertions(2)
     mockContent.messages.active = 'true'
 
-    const app = new App(mockContent, 'http://pods-endpoint')
+    const app = new App(mockContent)
     app.addLegend = addLegend
 
     expect($('.legend').css('display')).toBe('none')
@@ -497,7 +498,7 @@ describe('addLegend', () => {
     expect.assertions(2)
     mockContent.messages.active = 'false'
 
-    const app = new App(mockContent, 'http://pods-endpoint')
+    const app = new App(mockContent)
     app.addLegend = addLegend
 
     expect($('.legend').css('display')).toBe('none')
@@ -526,7 +527,7 @@ afterEach(() => {
 
     mockContent.messages.active = 'true'
 
-    const app = new App(mockContent, 'http://pods-endpoint')
+    const app = new App(mockContent)
     const loc = {
       coordinate: 'mock-coordinate'
     }
@@ -564,7 +565,7 @@ describe('zoomToExtent', () => {
 
     mockContent.messages.active = 'true'
 
-    const app = new App(mockContent, 'http://pods-endpoint')
+    const app = new App(mockContent)
     app.source = mockSource
     app.map = mockMap
     app.view = mockView
@@ -625,7 +626,7 @@ describe('zoomTo', () => {
 
     mockContent.messages.active = 'true'
 
-    const app = new App(mockContent, 'http://pods-endpoint')
+    const app = new App(mockContent)
     app.popup = mockPopup
     app.tabs = mockTabs
     app.map = mockMap
