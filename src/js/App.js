@@ -24,7 +24,6 @@ class App extends FinderApp {
    * @param {module:nyc-lib/nyc/Content~Content} content The POD content
    */
   constructor(content) {
-    const active = content.message('active') === 'true'
     let format
     let url = content.message('pods_url')
     if (url === '') {
@@ -96,6 +95,7 @@ class App extends FinderApp {
     this.highlightSite()
 
     $('.srch input').attr('placeholder', 'Search for an address in NYC...')
+    content.applyToDom()
   }
 
   rearrangeLayers() {

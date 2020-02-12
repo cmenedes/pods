@@ -23,7 +23,8 @@ const mockContent = {
   },
   message: (key) => {
     return mockContent.messages[key]
-  }
+  },
+  applyToDom: jest.fn()
 }
 
 const addMarquee = App.prototype.addMarquee
@@ -45,6 +46,7 @@ beforeEach(() => {
   App.prototype.rearrangeLayers = jest.fn()
   App.prototype.addLabels = jest.fn()
   App.prototype.highlightSite = jest.fn()
+  mockContent.applyToDom.mockClear()
 })
 
 afterEach(() => {

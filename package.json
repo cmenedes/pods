@@ -23,8 +23,8 @@
   "homepage": "https://github.com/timkeane/pods#readme",
   "dependencies": {
     "jquery": "^3.3.1",
-    "nyc-lib": "^1.3.71",
-    "ol": "^6.2.0",
+    "nyc-lib": "^1.3.72",
+    "ol": "6.1.1",
     "papaparse": "^4.5.1",
     "proj4": "^2.4.4"
   },
