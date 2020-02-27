@@ -1,1 +1,28 @@
+env:
+- name: HTTP_PROXY
+  valueFrom:
+    secretKeyRef:
+      key: value
+      name: http-proxy
+- name: HTTPS_PROXY
+  valueFrom:
+    secretKeyRef:
+      key: value
+      name: http-proxy
+- name: NO_PROXY
+  value: "172.20.0.0/16,localhost,jenkins-x-chartmuseum,127.0.0.1,.internal,.amazonaws.com"
 buildPack: javascript
+pipelineConfig:
+  env:
+  - name: HTTP_PROXY
+    valueFrom:
+      secretKeyRef:
+        key: value
+        name: http-proxy
+  - name: HTTPS_PROXY
+    valueFrom:
+      secretKeyRef:
+        key: value
+        name: http-proxy
+  - name: NO_PROXY
+    value: "172.20.0.0/16,localhost,jenkins-x-chartmuseum,127.0.0.1,.internal,.amazonaws.com"
